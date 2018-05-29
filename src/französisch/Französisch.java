@@ -21,7 +21,7 @@ public class Französisch extends Application {
     public void start(Stage stage) throws Exception {
 
         Parent root = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
-        this.stage = stage;
+        Französisch.stage = stage;
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
@@ -36,7 +36,7 @@ public class Französisch extends Application {
     }
 
     public static Stage getStage() {
-        return stage;
+        return Französisch.stage;
     }
 
     

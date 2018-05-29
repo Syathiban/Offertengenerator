@@ -41,14 +41,12 @@ public class LoginFXMLController implements Initializable {
     }
 
     @FXML
-    private void login(ActionEvent event) {
-        
-        Window window = Französisch.getStage();
-        root = FXMLLoader.load(getClass().getResource("authentication.fxml"));
-        window.initStyle(StageStyle.UNDECORATED);
-        window.setTitle("Markalyzer");
-        window.setScene(new Scene(root));
-        window.show();
+    private void login(ActionEvent event) throws IOException {
+        Stage stage = Französisch.getStage();
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
     }
 
