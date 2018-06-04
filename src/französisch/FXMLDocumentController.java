@@ -39,17 +39,28 @@ public class FXMLDocumentController implements Initializable {
     private TextField amount;
     @FXML
     private TextArea letter;
-
+     int resultat;
     @FXML
     private void handleButtonAction(ActionEvent event) {
+        int am = Integer.parseInt(amount.getText());
+        //Calculation price
+        
+        
+        
         item = product.getSelectionModel().getSelectedItem();
         payment = zahlung.getSelectionModel().getSelectedItem();
-        letter.setText("Monsieur, \n"
-                + "Nous avons bien reçu votre commande du 30 mai et nous vous en remercions vivement.\n"
-                + "Nous vous proposons 10 " + item + " modèle 0815 au prix de 800 CHF par tablette.\nDe plus, nous vous offre une remise spéciale de 5% pour toute commande supérieure à 5000 CHF.\n"
-                + "Nous vous demandons de faire le paiement dans les 30 jour sà notre compte de " + payment + " .\n"
-                + "Nous allons faire la livraison par camion après la réception de votre paiement.\n"
-                + "En vous remerciant d'avance de votre commande, nous vous prions d'agréer, Monsieur, nos distinguées.\n" );
+        letter.setText(LoginFXMLController.getNa() + " " + LoginFXMLController.getSur() + "\n"
+                + LoginFXMLController.getRout() + "\n"
+                + LoginFXMLController.getPost() + " " + LoginFXMLController.getCity() + "\n"
+                + "\n"
+                + "\n"
+                + LoginFXMLController.getSe()+ " " + LoginFXMLController.getNa() + ",\n\n"
+                + "Nous avons bien reçu votre commande du 30 mai et nous vous en remercions vivement.\n\n"
+                + "Nous vous proposons " + amount.getText()+ " " + item + " modèle 0815 au prix de " + resultat + " CHF par tablette.\n\n"
+                + "De plus, nous vous offre une remise spéciale de 5% pour toute commande supérieure à 5000 CHF.\n\n"
+                + "Nous vous demandons de faire le paiement dans les 30 jour sà notre compte de " + payment + " .\n\n"
+                + "Nous allons faire la livraison par camion après la réception de votre paiement.\n\n"
+                + "En vous remerciant d'avance de votre commande, nous vous prions d'agréer, Monsieur, nos distinguées.\n\n" );
         letter.setEditable(false);
     }
     

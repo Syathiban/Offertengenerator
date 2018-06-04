@@ -7,6 +7,7 @@ package französisch;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,8 +18,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -29,25 +34,105 @@ public class LoginFXMLController implements Initializable {
 
     @FXML
     private ComboBox<String> sexuality;
+    static String se;
+    static String na;
+    static String post;
+    static Date dat;
+    static String sur;
+    static String city;
+    static String rout;
+    private boolean ok;
 
-    private ObservableList<String> Geschlecht = FXCollections.observableArrayList("Männlich", "Weiblich", "Anderes");
+    private ObservableList<String> Geschlecht = FXCollections.observableArrayList("Männlich", "Weiblich");
+    @FXML
+    private TextField name;
+    @FXML
+    private DatePicker date;
+    @FXML
+    private TextField plz;
+    @FXML
+    private TextField surname;
+    @FXML
+    private TextField ort;
+    @FXML
+    private TextField street;
 
+ 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         sexuality.setItems(Geschlecht);
+        try {
+            se = sexuality.getSelectionModel().getSelectedItem();
+            na = name.getText();
+            post = plz.getText();
+            //dat;
+            rout = street.getText();
+            sur = surname.getText();
+            city = ort.getText();
+            ok = true;
+        } catch (Exception e) {
+            ok = false;
+        }
     }
 
     @FXML
     private void login(ActionEvent event) throws IOException {
+       
+            se = sexuality.getSelectionModel().getSelectedItem();
+            na = name.getText();
+            post = plz.getText();
+            //dat;
+            rout = street.getText();
+            sur = surname.getText();
+            city = ort.getText();
+            ok = true;
+        if (sexuality.getSelectionModel().getSelectedItem().isEmpty()) {
+            
+        }
+        if (ok = true) {
+            if (se == "Männlich") {
+            se = "Monsieur";
+        } else if (se == "Weiblich") {
+            se = "Madame";
+        }
         Stage stage = Französisch.getStage();
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        }else{
+            JOptionPane.showInternalMessageDialog(null, "Tous les champs doivent être remplis.");
+        }
+        
 
     }
 
+    static String getSe() {
+        return se;
+    }
+
+    static String getNa() {
+        return na;
+    }
+
+    static String getPost() {
+        return post;
+    }
+
+    static String getCity() {
+        return city;
+    }
+
+    public static String getSur() {
+        return sur;
+    }
+
+    public static String getRout() {
+        return rout;
+    }
+
+        
 }
