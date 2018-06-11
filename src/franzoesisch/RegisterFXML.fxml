@@ -5,11 +5,13 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.RegisterFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.RegisterFXMLController">
    <children>
-      <Button layoutX="208.0" layoutY="351.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="250.0" text="Start" />
+      <Button layoutX="207.0" layoutY="410.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="250.0" text="Start" />
       <ComboBox fx:id="sexuality" layoutX="307.0" layoutY="130.0" prefHeight="25.0" prefWidth="150.0" />
       <Label layoutX="207.0" layoutY="90.0" text="Nachname:" />
       <Label layoutX="207.0" layoutY="130.0" text="Geschlecht:" />
@@ -24,5 +26,14 @@
       <TextField fx:id="surname" layoutX="307.0" layoutY="50.0" prefHeight="25.0" prefWidth="150.0" />
       <TextField fx:id="ort" layoutX="307.0" layoutY="210.0" prefHeight="25.0" prefWidth="150.0" />
       <Label layoutX="207.0" layoutY="210.0" text="Ort:" />
+      <Label layoutX="207.0" layoutY="330.0" text="E-Mail" />
+      <TextField fx:id="mail" layoutX="307.0" layoutY="330.0" prefHeight="25.0" prefWidth="150.0" />
+      <Label layoutX="207.0" layoutY="370.0" text="Passwort:" />
+      <TextField fx:id="password" layoutX="307.0" layoutY="370.0" prefHeight="25.0" prefWidth="150.0" />
+      <ImageView fitHeight="37.0" fitWidth="60.0" layoutX="14.0" layoutY="410.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/ic_launcher%20(1)/web_hi_res_512.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

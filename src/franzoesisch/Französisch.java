@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -23,7 +24,7 @@ public class Französisch extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
         Französisch.stage = stage;
         Scene scene = new Scene(root);
-        
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

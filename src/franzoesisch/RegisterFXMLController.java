@@ -21,6 +21,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javax.swing.JOptionPane;
@@ -56,8 +57,11 @@ public class RegisterFXMLController implements Initializable {
     private TextField ort;
     @FXML
     private TextField street;
+    @FXML
+    private TextField mail;
+    @FXML
+    private TextField password;
 
- 
     /**
      * Initializes the controller class.
      */
@@ -80,33 +84,35 @@ public class RegisterFXMLController implements Initializable {
 
     @FXML
     private void login(ActionEvent event) throws IOException {
-       
-            se = sexuality.getSelectionModel().getSelectedItem();
-            na = name.getText();
-            post = plz.getText();
-            //dat;
-            rout = street.getText();
-            sur = surname.getText();
-            city = ort.getText();
-            ok = true;
-        if (sexuality.getSelectionModel().getSelectedItem().isEmpty()) {
-            
+
+        se = sexuality.getSelectionModel().getSelectedItem();
+        na = name.getText();
+        post = plz.getText();
+        //dat;
+        rout = street.getText();
+        sur = surname.getText();
+        city = ort.getText();
+        ok = true;
+        if (sexuality.getSelectionModel().getSelectedItem() == null || name.getText() == null || plz.getText() == null || street.getText() == null || surname.getText() == null || ort.getText() == null) {
+            JOptionPane.showMessageDialog(null, "Alle Felder müssen ausgefüllt sein.");
+
+        } else {
+            if (ok = true) {
+                if (se == "Männlich") {
+                    se = "Monsieur";
+                } else if (se == "Weiblich") {
+                    se = "Madame";
+                }
+                Stage stage = Französisch.getStage();
+                Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+            } else {
+                JOptionPane.showInternalMessageDialog(null, "Tous les champs doivent être remplis.");
+            }
         }
-        if (ok = true) {
-            if (se == "Männlich") {
-            se = "Monsieur";
-        } else if (se == "Weiblich") {
-            se = "Madame";
-        }
-        Stage stage = Französisch.getStage();
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        }else{
-            JOptionPane.showInternalMessageDialog(null, "Tous les champs doivent être remplis.");
-        }
-        
 
     }
 
@@ -134,5 +140,14 @@ public class RegisterFXMLController implements Initializable {
         return rout;
     }
 
-        
+    @FXML
+    private void back(MouseEvent event) throws IOException {
+        Stage stage = Französisch.getStage();
+        Parent root = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
 }

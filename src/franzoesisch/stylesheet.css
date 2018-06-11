@@ -1,0 +1,121 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 11.06.2018, 15:06:04
+    Author     : Startklar
+*/
+
+.text-field {
+    -fx-border-color: #bbbbbb;
+    -fx-border-width: 1px;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+}
+
+.button-login {
+    -fx-text-fill: #ffffff;
+    -fx-border-width: 0px;
+    -fx-background-color: #39414E;
+    -fx-background-radius: 0px;
+}
+
+.button-login:hover {
+    -fx-background-color: #4E555E;
+}
+
+.button-login:pressed {
+    -fx-background-color: #29313D;
+}
+
+.pane-login {
+    -fx-background-color: #ffffff;
+}
+
+.button-submit {
+    -fx-text-fill: #ffffff;
+    -fx-border-width: 0px;
+    -fx-background-color: #39414E;
+    -fx-background-radius: 0px;
+}
+
+.button-submit:hover {
+    -fx-background-color: #4E555E;
+}
+
+.button-submit:pressed {
+    -fx-background-color: #29313D;
+}
+
+.amount {
+    -fx-border-color: #bbbbbb;
+    -fx-border-width: 1px;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+
+}
+
+.combobox {
+    -fx-border-color: #bbbbbb;
+    -fx-border-width: 1px;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+
+}
+
+.text-area {
+    -fx-border-color: #bbbbbb;
+    -fx-border-width: 1px;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+}
+
+.apple-close {
+    -fx-border-width: 1px;
+    -fx-background-color: #FC5652;
+    -fx-background-radius: 100px;
+    -fx-border-radius: 100px;
+    -fx-border-color: #DF3E3A;
+}
+
+.apple-close:hover {
+    
+}
+
+.apple-close:pressed {
+    -fx-background-color: #9F3D39;
+}
+
+.apple-maximize {
+    -fx-border-width: 1px;
+    -fx-background-color: #29CE42;
+    -fx-background-radius: 100px;
+    -fx-border-radius: 100px;
+    -fx-border-color: #23AB32;
+}
+
+.apple-maximize:hover {
+    
+}
+
+.apple-maximize:pressed {
+    -fx-background-color: #197E28;
+}
+
+.apple-minimize {
+    -fx-border-width: 1px;
+    -fx-background-color: #FDBD3E;
+    -fx-background-radius: 100px;
+    -fx-border-radius: 100px;
+    -fx-border-color: #DEA032;
+}
+
+.apple-minimize:hover {
+    
+}
+
+.apple-minimize:pressed {
+    -fx-background-color: #A17B1D;
+}
