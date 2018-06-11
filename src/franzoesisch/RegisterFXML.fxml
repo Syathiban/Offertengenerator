@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="französisch.LoginFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.RegisterFXMLController">
    <children>
       <Button layoutX="208.0" layoutY="351.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="250.0" text="Start" />
       <ComboBox fx:id="sexuality" layoutX="307.0" layoutY="130.0" prefHeight="25.0" prefWidth="150.0" />

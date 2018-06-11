@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package französisch;
+package franzoesisch;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,7 +30,7 @@ import javax.swing.JOptionPane;
  *
  * @author Startklar
  */
-public class LoginFXMLController implements Initializable {
+public class RegisterFXMLController implements Initializable {
 
     @FXML
     private ComboBox<String> sexuality;

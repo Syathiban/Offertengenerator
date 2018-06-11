@@ -10,10 +10,10 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="540.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="französisch.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.FXMLDocumentController">
     <children>
-        <Button fx:id="submit" layoutX="224.0" layoutY="123.0" onAction="#handleButtonAction" prefHeight="26.0" prefWidth="200.0" text="Submit" />
-      <GridPane layoutX="224.0" layoutY="14.0">
+        <Button fx:id="submit" layoutX="350.0" layoutY="120.0" onAction="#handleButtonAction" prefHeight="26.0" prefWidth="200.0" text="Submit" />
+      <GridPane layoutX="350.0" layoutY="14.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -32,6 +32,6 @@
             <ComboBox fx:id="zahlung" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <TextArea fx:id="letter" layoutX="7.0" layoutY="162.0" prefHeight="373.0" prefWidth="630.0" />
+      <TextArea fx:id="letter" layoutX="4.0" layoutY="163.0" prefHeight="532.0" prefWidth="891.0" />
     </children>
 </AnchorPane>

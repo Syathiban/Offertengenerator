@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package französisch;
+package franzoesisch;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -49,12 +49,13 @@ public class FXMLDocumentController implements Initializable {
         
         item = product.getSelectionModel().getSelectedItem();
         payment = zahlung.getSelectionModel().getSelectedItem();
-        letter.setText(LoginFXMLController.getNa() + " " + LoginFXMLController.getSur() + "\n"
-                + LoginFXMLController.getRout() + "\n"
-                + LoginFXMLController.getPost() + " " + LoginFXMLController.getCity() + "\n"
+        letter.setText(" VIN de Lausanne SA \n" + " 3, Rue de la Piquette \n 2000 Lausanne\n\n"
+                + RegisterFXMLController.getNa() + " " + RegisterFXMLController.getSur() + "\n"
+                + RegisterFXMLController.getRout() + "\n"
+                + RegisterFXMLController.getPost() + " " + RegisterFXMLController.getCity() + "\n"
                 + "\n"
                 + "\n"
-                + LoginFXMLController.getSe()+ " " + LoginFXMLController.getNa() + ",\n\n"
+                + RegisterFXMLController.getSe()+ " " + RegisterFXMLController.getNa() + ",\n\n"
                 + "Nous avons bien reçu votre commande du 30 mai et nous vous en remercions vivement.\n\n"
                 + "Nous vous proposons " + amount.getText()+ " " + item + " modèle 0815 au prix de " + resultat + " CHF par tablette.\n\n"
                 + "De plus, nous vous offre une remise spéciale de 5% pour toute commande supérieure à 5000 CHF.\n\n"
