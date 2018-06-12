@@ -21,12 +21,14 @@ public class Französisch extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
+        this.stage = stage;
         Parent root = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
-        Französisch.stage = stage;
+        
         Scene scene = new Scene(root);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.show();
         stage.setResizable(false);
         stage.setScene(scene);
-        stage.show();
     }
 
     /**
@@ -37,7 +39,7 @@ public class Französisch extends Application {
     }
 
     public static Stage getStage() {
-        return Französisch.stage;
+        return stage;
     }
 
     

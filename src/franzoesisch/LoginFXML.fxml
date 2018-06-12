@@ -4,27 +4,42 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="272.0" prefWidth="400.0" styleClass="pane-login" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.LoginFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="393.0" style="-fx-background-color: white;" styleClass="pane-login" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.LoginFXMLController">
    <children>
-      <Label alignment="CENTER" layoutX="103.0" layoutY="49.0" prefHeight="30.0" prefWidth="248.0" text="SIGN IN" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+      <Label alignment="CENTER" layoutX="98.0" layoutY="48.0" prefHeight="30.0" prefWidth="248.0" text="SIGN IN" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="102.0">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <TextField fx:id="mail" layoutX="102.0" layoutY="97.0" prefHeight="30.0" prefWidth="200.0" promptText="Email:" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
-      <TextField fx:id="password" layoutX="100.0" layoutY="137.0" prefHeight="30.0" prefWidth="200.0" promptText="Password:" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
-      <Button layoutX="100.0" layoutY="179.0" mnemonicParsing="false" onAction="#submit" prefHeight="30.0" prefWidth="200.0" styleClass="button-login" text="Submit" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
-      <HBox layoutX="-1.0" layoutY="-1.0" prefHeight="50.0" prefWidth="300.0">
+      <TextField fx:id="mail" layoutX="100.0" layoutY="94.0" prefHeight="30.0" prefWidth="200.0" promptText="Email:" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+      <TextField fx:id="password" layoutX="100.0" layoutY="134.0" prefHeight="30.0" prefWidth="200.0" promptText="Password:" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+      <Button layoutX="100.0" layoutY="176.0" mnemonicParsing="false" onAction="#submit" prefHeight="30.0" prefWidth="200.0" styleClass="button-login" text="Submit" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+      <Pane fx:id="topbar" layoutX="-2.0" prefHeight="30.0" prefWidth="400.0" style="-fx-background-color: #39414E;">
          <children>
-            <Label alignment="CENTER" onMouseClicked="#register" prefHeight="26.0" prefWidth="78.0" text="Register">
+            <Label alignment="CENTER" onMouseClicked="#register" prefHeight="26.0" prefWidth="78.0" text="Register" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
+            <Button ellipsisString="" focusTraversable="false" layoutX="330.0" layoutY="5.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </Button>
+            <Button ellipsisString="" focusTraversable="false" layoutX="380.0" layoutY="5.0" mnemonicParsing="false" onAction="#close" prefHeight="17.0" prefWidth="17.0" styleClass="apple-close">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </Button>
+            <Button ellipsisString="" focusTraversable="false" layoutX="355.0" layoutY="5.0" mnemonicParsing="false" onAction="#minimize" prefHeight="17.0" prefWidth="17.0" styleClass="apple-minimize">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </Button>
          </children>
-      </HBox>
+      </Pane>
    </children>
 </AnchorPane>

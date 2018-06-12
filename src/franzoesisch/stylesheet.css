@@ -81,7 +81,7 @@ and open the template in the editor.
 }
 
 .apple-close:hover {
-    
+
 }
 
 .apple-close:pressed {
@@ -97,7 +97,7 @@ and open the template in the editor.
 }
 
 .apple-maximize:hover {
-    
+
 }
 
 .apple-maximize:pressed {
@@ -113,9 +113,15 @@ and open the template in the editor.
 }
 
 .apple-minimize:hover {
-    
+
 }
 
 .apple-minimize:pressed {
     -fx-background-color: #A17B1D;
+}
+
+.datepicker {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+
 }

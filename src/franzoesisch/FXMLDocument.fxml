@@ -2,39 +2,50 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="735.0" prefWidth="869.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="735.0" prefWidth="870.0" style="-fx-background-color: white;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.FXMLDocumentController">
     <children>
-        <Button fx:id="submit" layoutX="341.0" layoutY="185.0" onAction="#handleButtonAction" prefHeight="27.0" prefWidth="202.0" styleClass="button-submit" text="Submit" />
-      <TextArea fx:id="letter" layoutX="4.0" layoutY="248.0" prefHeight="480.0" prefWidth="890.0" styleClass="text-area" />
-      <ComboBox fx:id="product" layoutX="341.0" layoutY="65.0" prefHeight="27.0" prefWidth="202.0" promptText="Product" styleClass="combobox" />
-      <TextField fx:id="amount" layoutX="341.0" layoutY="105.0" prefHeight="27.0" prefWidth="202.0" promptText="Amount" styleClass="amount" />
-      <ComboBox fx:id="zahlung" layoutX="341.0" layoutY="145.0" prefHeight="27.0" prefWidth="202.0" promptText="Payment Method" styleClass="combobox" />
-      <ImageView fx:id="btnLogoff" fitHeight="50.0" fitWidth="72.0" layoutX="4.0" layoutY="7.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Images/ic_launcher/web_hi_res_512.png" />
-         </image>
-      </ImageView>
-      <Button ellipsisString="" focusTraversable="false" layoutX="801.0" layoutY="10.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="10.0">
+        <Button fx:id="submit" layoutX="346.0" layoutY="212.0" onAction="#handleButtonAction" prefHeight="27.0" prefWidth="202.0" styleClass="button-submit" text="Submit" />
+      <TextArea fx:id="letter" layoutX="18.0" layoutY="264.0" prefHeight="450.0" prefWidth="858.0" styleClass="text-area" />
+      <ComboBox fx:id="product" layoutX="346.0" layoutY="92.0" prefHeight="27.0" prefWidth="202.0" promptText="Product" styleClass="combobox" />
+      <TextField fx:id="amount" layoutX="346.0" layoutY="132.0" prefHeight="27.0" prefWidth="202.0" promptText="Amount" styleClass="amount" />
+      <ComboBox fx:id="zahlung" layoutX="346.0" layoutY="172.0" prefHeight="27.0" prefWidth="202.0" promptText="Payment Method" styleClass="combobox" />
+      <Pane fx:id="topbar" prefHeight="30.0" prefWidth="894.0" style="-fx-background-color: #39414E;">
+         <children>
+            <ImageView fx:id="btnLogoff" fitHeight="39.0" fitWidth="44.0" layoutX="-2.0" layoutY="-5.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/web_hi_res_512.png" />
+               </image>
+            </ImageView>
+            <Button ellipsisString="" focusTraversable="false" layoutX="820.0" layoutY="8.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </Button>
+            <Button ellipsisString="" focusTraversable="false" layoutX="870.0" layoutY="8.0" mnemonicParsing="false" onAction="#close" prefHeight="17.0" prefWidth="17.0" styleClass="apple-close">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </Button>
+            <Button ellipsisString="" focusTraversable="false" layoutX="845.0" layoutY="8.0" mnemonicParsing="false" onAction="#minimize" prefHeight="17.0" prefWidth="17.0" styleClass="apple-minimize">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Label alignment="CENTER" layoutX="346.0" layoutY="52.0" prefHeight="27.0" prefWidth="202.0" text="Créer un offre">
          <font>
-            <Font size="1.0" />
+            <Font size="19.0" />
          </font>
-      </Button>
-      <Button ellipsisString="" focusTraversable="false" layoutX="860.0" layoutY="14.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-close" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-         <font>
-            <Font size="1.0" />
-         </font>
-      </Button>
-      <Button ellipsisString="" focusTraversable="false" layoutX="835.0" layoutY="10.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" styleClass="apple-minimize" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="10.0">
-         <font>
-            <Font size="1.0" />
-         </font>
-      </Button>
+      </Label>
     </children>
 </AnchorPane>

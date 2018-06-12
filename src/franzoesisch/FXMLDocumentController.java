@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,6 +24,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -30,7 +32,7 @@ import javafx.stage.Stage;
  * @author Startklar
  */
 public class FXMLDocumentController implements Initializable {
-    
+
     private Label label;
     @FXML
     private ComboBox<String> product;
@@ -46,16 +48,22 @@ public class FXMLDocumentController implements Initializable {
     private TextField amount;
     @FXML
     private TextArea letter;
-     int resultat;
+    int resultat;
     @FXML
-    private ImageView lout;
+    private ImageView btnLogoff;
+
+    private double xOffset = 0;
+
+    private double yOffset = 0;
+    @FXML
+    private Pane topbar;
+    
+    private Stage stage;
     @FXML
     private void handleButtonAction(ActionEvent event) {
         int am = Integer.parseInt(amount.getText());
         //Calculation price
-        
-        
-        
+
         item = product.getSelectionModel().getSelectedItem();
         payment = zahlung.getSelectionModel().getSelectedItem();
         letter.setText(" VIN de Lausanne SA \n" + " 3, Rue de la Piquette \n 2000 Lausanne\n\n"
@@ -64,21 +72,40 @@ public class FXMLDocumentController implements Initializable {
                 + " " + RegisterFXMLController.getPost() + " " + RegisterFXMLController.getCity() + "\n"
                 + "\n"
                 + "\n"
-                + " " + RegisterFXMLController.getSe()+ " " + RegisterFXMLController.getNa() + ",\n\n"
+                + " " + RegisterFXMLController.getSe() + " " + RegisterFXMLController.getNa() + ",\n\n"
                 + " Nous avons bien reçu votre commande du 30 mai et nous vous en remercions vivement.\n\n"
-                + " Nous vous proposons " + amount.getText()+ " " + item + " modèle 0815 au prix de " + resultat + " CHF par tablette.\n\n"
+                + " Nous vous proposons " + amount.getText() + " " + item + " modèle 0815 au prix de " + resultat + " CHF par tablette.\n\n"
                 + " De plus, nous vous offre une remise spéciale de 5% pour toute commande supérieure à 5000 CHF.\n\n"
                 + " Nous vous demandons de faire le paiement dans les 30 jour sà notre compte de " + payment + " .\n\n"
                 + " Nous allons faire la livraison par camion après la réception de votre paiement.\n\n"
-                + " En vous remerciant d'avance de votre commande, nous vous prions d'agréer, Monsieur, nos distinguées.\n\n" );
+                + " En vous remerciant d'avance de votre commande, nous vous prions d'agréer, Monsieur, nos distinguées.\n\n");
         letter.setEditable(false);
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        stage = Französisch.getStage();
+
+        topbar.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+
+        });
+
+        topbar.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                stage.setX(event.getScreenX() - xOffset);
+                stage.setY(event.getScreenY() - yOffset);
+            }
+        });
         product.setItems(produkt);
         zahlung.setItems(Zahlung);
-    }    
+    }
 
     @FXML
     private void logout(MouseEvent event) throws IOException {
@@ -89,5 +116,17 @@ public class FXMLDocumentController implements Initializable {
         stage.setResizable(false);
         stage.show();
     }
-    
+
+    @FXML
+    private void close(ActionEvent event) {
+        System.exit(0);
+    }
+
+    @FXML
+    private void minimize(ActionEvent event) {
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+
+        stage.setIconified(true);
+    }
+
 }
