@@ -77,8 +77,8 @@ public class RegisterFXMLController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        stage = Französisch.getStage();
-
+       stage = Französisch.getStage();
+        
         topbar.setOnMousePressed(new EventHandler<MouseEvent>() {
 
             @Override

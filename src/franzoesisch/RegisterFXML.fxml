@@ -8,9 +8,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="482.0" prefWidth="659.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.RegisterFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="482.0" prefWidth="650.0" style="-fx-border-color: black; -fx-background-color: white;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.RegisterFXMLController">
    <children>
       <Button layoutX="207.0" layoutY="431.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="250.0" styleClass="button-submit" text="Start" />
       <ComboBox fx:id="sexuality" layoutX="207.0" layoutY="151.0" prefHeight="25.0" prefWidth="250.0" promptText="Gender" styleClass="combobox" />
@@ -22,30 +23,34 @@
       <TextField fx:id="ort" layoutX="207.0" layoutY="230.0" prefHeight="25.0" prefWidth="250.0" promptText="City" />
       <TextField fx:id="mail" layoutX="207.0" layoutY="350.0" prefHeight="25.0" prefWidth="250.0" promptText="Email" />
       <TextField fx:id="password" layoutX="207.0" layoutY="389.0" prefHeight="25.0" prefWidth="250.0" promptText="Password" />
-      <ImageView fitHeight="37.0" fitWidth="60.0" layoutX="14.0" layoutY="431.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Images/ic_launcher.png" />
-         </image>
-      </ImageView>
-      <Label alignment="CENTER" layoutX="207.0" layoutY="27.0" prefHeight="27.0" prefWidth="250.0" text="Register">
+      <Label alignment="CENTER" layoutX="207.0" layoutY="34.0" prefHeight="27.0" prefWidth="250.0" text="Register">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <Button ellipsisString="" focusTraversable="false" layoutX="580.0" layoutY="7.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize">
-         <font>
-            <Font size="1.0" />
-         </font>
-      </Button>
-      <Button ellipsisString="" focusTraversable="false" layoutX="630.0" layoutY="7.0" mnemonicParsing="false" onAction="#close" prefHeight="17.0" prefWidth="17.0" styleClass="apple-close">
-         <font>
-            <Font size="1.0" />
-         </font>
-      </Button>
-      <Button ellipsisString="" focusTraversable="false" layoutX="605.0" layoutY="7.0" mnemonicParsing="false" onAction="#minimize" prefHeight="17.0" prefWidth="17.0" styleClass="apple-minimize">
-         <font>
-            <Font size="1.0" />
-         </font>
-      </Button>
+      <Pane fx:id="topbar" layoutY="-2.0" prefHeight="28.0" prefWidth="649.0" style="-fx-background-color: #39414E;">
+         <children>
+            <Button ellipsisString="" focusTraversable="false" layoutX="580.0" layoutY="5.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </Button>
+            <Button ellipsisString="" focusTraversable="false" layoutX="630.0" layoutY="5.0" mnemonicParsing="false" onAction="#close" prefHeight="17.0" prefWidth="17.0" styleClass="apple-close">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </Button>
+            <Button ellipsisString="" focusTraversable="false" layoutX="605.0" layoutY="5.0" mnemonicParsing="false" onAction="#minimize" prefHeight="17.0" prefWidth="17.0" styleClass="apple-minimize">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="37.0" fitWidth="60.0" layoutX="6.0" layoutY="-4.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/retrun.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

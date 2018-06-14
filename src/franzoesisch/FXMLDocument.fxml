@@ -22,7 +22,7 @@
          <children>
             <ImageView fx:id="btnLogoff" fitHeight="39.0" fitWidth="44.0" layoutX="-2.0" layoutY="-5.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/web_hi_res_512.png" />
+                  <Image url="@../Images/logout.png" />
                </image>
             </ImageView>
             <Button ellipsisString="" focusTraversable="false" layoutX="820.0" layoutY="8.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize">

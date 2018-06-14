@@ -72,7 +72,7 @@ public class LoginFXMLController implements Initializable {
 
     @FXML
     private void register(MouseEvent event) throws IOException {
-        stage = Französisch.getStage();
+        Stage stage = Französisch.getStage();
         Parent root = FXMLLoader.load(getClass().getResource("RegisterFXML.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -86,7 +86,6 @@ public class LoginFXMLController implements Initializable {
         Stage stage = Französisch.getStage();
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         Scene scene = new Scene(root);
-
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
