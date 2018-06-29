@@ -24,7 +24,7 @@ public class Database {
     public Database() {
         try {
             //Verbindung zum Server herstellen
-            this.connection = DriverManager.getConnection("jdbc:mysql://yannickhuggler.ddns.net:3306/laouand_offerte", "laouand_offerte", "MbnaDwTfRHNYcRmQhViHuudUPEks");
+            this.connection = DriverManager.getConnection("jdbc:mysql://yannickhuggler.ddns.net:3306/athiban", "athiban", "HNbJK9MkLXevGvHtnNRC");
             this.statement = connection.createStatement();
         } catch (SQLException ex) {
             System.err.println(ex);

@@ -81,7 +81,7 @@ and open the template in the editor.
 }
 
 .apple-close:hover {
-
+    -fx-background-image: url("/Images/register.png");
 }
 
 .apple-close:pressed {

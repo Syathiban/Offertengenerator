@@ -7,50 +7,49 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="482.0" prefWidth="650.0" style="-fx-border-color: black; -fx-background-color: white;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.RegisterFXMLController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="669.0" style="-fx-background-color: white; -fx-border-width: 1 1 1 1; -fx-border-color: #39414E #39414E;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.RegisterFXMLController">
    <children>
-      <Button layoutX="207.0" layoutY="431.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="250.0" styleClass="button-submit" text="Start" />
-      <ComboBox fx:id="sexuality" layoutX="207.0" layoutY="151.0" prefHeight="25.0" prefWidth="250.0" promptText="Gender" styleClass="combobox" />
-      <TextField fx:id="name" layoutX="207.0" layoutY="112.0" prefHeight="25.0" prefWidth="250.0" promptText="Lastname" />
-      <TextField fx:id="plz" layoutX="207.0" layoutY="192.0" prefHeight="25.0" prefWidth="250.0" promptText="Postal Code" />
-      <TextField fx:id="street" layoutX="207.0" layoutY="271.0" prefHeight="25.0" prefWidth="250.0" promptText="Street" />
-      <DatePicker fx:id="date" layoutX="207.0" layoutY="312.0" prefHeight="25.0" prefWidth="250.0" promptText="Date" styleClass="datepicker" />
-      <TextField fx:id="surname" layoutX="207.0" layoutY="72.0" prefHeight="25.0" prefWidth="250.0" promptText="Firstname" />
-      <TextField fx:id="ort" layoutX="207.0" layoutY="230.0" prefHeight="25.0" prefWidth="250.0" promptText="City" />
-      <TextField fx:id="mail" layoutX="207.0" layoutY="350.0" prefHeight="25.0" prefWidth="250.0" promptText="Email" />
-      <TextField fx:id="password" layoutX="207.0" layoutY="389.0" prefHeight="25.0" prefWidth="250.0" promptText="Password" />
-      <Label alignment="CENTER" layoutX="207.0" layoutY="34.0" prefHeight="27.0" prefWidth="250.0" text="Register">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Label>
-      <Pane fx:id="topbar" layoutY="-2.0" prefHeight="28.0" prefWidth="649.0" style="-fx-background-color: #39414E;">
+      <Pane fx:id="topbar" prefHeight="28.0" prefWidth="670.0" style="-fx-background-color: #39414E;">
          <children>
-            <Button ellipsisString="" focusTraversable="false" layoutX="580.0" layoutY="5.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize">
-               <font>
-                  <Font size="1.0" />
-               </font>
-            </Button>
-            <Button ellipsisString="" focusTraversable="false" layoutX="630.0" layoutY="5.0" mnemonicParsing="false" onAction="#close" prefHeight="17.0" prefWidth="17.0" styleClass="apple-close">
-               <font>
-                  <Font size="1.0" />
-               </font>
-            </Button>
-            <Button ellipsisString="" focusTraversable="false" layoutX="605.0" layoutY="5.0" mnemonicParsing="false" onAction="#minimize" prefHeight="17.0" prefWidth="17.0" styleClass="apple-minimize">
-               <font>
-                  <Font size="1.0" />
-               </font>
-            </Button>
             <ImageView fitHeight="37.0" fitWidth="60.0" layoutX="6.0" layoutY="-4.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/retrun.png" />
                </image>
             </ImageView>
+            <Button ellipsisString="" focusTraversable="false" layoutX="590.0" layoutY="5.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </Button>
+            <Button ellipsisString="" focusTraversable="false" layoutX="640.0" layoutY="5.0" mnemonicParsing="false" onAction="#close" prefHeight="17.0" prefWidth="17.0" styleClass="apple-close">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </Button>
+            <Button ellipsisString="" focusTraversable="false" layoutX="615.0" layoutY="5.0" mnemonicParsing="false" onAction="#minimize" prefHeight="17.0" prefWidth="17.0" styleClass="apple-minimize">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
+      <Button layoutX="209.0" layoutY="431.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="250.0" styleClass="button-submit" text="Start" />
+      <ComboBox fx:id="sexuality" layoutX="209.0" layoutY="151.0" prefHeight="25.0" prefWidth="250.0" promptText="Gender" styleClass="combobox" />
+      <TextField fx:id="name" layoutX="209.0" layoutY="112.0" prefHeight="25.0" prefWidth="250.0" promptText="Lastname" />
+      <TextField fx:id="plz" layoutX="209.0" layoutY="192.0" prefHeight="25.0" prefWidth="250.0" promptText="Postal Code" />
+      <TextField fx:id="street" layoutX="209.0" layoutY="271.0" prefHeight="25.0" prefWidth="250.0" promptText="Street" />
+      <DatePicker fx:id="date" layoutX="209.0" layoutY="312.0" prefHeight="25.0" prefWidth="250.0" promptText="Date" styleClass="datepicker" />
+      <TextField fx:id="surname" layoutX="209.0" layoutY="72.0" prefHeight="25.0" prefWidth="250.0" promptText="Firstname" />
+      <TextField fx:id="ort" layoutX="209.0" layoutY="230.0" prefHeight="25.0" prefWidth="250.0" promptText="City" />
+      <TextField fx:id="mail" layoutX="209.0" layoutY="350.0" prefHeight="25.0" prefWidth="250.0" promptText="Email" />
+      <TextField fx:id="password" layoutX="209.0" layoutY="389.0" prefHeight="25.0" prefWidth="250.0" promptText="Password" />
+      <Label alignment="CENTER" layoutX="209.0" layoutY="34.0" prefHeight="27.0" prefWidth="250.0" text="Register">
+         <font>
+            <Font name="Agency FB" size="20.0" />
+         </font>
+      </Label>
    </children>
-</AnchorPane>
+</Pane>

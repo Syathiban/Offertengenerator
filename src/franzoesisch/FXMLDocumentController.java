@@ -22,8 +22,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -59,6 +65,12 @@ public class FXMLDocumentController implements Initializable {
     private Pane topbar;
     
     private Stage stage;
+    @FXML
+    private Button btnMax;
+    @FXML
+    private Button btnClose;
+    @FXML
+    private Button btnMin;
     @FXML
     private void handleButtonAction(ActionEvent event) {
         int am = Integer.parseInt(amount.getText());
@@ -127,6 +139,26 @@ public class FXMLDocumentController implements Initializable {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
 
         stage.setIconified(true);
+    }
+
+    @FXML
+    private void DehoverClose(MouseEvent event) {
+    }
+
+    @FXML
+    private void hoverClose(MouseEvent event) {
+        
+//          btnClose.setBackground(new Background(
+//                new BackgroundImage(
+//                        new Image("/Images/ic_launcher.png"),BackgroundRepeat.NO_REPEAT,
+//                        BackgroundRepeat.NO_REPEAT,
+//                        BackgroundPosition.CENTER,
+//                        new BackgroundSize(
+//                                17,17,
+//                                false,false,true,true
+//                        )
+//                )
+////        ));
     }
 
 }
