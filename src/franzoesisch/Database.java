@@ -24,7 +24,7 @@ public class Database {
     public Database() {
         try {
             //Verbindung zum Server herstellen
-            this.connection = DriverManager.getConnection("jdbc:mysql://yannickhuggler.ddns.net:3306/athiban", "athiban", "HNbJK9MkLXevGvHtnNRC");
+            this.connection = DriverManager.getConnection("jdbc:mysql://localhost/athiban", "root", "");
             this.statement = connection.createStatement();
         } catch (SQLException ex) {
             System.err.println(ex);
@@ -42,15 +42,20 @@ public class Database {
         return connection;
     }
 
-    public void Register(String vorname, String nachname, String anrede, String benutzername, String passwort) {
+    public void Register(String vorname, String nachname, String anrede, String benutzername, String passwort, int plz, String adresse, String city, String email) {
         try {
             String sql = "INSERT INTO newuser VALUES(null, ?, ?, ?, ?, ?)";
             PreparedStatement prepstatement = getConnection().prepareStatement(sql);
-            prepstatement.setString(1, vorname);
-            prepstatement.setString(2, nachname);
-            prepstatement.setString(3, anrede);
-            prepstatement.setString(4, benutzername);
-            prepstatement.setString(5, passwort);
+            prepstatement.setString(2, vorname);
+            prepstatement.setString(3, nachname);
+            prepstatement.setString(4, anrede);
+            prepstatement.setString(5, benutzername);
+            prepstatement.setString(6, email);
+            prepstatement.setString(7, passwort);
+            prepstatement.setString(8, adresse);
+            prepstatement.setString(9, city);
+            prepstatement.setInt(10, plz);
+            
             prepstatement.executeUpdate();
 
         } catch (SQLException ex) {

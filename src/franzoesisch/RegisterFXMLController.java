@@ -142,7 +142,9 @@ public class RegisterFXMLController implements Initializable {
                 JOptionPane.showInternalMessageDialog(null, "Tous les champs doivent être remplis.");
             }
         }
-
+        //NOt finished yet
+        Database da = new Database();
+        da.Register(na, na, se, na, post, 0, se, city, na);
     }
 
     static String getSe() {
