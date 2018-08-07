@@ -46,5 +46,8 @@
             <Font name="Agency FB" size="21.0" />
          </font>
       </Label>
+      <Button layoutX="28.0" layoutY="69.0" mnemonicParsing="false" onAction="#addProduct" text="Neues Produkt" />
+      <Button layoutX="28.0" layoutY="122.0" mnemonicParsing="false" onAction="#addClient" text="Neuer Kunde" />
+      <ComboBox fx:id="Cliente" layoutX="600.0" layoutY="94.0" onAction="#getInfo" prefHeight="27.0" prefWidth="202.0" promptText="Client" styleClass="combobox" stylesheets="@stylesheet.css" />
    </children>
 </Pane>

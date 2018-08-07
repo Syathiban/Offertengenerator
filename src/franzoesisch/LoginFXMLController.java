@@ -84,12 +84,25 @@ public class LoginFXMLController implements Initializable {
 
     @FXML
     private void submit(ActionEvent event) throws IOException {
-        Stage stage = Französisch.getStage();
+        
+         if (Database.getInstance().check(mail.getText().trim(), password.getText().trim())) {
+            
+            Stage stage = Französisch.getStage();
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+        
+        } else if (mail.getText().trim().isEmpty() || password.getText().trim().isEmpty()) {
+            
+             System.out.println("S'il vous plaît entrer votre nom d'utilisateur et mot de passe.");
+            
+        } else {
+             System.out.println("Veuillez entrer vos données correctes");
+        }
+        
+        
     }
 
     @FXML

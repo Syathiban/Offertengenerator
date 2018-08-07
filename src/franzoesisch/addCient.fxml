@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="franzoesisch.AddCientController">
+   <children>
+      <TextField fx:id="txtFieldFirmenname" layoutX="226.0" layoutY="62.0" promptText="Firmenname" />
+      <TextField fx:id="txtFieldAnrede" layoutX="226.0" layoutY="111.0" promptText="anrede" />
+      <TextField fx:id="txtFieldNachname" layoutX="226.0" layoutY="159.0" promptText="nachname" />
+      <TextField fx:id="txtFieldVorname" layoutX="226.0" layoutY="212.0" promptText="vorname" />
+      <TextField fx:id="txtFieldAdresse" layoutX="226.0" layoutY="254.0" promptText="adresse" />
+      <TextField fx:id="txtFieldPlz" layoutX="226.0" layoutY="300.0" promptText="plz" />
+      <TextField fx:id="txtFieldOrt" layoutX="226.0" layoutY="345.0" promptText="ort" />
+      <Button layoutX="467.0" layoutY="199.0" mnemonicParsing="false" onAction="#adden" text="add" />
+   </children>
+</AnchorPane>

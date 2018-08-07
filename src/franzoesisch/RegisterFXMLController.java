@@ -7,7 +7,6 @@ package franzoesisch;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,13 +20,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -38,14 +34,8 @@ public class RegisterFXMLController implements Initializable {
 
     @FXML
     private ComboBox<String> sexuality;
-    static String se;
-    static String na;
-    static String post;
-    static Date dat;
-    static String sur;
-    static String city;
-    static String rout;
-    private boolean ok;
+    
+    private String geburtstagsdatum;
 
     private ObservableList<String> Geschlecht = FXCollections.observableArrayList("Männlich", "Weiblich");
     @FXML
@@ -64,21 +54,34 @@ public class RegisterFXMLController implements Initializable {
     private TextField mail;
     @FXML
     private TextField password;
+    
     private double xOffset = 0;
 
     private double yOffset = 0;
     @FXML
     private Pane topbar;
-    
-    private Stage stage;
 
+    private Stage stage;
+    
+    
+    String vorname;
+    String postalCode;
+    String nachname;
+    String city;
+    String strasse;
+    String email;
+    String psw;
+
+String gender;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       stage = Französisch.getStage();
         
+        stage = Französisch.getStage();
+        gender = sexuality.getSelectionModel().getSelectedItem();
         topbar.setOnMousePressed(new EventHandler<MouseEvent>() {
 
             @Override
@@ -98,77 +101,50 @@ public class RegisterFXMLController implements Initializable {
         });
         sexuality.setItems(Geschlecht);
         try {
-            se = sexuality.getSelectionModel().getSelectedItem();
-            na = name.getText();
-            post = plz.getText();
+            sexuality.getSelectionModel().getSelectedItem();
+            name.getText();
+            plz.getText();
             //dat;
-            rout = street.getText();
-            sur = surname.getText();
-            city = ort.getText();
-            ok = true;
+            street.getText();
+            surname.getText();
+            ort.getText();
+
         } catch (Exception e) {
-            ok = false;
+
         }
+
+        ObservableList<String> comboBoxFiller = FXCollections.observableArrayList();
+        comboBoxFiller.addAll("Monsieur", "Madame");
+
+        sexuality.setItems(comboBoxFiller);
     }
 
     @FXML
     private void login(ActionEvent event) throws IOException {
-
-        se = sexuality.getSelectionModel().getSelectedItem();
-        na = name.getText();
-        post = plz.getText();
-        //dat;
-        rout = street.getText();
-        sur = surname.getText();
+        gender = sexuality.getSelectionModel().getSelectedItem();
+        vorname = name.getText();
+        postalCode = plz.getText();
+        nachname = surname.getText();
         city = ort.getText();
-        ok = true;
-        if (sexuality.getSelectionModel().getSelectedItem() == null || name.getText() == null || plz.getText() == null || street.getText() == null || surname.getText() == null || ort.getText() == null) {
-            JOptionPane.showMessageDialog(null, "Alle Felder müssen ausgefüllt sein.");
+        strasse = street.getText();
+        email = mail.getText();
+        psw = password.getText();
 
-        } else {
-            if (ok = true) {
-                if (se == "Männlich") {
-                    se = "Monsieur";
-                } else if (se == "Weiblich") {
-                    se = "Madame";
-                }
-                Stage stage = Französisch.getStage();
-                Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.setResizable(false);
-                stage.show();
-            } else {
-                JOptionPane.showInternalMessageDialog(null, "Tous les champs doivent être remplis.");
-            }
-        }
-        //NOt finished yet
-        Database da = new Database();
-        da.Register(na, na, se, na, post, 0, se, city, na);
-    }
-
-    static String getSe() {
-        return se;
-    }
-
-    static String getNa() {
-        return na;
-    }
-
-    static String getPost() {
-        return post;
-    }
-
-    static String getCity() {
-        return city;
-    }
-
-    public static String getSur() {
-        return sur;
-    }
-
-    public static String getRout() {
-        return rout;
+//        LocalDate localGeburtstagsdatum = date.getValue();
+//
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+//        geburtstagsdatum = localGeburtstagsdatum.format(formatter);
+        
+        int p_l_z = Integer.parseInt(plz.getText());
+        if (surname.getText().trim().isEmpty() || name.getText().trim().isEmpty() || sexuality.getSelectionModel().getSelectedItem().trim().isEmpty() || plz.getText().trim().isEmpty() || ort.getText().trim().isEmpty()
+                || street.getText().trim().isEmpty() || mail.getText().trim().isEmpty() || password.getText().trim().isEmpty()) {
+            System.out.println("Alle Felder müssen gefüllt sein.");
+        } 
+        System.out.println("muluk1");
+        Database dat = new Database();
+        dat.Register(surname.getText(), name.getText(), sexuality.getSelectionModel().getSelectedItem(), p_l_z, ort.getText(), street.getText(), mail.getText(), password.getText());
+//        Database.getInstance().Register(surname.getText().trim(), name.getText().trim(), sexuality.getSelectionModel().getSelectedItem().trim(), p_l_z, ort.getText().trim(), 
+//                street.getText().trim(), mail.getText().trim(), password.getText().trim());
     }
 
     @FXML
@@ -191,6 +167,38 @@ public class RegisterFXMLController implements Initializable {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
 
         stage.setIconified(true);
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getVorname() {
+        return vorname;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public String getNachname() {
+        return nachname;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getStrasse() {
+        return strasse;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPsw() {
+        return psw;
     }
 
 }

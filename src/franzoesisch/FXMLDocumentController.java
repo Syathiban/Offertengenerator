@@ -7,6 +7,8 @@ package franzoesisch;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -46,7 +48,7 @@ public class FXMLDocumentController implements Initializable {
     private ComboBox<String> zahlung;
     String item;
     String payment;
-    private ObservableList<String> produkt = FXCollections.observableArrayList("tablettes", "PC", "téléphone");
+    
     private ObservableList<String> Zahlung = FXCollections.observableArrayList("Bank", "cheque Postal", "Bar");
     @FXML
     private Button submit;
@@ -59,6 +61,8 @@ public class FXMLDocumentController implements Initializable {
     private ImageView btnLogoff;
 
     private double xOffset = 0;
+    
+     private String offertenText = "";
 
     private double yOffset = 0;
     @FXML
@@ -71,20 +75,43 @@ public class FXMLDocumentController implements Initializable {
     private Button btnClose;
     @FXML
     private Button btnMin;
+    
+     private String Firmenname = "<Firmenname>",
+            Vorname = "<Vorname>",
+            Nachname = "<Nachname>", Adresszeile_1 = "<Adresse>", Ort = "<Stadt>", Anrede = "<Anrede>";
+      private int Postleitzahl;     
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        int am = Integer.parseInt(amount.getText());
-        //Calculation price
+    private ComboBox<String> Cliente;
+    
+    
+    public void getInfo() throws SQLException {
+        if (!Cliente.getSelectionModel().isEmpty()) {
+            Firmenname = Cliente.getSelectionModel().getSelectedItem();
+            ResultSet kunde = Database.getInstance().getKunde(Firmenname);
 
+            Anrede = kunde.getString("anrede");
+
+            Vorname = kunde.getString("vorname");
+            Nachname = kunde.getString("nachname");
+            Adresszeile_1 = kunde.getString("adresszeile");
+            Ort = kunde.getString("ort");
+            Postleitzahl = kunde.getInt("plz");
+        }
+        
+        
+    }
+    
+    
+    public void CreateOfferText(){
         item = product.getSelectionModel().getSelectedItem();
         payment = zahlung.getSelectionModel().getSelectedItem();
-        letter.setText(" VIN de Lausanne SA \n" + " 3, Rue de la Piquette \n 2000 Lausanne\n\n"
-                + " " + RegisterFXMLController.getNa() + " " + RegisterFXMLController.getSur() + "\n"
-                + " " + RegisterFXMLController.getRout() + "\n"
-                + " " + RegisterFXMLController.getPost() + " " + RegisterFXMLController.getCity() + "\n"
+        offertenText= (" VIN de Lausanne SA \n" + " 3, Rue de la Piquette \n 2000 Lausanne\n\n"
+                + " " + Vorname + " " + Nachname + "\n"
+                + " " + Adresszeile_1 + "\n"
+                + " " + Postleitzahl + " " + Ort + "\n"
                 + "\n"
                 + "\n"
-                + " " + RegisterFXMLController.getSe() + " " + RegisterFXMLController.getNa() + ",\n\n"
+                + " " + Anrede + " " + Nachname+ ",\n\n"
                 + " Nous avons bien reçu votre commande du 30 mai et nous vous en remercions vivement.\n\n"
                 + " Nous vous proposons " + amount.getText() + " " + item + " modèle 0815 au prix de " + resultat + " CHF par tablette.\n\n"
                 + " De plus, nous vous offre une remise spéciale de 5% pour toute commande supérieure à 5000 CHF.\n\n"
@@ -92,7 +119,17 @@ public class FXMLDocumentController implements Initializable {
                 + " Nous allons faire la livraison par camion après la réception de votre paiement.\n\n"
                 + " En vous remerciant d'avance de votre commande, nous vous prions d'agréer, Monsieur, nos distinguées.\n\n");
         letter.setEditable(false);
+      
+        
     }
+    
+    @FXML
+    private void handleButtonAction(ActionEvent event) {
+  
+        CreateOfferText();
+        letter.setText(offertenText);
+    }
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -115,8 +152,12 @@ public class FXMLDocumentController implements Initializable {
                 stage.setY(event.getScreenY() - yOffset);
             }
         });
-        product.setItems(produkt);
+        
+        Cliente.setItems(Database.getInstance().getKunden());
+        product.setItems(Database.getInstance().getProdukte());
         zahlung.setItems(Zahlung);
+        
+        CreateOfferText();
     }
 
     @FXML
@@ -159,6 +200,29 @@ public class FXMLDocumentController implements Initializable {
 //                        )
 //                )
 ////        ));
+    }
+
+    @FXML
+    private void addProduct(ActionEvent event) throws IOException {
+        
+        Stage stage = Französisch.getStage();
+        Parent root = FXMLLoader.load(getClass().getResource("ProductView.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    @FXML
+    private void addClient(ActionEvent event) throws IOException {
+        
+        Stage stage = Französisch.getStage();
+        Parent root = FXMLLoader.load(getClass().getResource("addCient.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+        
     }
 
 }
