@@ -57,8 +57,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextArea letter;
     int resultat;
-    @FXML
-    private ImageView btnLogoff;
 
     private double xOffset = 0;
     
@@ -82,8 +80,20 @@ public class FXMLDocumentController implements Initializable {
       private int Postleitzahl;     
     @FXML
     private ComboBox<String> Cliente;
+    @FXML
+    private Pane menu;
+    @FXML
+    private ImageView clientAdd;
+    @FXML
+    private ImageView productAdd;
+    @FXML
+    private ImageView logOut;
+    @FXML
+    private ImageView menuOpen;
     
+    private boolean activated = false;
     
+    @FXML
     public void getInfo() throws SQLException {
         if (!Cliente.getSelectionModel().isEmpty()) {
             Firmenname = Cliente.getSelectionModel().getSelectedItem();
@@ -160,15 +170,7 @@ public class FXMLDocumentController implements Initializable {
         CreateOfferText();
     }
 
-    @FXML
-    private void logout(MouseEvent event) throws IOException {
-        Stage stage = Französisch.getStage();
-        Parent root = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
-    }
+    
 
     @FXML
     private void close(ActionEvent event) {
@@ -223,6 +225,57 @@ public class FXMLDocumentController implements Initializable {
         stage.setResizable(false);
         stage.show();
         
+    }
+
+    @FXML
+    private void cAdd(MouseEvent event) throws IOException {
+        
+        Stage stage = Französisch.getStage();
+        Parent root = FXMLLoader.load(getClass().getResource("addCient.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    @FXML
+    private void pAdd(MouseEvent event) throws IOException {
+        
+        Stage stage = Französisch.getStage();
+        Parent root = FXMLLoader.load(getClass().getResource("ProductView.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    @FXML
+    private void logOut(MouseEvent event) throws IOException {
+        
+        Stage stage = Französisch.getStage();
+        Parent root = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    @FXML
+    private void openMenu(MouseEvent event) {
+        
+        if (activated == true) {
+            menu.setOpacity(0);
+            clientAdd.setOpacity(0);
+            productAdd.setOpacity(0);
+            logOut.setOpacity(0);
+            activated = false;
+        } else {
+            menu.setOpacity(1);
+            clientAdd.setOpacity(1);
+            productAdd.setOpacity(1);
+            logOut.setOpacity(1);
+            activated = true;
+        }
     }
 
 }

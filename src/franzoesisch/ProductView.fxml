@@ -3,16 +3,69 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.ProductViewController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.ProductViewController">
    <children>
-      <TextField fx:id="txtFieldProduktName" layoutX="236.0" layoutY="124.0" />
-      <TextField fx:id="txtFieldStückpreis" layoutX="236.0" layoutY="187.0" />
-      <TextField fx:id="txtFieldTyp" layoutX="236.0" layoutY="241.0" />
-      <Label layoutX="110.0" layoutY="128.0" text="Name" />
-      <Label layoutX="110.0" layoutY="192.0" text="Stückpreis" />
-      <Label layoutX="110.0" layoutY="245.0" text="Typ" />
-      <Button layoutX="274.0" layoutY="310.0" mnemonicParsing="false" onAction="#hinzufügen" text="add product" />
+      <TextField fx:id="txtFieldProduktName" layoutX="202.0" layoutY="129.0" prefHeight="27.0" prefWidth="252.0" promptText="Name" />
+      <TextField fx:id="txtFieldStückpreis" layoutX="202.0" layoutY="192.0" prefHeight="27.0" prefWidth="252.0" promptText="Stückpreis" />
+      <TextField fx:id="txtFieldTyp" layoutX="202.0" layoutY="246.0" prefHeight="27.0" prefWidth="252.0" promptText="Typ" />
+      <Button layoutX="202.0" layoutY="300.0" mnemonicParsing="false" onAction="#hinzufügen" prefHeight="27.0" prefWidth="252.0" styleClass="button-login" stylesheets="@stylesheet.css" text="Add product" />
+      <Pane fx:id="menu" layoutX="-1.0" layoutY="28.0" opacity="0.0" prefHeight="372.0" prefWidth="151.0" style="-fx-background-color: #39414E;">
+         <children>
+            <ImageView fx:id="clientAdd" fitHeight="76.0" fitWidth="79.0" layoutX="32.0" layoutY="32.0" onMouseClicked="#cAdd" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/create_user_man_male-512.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="productAdd" fitHeight="86.0" fitWidth="83.0" layoutX="34.0" layoutY="139.0" onMouseClicked="#pAdd" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/add-product-512.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="logOut" fitHeight="89.0" fitWidth="89.0" layoutX="31.0" layoutY="243.0" onMouseClicked="#logOut" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/imageedit_3_3173642382.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="topbar" layoutY="-1.0" prefHeight="30.0" prefWidth="600.0" style="-fx-background-color: #39414E;">
+         <children>
+            <Button ellipsisString="" focusTraversable="false" layoutX="519.0" layoutY="6.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize" stylesheets="@stylesheet.css">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </Button>
+            <Button ellipsisString="" focusTraversable="false" layoutX="569.0" layoutY="6.0" mnemonicParsing="false" onAction="#close" prefHeight="17.0" prefWidth="17.0" styleClass="apple-close" stylesheets="@stylesheet.css">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </Button>
+            <Button ellipsisString="" focusTraversable="false" layoutX="544.0" layoutY="6.0" mnemonicParsing="false" onAction="#minimize" prefHeight="17.0" prefWidth="17.0" styleClass="apple-minimize" stylesheets="@stylesheet.css">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="returnView" fitHeight="40.0" fitWidth="48.0" layoutY="-5.0" onMouseClicked="#rView" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/retrun.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="menuOpen" fitHeight="27.0" fitWidth="25.0" layoutX="59.0" layoutY="2.0" onMouseClicked="#openMenu" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/meun.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Label alignment="CENTER" layoutX="175.0" layoutY="71.0" prefHeight="18.0" prefWidth="280.0" text="Add Prdouct">
+         <font>
+            <Font name="Agency FB" size="20.0" />
+         </font></Label>
    </children>
 </AnchorPane>
