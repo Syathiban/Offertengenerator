@@ -9,12 +9,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.ProductViewController">
+<AnchorPane id="AnchorPane" prefHeight="402.0" prefWidth="542.0" style="-fx-background-color: white; -fx-border-width: 1 1 1 1; -fx-border-color: #39414E;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.ProductViewController">
    <children>
-      <TextField fx:id="txtFieldProduktName" layoutX="202.0" layoutY="129.0" prefHeight="27.0" prefWidth="252.0" promptText="Name" />
-      <TextField fx:id="txtFieldStückpreis" layoutX="202.0" layoutY="192.0" prefHeight="27.0" prefWidth="252.0" promptText="Stückpreis" />
-      <TextField fx:id="txtFieldTyp" layoutX="202.0" layoutY="246.0" prefHeight="27.0" prefWidth="252.0" promptText="Typ" />
-      <Button layoutX="202.0" layoutY="300.0" mnemonicParsing="false" onAction="#hinzufügen" prefHeight="27.0" prefWidth="252.0" styleClass="button-login" stylesheets="@stylesheet.css" text="Add product" />
+      <TextField fx:id="txtFieldProduktName" layoutX="174.0" layoutY="130.0" prefHeight="27.0" prefWidth="252.0" promptText="prénom" />
+      <TextField fx:id="txtFieldStückpreis" layoutX="174.0" layoutY="186.0" prefHeight="27.0" prefWidth="252.0" promptText="prix à l'unité" />
+      <TextField fx:id="txtFieldTyp" layoutX="174.0" layoutY="245.0" prefHeight="27.0" prefWidth="252.0" promptText="modèle" />
+      <Button fx:id="confirm" layoutX="174.0" layoutY="300.0" mnemonicParsing="false" onAction="#hinzufügen" prefHeight="27.0" prefWidth="252.0" styleClass="button-login" stylesheets="@stylesheet.css" text="Ajouter" />
       <Pane fx:id="menu" layoutX="-1.0" layoutY="28.0" opacity="0.0" prefHeight="372.0" prefWidth="151.0" style="-fx-background-color: #39414E;">
          <children>
             <ImageView fx:id="clientAdd" fitHeight="76.0" fitWidth="79.0" layoutX="32.0" layoutY="32.0" onMouseClicked="#cAdd" opacity="0.0" pickOnBounds="true" preserveRatio="true">
@@ -34,7 +34,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="topbar" layoutY="-1.0" prefHeight="30.0" prefWidth="600.0" style="-fx-background-color: #39414E;">
+      <Pane fx:id="topbar" layoutY="-1.0" prefHeight="30.0" prefWidth="597.0" style="-fx-background-color: #39414E;">
          <children>
             <Button ellipsisString="" focusTraversable="false" layoutX="519.0" layoutY="6.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize" stylesheets="@stylesheet.css">
                <font>
@@ -63,9 +63,13 @@
             </ImageView>
          </children>
       </Pane>
-      <Label alignment="CENTER" layoutX="175.0" layoutY="71.0" prefHeight="18.0" prefWidth="280.0" text="Add Prdouct">
+      <Label fx:id="title" alignment="CENTER" layoutX="174.0" layoutY="71.0" prefHeight="24.0" prefWidth="252.0" text="Ajouter un produit">
          <font>
             <Font name="Agency FB" size="20.0" />
+         </font></Label>
+      <Label fx:id="message" layoutX="202.0" layoutY="344.0" prefHeight="18.0" prefWidth="252.0">
+         <font>
+            <Font name="Agency FB" size="16.0" />
          </font></Label>
    </children>
 </AnchorPane>

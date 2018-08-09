@@ -9,17 +9,17 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="606.0" style="-fx-background-color: white;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.AddCientController">
+<AnchorPane id="AnchorPane" prefHeight="464.0" prefWidth="608.0" style="-fx-background-color: white; -fx-border-width: 1 1 1 1; -fx-border-color: #39414E;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.AddCientController">
    <children>
-      <TextField fx:id="txtFieldFirmenname" layoutX="230.0" layoutY="85.0" prefHeight="20.0" prefWidth="160.0" promptText="Firmenname" />
-      <TextField fx:id="txtFieldAnrede" layoutX="230.0" layoutY="130.0" prefHeight="20.0" prefWidth="160.0" promptText="anrede" />
-      <TextField fx:id="txtFieldNachname" layoutX="230.0" layoutY="175.0" prefHeight="20.0" prefWidth="160.0" promptText="nachname" />
-      <TextField fx:id="txtFieldVorname" layoutX="230.0" layoutY="220.0" prefHeight="20.0" prefWidth="160.0" promptText="vorname" />
+      <TextField fx:id="txtFieldFirmenname" layoutX="230.0" layoutY="85.0" prefHeight="20.0" prefWidth="160.0" promptText="nom de l'entreprise" />
+      <TextField fx:id="txtFieldAnrede" layoutX="230.0" layoutY="130.0" prefHeight="20.0" prefWidth="160.0" promptText="titre" />
+      <TextField fx:id="txtFieldNachname" layoutX="230.0" layoutY="175.0" prefHeight="20.0" prefWidth="160.0" promptText="nom de famille" />
+      <TextField fx:id="txtFieldVorname" layoutX="230.0" layoutY="220.0" prefHeight="20.0" prefWidth="160.0" promptText="prénom" />
       <TextField fx:id="txtFieldAdresse" layoutX="230.0" layoutY="265.0" prefHeight="20.0" prefWidth="160.0" promptText="adresse" />
-      <TextField fx:id="txtFieldPlz" layoutX="230.0" layoutY="310.0" prefHeight="20.0" prefWidth="160.0" promptText="plz" />
-      <TextField fx:id="txtFieldOrt" layoutX="230.0" layoutY="355.0" prefHeight="20.0" prefWidth="160.0" promptText="ort" />
-      <Button layoutX="230.0" layoutY="400.0" mnemonicParsing="false" onAction="#adden" prefHeight="20.0" prefWidth="160.0" styleClass="button-login" stylesheets="@stylesheet.css" text="add" />
-      <Pane fx:id="topbar" prefHeight="30.0" prefWidth="605.0" style="-fx-background-color: #39414E;">
+      <TextField fx:id="txtFieldPlz" layoutX="230.0" layoutY="310.0" prefHeight="20.0" prefWidth="160.0" promptText="code postal" />
+      <TextField fx:id="txtFieldOrt" layoutX="230.0" layoutY="355.0" prefHeight="20.0" prefWidth="160.0" promptText="localité" />
+      <Button fx:id="confirm" layoutX="230.0" layoutY="400.0" mnemonicParsing="false" onAction="#adden" prefHeight="20.0" prefWidth="160.0" styleClass="button-login" stylesheets="@stylesheet.css" text="Ajouter" />
+      <Pane fx:id="topbar" prefHeight="30.0" prefWidth="608.0" style="-fx-background-color: #39414E;">
          <children>
             <Button ellipsisString="" focusTraversable="false" layoutX="519.0" layoutY="6.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize" stylesheets="@stylesheet.css">
                <font>
@@ -48,7 +48,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="menu" layoutY="30.0" opacity="0.0" prefHeight="411.0" prefWidth="151.0" style="-fx-background-color: #39414E;">
+      <Pane fx:id="menu" layoutY="30.0" opacity="0.0" prefHeight="432.0" prefWidth="151.0" style="-fx-background-color: #39414E;">
          <children>
             <ImageView fx:id="clientAdd" fitHeight="76.0" fitWidth="79.0" layoutX="35.0" layoutY="30.0" onMouseClicked="#cAdd" opacity="0.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -67,9 +67,14 @@
             </ImageView>
          </children>
       </Pane>
-      <Label alignment="CENTER" layoutX="230.0" layoutY="49.0" prefHeight="18.0" prefWidth="151.0" text="Add Client">
+      <Label fx:id="title" alignment="CENTER" layoutX="230.0" layoutY="49.0" prefHeight="18.0" prefWidth="151.0" text="Ajouter un client">
          <font>
             <Font name="Agency FB" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="message" layoutX="230.0" layoutY="433.0" prefHeight="18.0" prefWidth="160.0">
+         <font>
+            <Font name="Agency FB" size="16.0" />
          </font>
       </Label>
    </children>

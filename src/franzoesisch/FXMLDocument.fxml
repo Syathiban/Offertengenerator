@@ -12,11 +12,36 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="758.0" prefWidth="896.0" style="-fx-background-color: white; -fx-border-width: 1 1 1 1; -fx-border-color: #39414E;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.FXMLDocumentController">
    <children>
-      <Button fx:id="submit" layoutX="348.0" layoutY="261.0" onAction="#handleButtonAction" prefHeight="27.0" prefWidth="202.0" styleClass="button-submit" stylesheets="@stylesheet.css" text="Submit" />
       <TextArea fx:id="letter" layoutX="20.0" layoutY="303.0" prefHeight="445.0" prefWidth="858.0" styleClass="text-area" stylesheets="@stylesheet.css" />
-      <ComboBox fx:id="product" layoutX="348.0" layoutY="94.0" prefHeight="27.0" prefWidth="202.0" promptText="Product" styleClass="combobox" stylesheets="@stylesheet.css" />
-      <TextField fx:id="amount" layoutX="348.0" layoutY="134.0" prefHeight="27.0" prefWidth="202.0" promptText="Amount" styleClass="amount" stylesheets="@stylesheet.css" />
-      <ComboBox fx:id="zahlung" layoutX="348.0" layoutY="174.0" prefHeight="27.0" prefWidth="202.0" promptText="Payment Method" styleClass="combobox" stylesheets="@stylesheet.css" />
+      <ComboBox fx:id="product" layoutX="348.0" layoutY="94.0" prefHeight="27.0" prefWidth="202.0" promptText="produit" styleClass="combobox" stylesheets="@stylesheet.css" />
+      <TextField fx:id="amount" layoutX="348.0" layoutY="134.0" prefHeight="27.0" prefWidth="202.0" promptText="nombre de pièces" styleClass="amount" stylesheets="@stylesheet.css" />
+      <Button fx:id="submit" layoutX="348.0" layoutY="261.0" onAction="#handleButtonAction" prefHeight="27.0" prefWidth="202.0" styleClass="button-submit" stylesheets="@stylesheet.css" text="confirmer" />
+      <ComboBox fx:id="zahlung" layoutX="348.0" layoutY="174.0" prefHeight="27.0" prefWidth="202.0" promptText="mode de paiement" styleClass="combobox" stylesheets="@stylesheet.css" />
+      <Pane fx:id="menu2" layoutX="163.0" layoutY="26.0" opacity="0.0" prefHeight="116.0" prefWidth="144.0" style="-fx-background-color: #39414E;">
+         <children>
+            <Button fx:id="english" layoutX="11.0" layoutY="18.0" mnemonicParsing="false" onMouseClicked="#changeEnglish" opacity="0.0" prefHeight="5.0" prefWidth="123.0" style="-fx-background-color: #FA5858;" styleClass="button-login" stylesheets="@stylesheet.css" text="English" />
+            <Button fx:id="french" layoutX="11.0" layoutY="68.0" mnemonicParsing="false" onAction="#changeFrench" opacity="0.0" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: #FA5858;" styleClass="button-submit" stylesheets="@stylesheet.css" text="Français" />
+         </children>
+      </Pane>
+      <Pane fx:id="menu" layoutX="-1.0" layoutY="26.0" opacity="0.0" prefHeight="736.0" prefWidth="165.0" style="-fx-background-color: #39414E;">
+         <children>
+            <ImageView fx:id="clientAdd" fitHeight="76.0" fitWidth="79.0" layoutX="35.0" layoutY="50.0" onMouseClicked="#cAdd" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/create_user_man_male-512.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="productAdd" fitHeight="86.0" fitWidth="83.0" layoutX="35.0" layoutY="290.0" onMouseClicked="#pAdd" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/add-product-512.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="logOut" fitHeight="89.0" fitWidth="89.0" layoutX="35.0" layoutY="530.0" onMouseClicked="#logOut" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/imageedit_3_3173642382.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
       <Pane fx:id="topbar" layoutX="-1.0" layoutY="-1.0" prefHeight="31.0" prefWidth="898.0" style="-fx-background-color: #39414E;">
          <children>
             <Button fx:id="btnMax" ellipsisString="" focusTraversable="false" layoutX="820.0" layoutY="8.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize" stylesheets="@stylesheet.css">
@@ -39,32 +64,18 @@
                   <Image url="@../Images/meun.png" />
                </image>
             </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="38.0" layoutX="213.0" layoutY="-2.8" onMouseClicked="#hide" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/language.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
-      <Label alignment="CENTER" layoutX="348.0" layoutY="54.0" prefHeight="27.0" prefWidth="202.0" text="Créer un offre">
+      <Label fx:id="title" alignment="CENTER" layoutX="348.0" layoutY="54.0" prefHeight="27.0" prefWidth="202.0" text="Créer un offre">
          <font>
             <Font name="Agency FB" size="21.0" />
          </font>
       </Label>
-      <ComboBox fx:id="Cliente" layoutX="348.0" layoutY="216.0" onAction="#getInfo" prefHeight="27.0" prefWidth="202.0" promptText="Client" styleClass="combobox" stylesheets="@stylesheet.css" />
-      <Pane fx:id="menu" layoutX="-1.0" layoutY="30.0" opacity="0.0" prefHeight="727.0" prefWidth="151.0" style="-fx-background-color: #39414E;">
-         <children>
-            <ImageView fx:id="clientAdd" fitHeight="76.0" fitWidth="79.0" layoutX="35.0" layoutY="50.0" onMouseClicked="#cAdd" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/create_user_man_male-512.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="productAdd" fitHeight="86.0" fitWidth="83.0" layoutX="35.0" layoutY="290.0" onMouseClicked="#pAdd" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/add-product-512.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="logOut" fitHeight="89.0" fitWidth="89.0" layoutX="35.0" layoutY="530.0" onMouseClicked="#logOut" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/imageedit_3_3173642382.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
+      <ComboBox fx:id="Cliente" layoutX="348.0" layoutY="216.0" onAction="#getInfo" prefHeight="27.0" prefWidth="202.0" promptText="client" styleClass="combobox" stylesheets="@stylesheet.css" />
    </children>
 </Pane>

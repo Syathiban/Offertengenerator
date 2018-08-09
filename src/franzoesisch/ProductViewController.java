@@ -9,12 +9,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -50,6 +52,18 @@ public class ProductViewController implements Initializable {
     private ImageView menuOpen;
 
     private boolean activated = false;
+    @FXML
+    private Label message;
+    @FXML
+    private Button confirm;
+    @FXML
+    private Label title;
+
+    private double xOffset = 0;
+
+    private double yOffset = 0;
+    private Stage stage;
+    AddCientController Acon = new AddCientController();
 
     /**
      * Initializes the controller class.
@@ -57,12 +71,32 @@ public class ProductViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        Stage stage = Französisch.getStage();
+
+        topbar.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+
+        });
+
+        topbar.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                stage.setX(event.getScreenX() - xOffset);
+                stage.setY(event.getScreenY() - yOffset);
+            }
+        });
     }
 
     @FXML
     private void hinzufügen(ActionEvent event) {
 
         Database.getInstance().addProduct(txtFieldProduktName.getText(), Double.parseDouble(txtFieldStückpreis.getText()), txtFieldTyp.getText());
+        message.setText("Le produit a été ajouté.");
     }
 
     @FXML
@@ -144,5 +178,22 @@ public class ProductViewController implements Initializable {
         }
 
     }
+//    public void changeLanguageEnglish(){
+//        title.setText("Add product");
+//        txtFieldStückpreis.setPromptText("Price per unit");
+//        txtFieldProduktName.setPromptText("Product name:");
+//        txtFieldTyp.setPromptText("Type:");
+//        confirm.setText("Add");
+//        Acon.changeLanguageEnglish();
+//    }
+//    
+//    public void changeLanguageFrench(){
+//        title.setText("Ajouter un produit");
+//        txtFieldStückpreis.setPromptText("prix à l'unité:");
+//        txtFieldProduktName.setPromptText("nom de produit:");
+//        txtFieldTyp.setPromptText("modèle:");
+//        confirm.setText("Ajouter");
+//        Acon.changeLanguageFrench();
+//    }
 
 }

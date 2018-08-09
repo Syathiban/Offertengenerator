@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -33,14 +34,18 @@ public class LoginFXMLController implements Initializable {
     private TextField mail;
     @FXML
     private PasswordField password;
-
     private double xOffset = 0;
 
     private double yOffset = 0;
     @FXML
     private Pane topbar;
-    
+    boolean one = false;
     private Stage stage;
+    @FXML
+    private Label title;
+    @FXML
+    private Button confirm;
+    private FXMLDocumentController con;
 
     /**
      * Initializes the controller class.
@@ -50,7 +55,7 @@ public class LoginFXMLController implements Initializable {
         // TODO
 
         stage = Französisch.getStage();
-        
+
         topbar.setOnMousePressed(new EventHandler<MouseEvent>() {
 
             @Override
@@ -68,6 +73,20 @@ public class LoginFXMLController implements Initializable {
                 stage.setY(event.getScreenY() - yOffset);
             }
         });
+        this.con = new FXMLDocumentController();
+        this.con.setCon(this);
+//        if (con.isOne(one) == true) {
+//            title.setText("SIGN IN");
+//            mail.setPromptText("Email:");
+//            password.setPromptText("Password:");
+//            confirm.setText("Submit");
+//        } else {
+//            title.setText("S'identifier");
+//            mail.setPromptText("email:");
+//            password.setPromptText("mot de passe:");
+//            confirm.setText("confirmer");
+//        }
+        
 
     }
 
@@ -84,25 +103,24 @@ public class LoginFXMLController implements Initializable {
 
     @FXML
     private void submit(ActionEvent event) throws IOException {
-        
-         if (Database.getInstance().check(mail.getText().trim(), password.getText().trim())) {
-            
+
+        if (Database.getInstance().check(mail.getText().trim(), password.getText().trim())) {
+
             Stage stage = Französisch.getStage();
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
-        
+            Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+
         } else if (mail.getText().trim().isEmpty() || password.getText().trim().isEmpty()) {
-            
-             System.out.println("S'il vous plaît entrer votre nom d'utilisateur et mot de passe.");
-            
+
+            System.out.println("S'il vous plaît entrer votre nom d'utilisateur et mot de passe.");
+
         } else {
-             System.out.println("Veuillez entrer vos données correctes");
+            System.out.println("Veuillez entrer vos données correctes");
         }
-        
-        
+
     }
 
     @FXML
@@ -117,5 +135,14 @@ public class LoginFXMLController implements Initializable {
         stage.setIconified(true);
     }
 
+    public void changeLanguageEnglish(boolean one) {
+        one = true;
+//        Pcon.changeLanguageEnglish();
+    }
+
+    public void changeLanguageFrench(boolean one) {
+        one = false;
+//        Pcon.changeLanguageFrench();
+    }
 
 }

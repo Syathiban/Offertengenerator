@@ -48,7 +48,7 @@ public class FXMLDocumentController implements Initializable {
     private ComboBox<String> zahlung;
     String item;
     String payment;
-    
+
     private ObservableList<String> Zahlung = FXCollections.observableArrayList("Bank", "cheque Postal", "Bar");
     @FXML
     private Button submit;
@@ -59,13 +59,13 @@ public class FXMLDocumentController implements Initializable {
     int resultat;
 
     private double xOffset = 0;
-    
-     private String offertenText = "";
+
+    private String offertenText = "";
 
     private double yOffset = 0;
     @FXML
     private Pane topbar;
-    
+    boolean activated = false;
     private Stage stage;
     @FXML
     private Button btnMax;
@@ -73,11 +73,11 @@ public class FXMLDocumentController implements Initializable {
     private Button btnClose;
     @FXML
     private Button btnMin;
-    
-     private String Firmenname = "<Firmenname>",
+
+    private String Firmenname = "<Firmenname>",
             Vorname = "<Vorname>",
             Nachname = "<Nachname>", Adresszeile_1 = "<Adresse>", Ort = "<Stadt>", Anrede = "<Anrede>";
-      private int Postleitzahl;     
+    private int Postleitzahl;
     @FXML
     private ComboBox<String> Cliente;
     @FXML
@@ -90,9 +90,21 @@ public class FXMLDocumentController implements Initializable {
     private ImageView logOut;
     @FXML
     private ImageView menuOpen;
-    
-    private boolean activated = false;
-    
+
+    boolean activate = false;
+    @FXML
+    private Button english;
+    @FXML
+    private Button french;
+    @FXML
+    private Label title;
+
+    private boolean one = false;
+    @FXML
+    private Pane menu2;
+    public static FXMLDocumentController instance;
+    LoginFXMLController Lcon;
+
     @FXML
     public void getInfo() throws SQLException {
         if (!Cliente.getSelectionModel().isEmpty()) {
@@ -107,21 +119,19 @@ public class FXMLDocumentController implements Initializable {
             Ort = kunde.getString("ort");
             Postleitzahl = kunde.getInt("plz");
         }
-        
-        
+
     }
-    
-    
-    public void CreateOfferText(){
+
+    public void CreateOfferText() {
         item = product.getSelectionModel().getSelectedItem();
         payment = zahlung.getSelectionModel().getSelectedItem();
-        offertenText= (" VIN de Lausanne SA \n" + " 3, Rue de la Piquette \n 2000 Lausanne\n\n"
+        offertenText = (" VIN de Lausanne SA \n" + " 3, Rue de la Piquette \n 2000 Lausanne\n\n"
                 + " " + Vorname + " " + Nachname + "\n"
                 + " " + Adresszeile_1 + "\n"
                 + " " + Postleitzahl + " " + Ort + "\n"
                 + "\n"
                 + "\n"
-                + " " + Anrede + " " + Nachname+ ",\n\n"
+                + " " + Anrede + " " + Nachname + ",\n\n"
                 + " Nous avons bien reçu votre commande du 30 mai et nous vous en remercions vivement.\n\n"
                 + " Nous vous proposons " + amount.getText() + " " + item + " modèle 0815 au prix de " + resultat + " CHF par tablette.\n\n"
                 + " De plus, nous vous offre une remise spéciale de 5% pour toute commande supérieure à 5000 CHF.\n\n"
@@ -129,17 +139,15 @@ public class FXMLDocumentController implements Initializable {
                 + " Nous allons faire la livraison par camion après la réception de votre paiement.\n\n"
                 + " En vous remerciant d'avance de votre commande, nous vous prions d'agréer, Monsieur, nos distinguées.\n\n");
         letter.setEditable(false);
-      
-        
+
     }
-    
+
     @FXML
     private void handleButtonAction(ActionEvent event) {
-  
+
         CreateOfferText();
         letter.setText(offertenText);
     }
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -162,15 +170,14 @@ public class FXMLDocumentController implements Initializable {
                 stage.setY(event.getScreenY() - yOffset);
             }
         });
-        
+
         Cliente.setItems(Database.getInstance().getKunden());
         product.setItems(Database.getInstance().getProdukte());
         zahlung.setItems(Zahlung);
-        
-        CreateOfferText();
-    }
 
-    
+        CreateOfferText();
+
+    }
 
     @FXML
     private void close(ActionEvent event) {
@@ -190,7 +197,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void hoverClose(MouseEvent event) {
-        
+
 //          btnClose.setBackground(new Background(
 //                new BackgroundImage(
 //                        new Image("/Images/ic_launcher.png"),BackgroundRepeat.NO_REPEAT,
@@ -204,9 +211,8 @@ public class FXMLDocumentController implements Initializable {
 ////        ));
     }
 
-    @FXML
     private void addProduct(ActionEvent event) throws IOException {
-        
+
         Stage stage = Französisch.getStage();
         Parent root = FXMLLoader.load(getClass().getResource("ProductView.fxml"));
         Scene scene = new Scene(root);
@@ -215,21 +221,20 @@ public class FXMLDocumentController implements Initializable {
         stage.show();
     }
 
-    @FXML
     private void addClient(ActionEvent event) throws IOException {
-        
+
         Stage stage = Französisch.getStage();
         Parent root = FXMLLoader.load(getClass().getResource("addCient.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        
+
     }
 
     @FXML
     private void cAdd(MouseEvent event) throws IOException {
-        
+
         Stage stage = Französisch.getStage();
         Parent root = FXMLLoader.load(getClass().getResource("addCient.fxml"));
         Scene scene = new Scene(root);
@@ -240,7 +245,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void pAdd(MouseEvent event) throws IOException {
-        
+
         Stage stage = Französisch.getStage();
         Parent root = FXMLLoader.load(getClass().getResource("ProductView.fxml"));
         Scene scene = new Scene(root);
@@ -251,7 +256,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void logOut(MouseEvent event) throws IOException {
-        
+
         Stage stage = Französisch.getStage();
         Parent root = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
         Scene scene = new Scene(root);
@@ -262,7 +267,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void openMenu(MouseEvent event) {
-        
+
         if (activated == true) {
             menu.setOpacity(0);
             clientAdd.setOpacity(0);
@@ -270,6 +275,10 @@ public class FXMLDocumentController implements Initializable {
             logOut.setOpacity(0);
             activated = false;
         } else {
+            menu2.setOpacity(0);
+            french.setOpacity(0);
+            english.setOpacity(0);
+            activate = false;
             menu.setOpacity(1);
             clientAdd.setOpacity(1);
             productAdd.setOpacity(1);
@@ -278,4 +287,77 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    private void changeEnglish(ActionEvent event) {
+        System.out.println("muluk");
+        submit.setText("Submit");
+        title.setText("Create an Offer");
+        product.setPromptText("Product");
+        amount.setPromptText("Amount");
+        zahlung.setPromptText("Payment methode");
+        Cliente.setPromptText("Client");
+        french.setText("French");
+        english.setText("English");
+
+//        Lcon.changeLanguageEnglish();
+    }
+
+    @FXML
+    private void changeFrench(ActionEvent event) {
+        System.out.println("muluk");
+        submit.setText("confirmer");
+        title.setText("Créer un offre");
+        product.setPromptText("produit");
+        amount.setPromptText("nombre de pièces");
+        zahlung.setPromptText("mode de paiement");
+        Cliente.setPromptText("client");
+        french.setText("Français");
+        english.setText("Anglais");
+        one = false;
+    }
+
+    @FXML
+    private void hide(MouseEvent event) {
+        if (activate == false) {
+            menu.setOpacity(0);
+            clientAdd.setOpacity(0);
+            productAdd.setOpacity(0);
+            logOut.setOpacity(0);
+            activated = false;
+            menu2.setOpacity(1);
+            french.setOpacity(1);
+            english.setOpacity(1);
+            activate = true;
+        } else {
+            menu2.setOpacity(0);
+            french.setOpacity(0);
+            english.setOpacity(0);
+            activate = false;
+        }
+
+    }
+
+    public void setCon(LoginFXMLController Lcon) {
+        this.Lcon = Lcon;
+    }
+
+    @FXML
+    private void changeEnglish(MouseEvent event) {
+        System.out.println("muluk45");
+        submit.setText("Submit");
+        title.setText("Create an Offer");
+        product.setPromptText("Product");
+        amount.setPromptText("Amount");
+        zahlung.setPromptText("Payment methode");
+        Cliente.setPromptText("Client");
+        french.setText("French");
+        english.setText("English");
+        one = true;
+        isOne(one);
+    }
+
+    public boolean isOne(boolean one) {
+        return one;
+    }
+    
+    
 }

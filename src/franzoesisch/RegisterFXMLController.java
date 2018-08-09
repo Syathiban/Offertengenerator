@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -73,6 +74,10 @@ public class RegisterFXMLController implements Initializable {
     String psw;
 
 String gender;
+    @FXML
+    private Button confirm;
+    @FXML
+    private Label title;
     
     /**
      * Initializes the controller class.
@@ -199,6 +204,34 @@ String gender;
 
     public String getPsw() {
         return psw;
+    }
+    
+    public void changeLanguageEnglish(){
+        title.setText("Register");
+        surname.setPromptText("Firstname:");
+        name.setPromptText("Lastname:");
+        sexuality.setPromptText("Gender");
+        plz.setPromptText("Postal code:");
+        ort.setPromptText("City:");
+        street.setPromptText("Street:");
+        date.setPromptText("Date");
+        mail.setPromptText("Email:");
+        password.setPromptText("Password:");
+        confirm.setText("Submit");
+    }
+    
+    public void changeLanguageFrench(){
+        title.setText("Enregistrer");
+        surname.setPromptText("prénom:");
+        name.setPromptText("nomf de famille:");
+        sexuality.setPromptText("sexe");
+        plz.setPromptText("code postal:");
+        ort.setPromptText("localité:");
+        street.setPromptText("rue:");
+        date.setPromptText("date");
+        mail.setPromptText("email:");
+        password.setPromptText("mot de passe:");
+        confirm.setText("Confirmer");
     }
 
 }
