@@ -74,6 +74,8 @@ public class AddCientController implements Initializable {
     private Stage stage;
 
     RegisterFXMLController Rcon = new RegisterFXMLController();
+    @FXML
+    private ImageView mitarbeiter;
 
     /**
      * Initializes the controller class.
@@ -178,12 +180,14 @@ public class AddCientController implements Initializable {
             clientAdd.setOpacity(0);
             productAdd.setOpacity(0);
             logOut.setOpacity(0);
+            mitarbeiter.setOpacity(0);
             activated = false;
         } else {
             menu.setOpacity(1);
             clientAdd.setOpacity(1);
             productAdd.setOpacity(1);
             logOut.setOpacity(1);
+            mitarbeiter.setOpacity(1);
             activated = true;
         }
     }
@@ -212,5 +216,14 @@ public class AddCientController implements Initializable {
 //        confirm.setText("Ajouter");
 //        Rcon.changeLanguageFrench();
 //    }
+    @FXML
+    private void addMitarbeiter(MouseEvent event) throws IOException {
+        Stage stage = Französisch.getStage();
+        Parent root = FXMLLoader.load(getClass().getResource("addMitarbeiter.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
 
 }

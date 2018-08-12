@@ -17,7 +17,7 @@
          </font>
       </Label>
       <TextField fx:id="mail" layoutX="102.0" layoutY="94.0" prefHeight="30.0" prefWidth="200.0" promptText="email:" stylesheets="@stylesheet.css" />
-      <Button fx:id="confirm" layoutX="102.0" layoutY="176.0" mnemonicParsing="false" onAction="#submit" prefHeight="30.0" prefWidth="200.0" styleClass="button-login" stylesheets="@stylesheet.css" text="confirmer" />
+      <Button fx:id="confirm" layoutX="102.0" layoutY="176.0" mnemonicParsing="false" onAction="#submit" prefHeight="30.0" prefWidth="200.0" styleClass="button-login" stylesheets="@stylesheet.css" text="Confirmer" />
       <Pane fx:id="topbar" prefHeight="30.0" prefWidth="400.0" style="-fx-background-color: #39414E;">
          <children>
             <ImageView fitHeight="38.0" fitWidth="39.0" layoutY="-4.0" onMouseClicked="#register" pickOnBounds="true">

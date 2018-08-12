@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="464.0" prefWidth="608.0" style="-fx-background-color: white; -fx-border-width: 1 1 1 1; -fx-border-color: #39414E;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.AddCientController">
+<AnchorPane id="AnchorPane" prefHeight="462.0" prefWidth="610.0" style="-fx-background-color: white; -fx-border-width: 1 1 1 1; -fx-border-color: #39414E;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.AddCientController">
    <children>
       <TextField fx:id="txtFieldFirmenname" layoutX="230.0" layoutY="85.0" prefHeight="20.0" prefWidth="160.0" promptText="nom de l'entreprise" />
       <TextField fx:id="txtFieldAnrede" layoutX="230.0" layoutY="130.0" prefHeight="20.0" prefWidth="160.0" promptText="titre" />
@@ -50,24 +50,29 @@
       </Pane>
       <Pane fx:id="menu" layoutY="30.0" opacity="0.0" prefHeight="432.0" prefWidth="151.0" style="-fx-background-color: #39414E;">
          <children>
-            <ImageView fx:id="clientAdd" fitHeight="76.0" fitWidth="79.0" layoutX="35.0" layoutY="30.0" onMouseClicked="#cAdd" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="clientAdd" fitHeight="68.0" fitWidth="76.0" layoutX="42.0" layoutY="10.0" onMouseClicked="#cAdd" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/create_user_man_male-512.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="productAdd" fitHeight="86.0" fitWidth="83.0" layoutX="35.0" layoutY="160.0" onMouseClicked="#pAdd" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="productAdd" fitHeight="68.0" fitWidth="76.0" layoutX="42.0" layoutY="130.0" onMouseClicked="#pAdd" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/add-product-512.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="logOut" fitHeight="89.0" fitWidth="89.0" layoutX="35.0" layoutY="290.0" onMouseClicked="#logOut" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logOut" fitHeight="68.0" fitWidth="76.0" layoutX="41.0" layoutY="350.0" onMouseClicked="#logOut" opacity="0.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/imageedit_3_3173642382.png" />
                </image>
             </ImageView>
+            <ImageView fx:id="mitarbeiter" fitHeight="68.0" fitWidth="76.0" layoutX="42.0" layoutY="240.0" onMouseClicked="#addMitarbeiter" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/business-01-512.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
-      <Label fx:id="title" alignment="CENTER" layoutX="230.0" layoutY="49.0" prefHeight="18.0" prefWidth="151.0" text="Ajouter un client">
+      <Label fx:id="title" alignment="CENTER" layoutX="230.0" layoutY="49.0" prefHeight="20.0" prefWidth="160.0" text="Ajouter un client">
          <font>
             <Font name="Agency FB" size="20.0" />
          </font>

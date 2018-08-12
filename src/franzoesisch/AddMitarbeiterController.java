@@ -28,14 +28,14 @@ import javafx.stage.Stage;
  *
  * @author Startklar
  */
-public class ProductViewController implements Initializable {
+public class AddMitarbeiterController implements Initializable {
 
     @FXML
-    private TextField txtFieldProduktName;
+    private Pane topbar;
     @FXML
-    private TextField txtFieldStückpreis;
+    private ImageView returnView;
     @FXML
-    private TextField txtFieldTyp;
+    private ImageView menuOpen;
     @FXML
     private Pane menu;
     @FXML
@@ -44,29 +44,25 @@ public class ProductViewController implements Initializable {
     private ImageView productAdd;
     @FXML
     private ImageView logOut;
-    @FXML
-    private Pane topbar;
-    @FXML
-    private ImageView returnView;
-    @FXML
-    private ImageView menuOpen;
+   
+    private double xOffset = 0;
 
+    private String offertenText = "";
+
+    private double yOffset = 0;
+    
+    
     private boolean activated = false;
+    @FXML
+    private TextField lastname;
+    @FXML
+    private TextField departement;
+    @FXML
+    private TextField firstname;
     @FXML
     private Label message;
     @FXML
-    private Button confirm;
-    @FXML
-    private Label title;
-
-    private double xOffset = 0;
-
-    private double yOffset = 0;
-    private Stage stage;
-    AddCientController Acon = new AddCientController();
-    @FXML
     private ImageView mitarbeiter;
-
     /**
      * Initializes the controller class.
      */
@@ -95,10 +91,10 @@ public class ProductViewController implements Initializable {
     }
 
     @FXML
-    private void hinzufügen(ActionEvent event) {
+    private void adden(ActionEvent event) {
 
-        Database.getInstance().addProduct(txtFieldProduktName.getText(), Double.parseDouble(txtFieldStückpreis.getText()), txtFieldTyp.getText());
-        message.setText("Le produit a été ajouté.");
+        Database.getInstance().addMitarbeiter(firstname.getText(), lastname.getText(), departement.getText());
+        message.setText("Le employés a été ajouté.");
     }
 
     @FXML
@@ -125,7 +121,7 @@ public class ProductViewController implements Initializable {
     @FXML
     private void cAdd(MouseEvent event) throws IOException {
         Stage stage = Französisch.getStage();
-        Parent root = FXMLLoader.load(getClass().getResource("addCient.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("addClient.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);
@@ -140,7 +136,6 @@ public class ProductViewController implements Initializable {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-
     }
 
     @FXML
@@ -170,35 +165,16 @@ public class ProductViewController implements Initializable {
             clientAdd.setOpacity(0);
             productAdd.setOpacity(0);
             logOut.setOpacity(0);
-            mitarbeiter.setOpacity(0);
             activated = false;
         } else {
             menu.setOpacity(1);
             clientAdd.setOpacity(1);
             productAdd.setOpacity(1);
             logOut.setOpacity(1);
-            mitarbeiter.setOpacity(1);
             activated = true;
         }
-
     }
-//    public void changeLanguageEnglish(){
-//        title.setText("Add product");
-//        txtFieldStückpreis.setPromptText("Price per unit");
-//        txtFieldProduktName.setPromptText("Product name:");
-//        txtFieldTyp.setPromptText("Type:");
-//        confirm.setText("Add");
-//        Acon.changeLanguageEnglish();
-//    }
-//    
-//    public void changeLanguageFrench(){
-//        title.setText("Ajouter un produit");
-//        txtFieldStückpreis.setPromptText("prix à l'unité:");
-//        txtFieldProduktName.setPromptText("nom de produit:");
-//        txtFieldTyp.setPromptText("modèle:");
-//        confirm.setText("Ajouter");
-//        Acon.changeLanguageFrench();
-//    }
+
     @FXML
     private void addMitarbeiter(MouseEvent event) throws IOException {
         Stage stage = Französisch.getStage();
@@ -207,6 +183,6 @@ public class ProductViewController implements Initializable {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-    }
-
+    }   
+    
 }

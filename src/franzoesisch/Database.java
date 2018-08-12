@@ -59,7 +59,7 @@ public class Database {
             prepstatement.setString(6, strasse);
             prepstatement.setString(7, email);
             prepstatement.setString(8, passwort);
-            
+
             prepstatement.executeUpdate();
 
         } catch (SQLException ex) {
@@ -67,7 +67,7 @@ public class Database {
         }
 
     }
-    
+
     public boolean check(String email, String passwort) {
 
         if (email == null && passwort == null) {
@@ -92,7 +92,7 @@ public class Database {
             return false;
         }
     }
-    
+
     public void addProduct(String produktname, double preis, String typ) {
         try {
             String sql = "INSERT INTO produkte VALUES(null, ?, ?, ?)";
@@ -107,8 +107,8 @@ public class Database {
         }
 
     }
-    
-      public ObservableList<String> getProdukte() {
+
+    public ObservableList<String> getProdukte() {
         ObservableList<String> produkte = FXCollections.observableArrayList();
         try {
             String sql = "select * from produkte";
@@ -122,8 +122,8 @@ public class Database {
         }
         return produkte;
     }
-      
-        public void addKunde(String firmenname, String anrede, String name, String vorname, String addresszeile, String ort, int plz) {
+
+    public void addKunde(String firmenname, String anrede, String name, String vorname, String addresszeile, String ort, int plz) {
         try {
             String sql = "INSERT INTO kunden VALUES(null, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement prepstatement = getConnection().prepareStatement(sql);
@@ -141,8 +141,8 @@ public class Database {
         }
 
     }
-        
-         public ResultSet getKunde(String firmenname) {
+
+    public ResultSet getKunde(String firmenname) {
         try {
             String sql = "select * from kunden where firmenadresse = ?";
             PreparedStatement prepstatement = getConnection().prepareStatement(sql);
@@ -155,7 +155,8 @@ public class Database {
         }
         return null;
     }
-         public ResultSet getUser(String vorname) {
+
+    public ResultSet getUser(String vorname) {
         try {
             String sql = "select * from newuser where vorname = ?";
             PreparedStatement prepstatement = getConnection().prepareStatement(sql);
@@ -168,8 +169,8 @@ public class Database {
         }
         return null;
     }
-         
-             public ObservableList<String> getKunden() {
+
+    public ObservableList<String> getKunden() {
         ObservableList<String> kunden = FXCollections.observableArrayList();
         try {
             String sql = "select * from kunden";
@@ -183,12 +184,56 @@ public class Database {
         }
         return kunden;
     }
-             
-              public ResultSet getProdukt(String produktname) {
+
+    public ResultSet getProdukt(String produktname) {
         try {
             String sql = "select * from produkte where produkt_name = ?";
             PreparedStatement prepstatement = getConnection().prepareStatement(sql);
             prepstatement.setString(1, produktname);
+            ResultSet rs = prepstatement.executeQuery();
+            rs.next();
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public void addMitarbeiter(String nachname, String vorname, String abteilung) {
+        try {
+            String sql = "INSERT INTO mitarbeiter VALUES(null, ?, ?, ?)";
+            PreparedStatement prepstatement = getConnection().prepareStatement(sql);
+            prepstatement.setString(1, vorname);
+            prepstatement.setString(2, nachname);
+            prepstatement.setString(3, abteilung);
+            prepstatement.executeUpdate();
+
+        } catch (SQLException ex) {
+
+        }
+
+    }
+    
+      public ObservableList<String> getVendor() {
+        ObservableList<String> vendor = FXCollections.observableArrayList();
+        try {
+            String sql = "select * from mitarbeiter";
+            ResultSet rs = statement.executeQuery(sql);
+
+            while (rs.next()) {
+                vendor.add(rs.getString("lastname") + " " + rs.getString("firstname") + " " + rs.getString("abteilung"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return vendor;
+    }
+      
+      public ResultSet getMitarbeiter(String firstname) {
+        try {
+            String sql = "select * from mitarbeiter where firstname = ?";
+            PreparedStatement prepstatement = getConnection().prepareStatement(sql);
+            prepstatement.setString(1, firstname);
             ResultSet rs = prepstatement.executeQuery();
             rs.next();
             return rs;

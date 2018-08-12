@@ -223,7 +223,7 @@ String gender;
     public void changeLanguageFrench(){
         title.setText("Enregistrer");
         surname.setPromptText("prénom:");
-        name.setPromptText("nomf de famille:");
+        name.setPromptText("nom de famille:");
         sexuality.setPromptText("sexe");
         plz.setPromptText("code postal:");
         ort.setPromptText("localité:");

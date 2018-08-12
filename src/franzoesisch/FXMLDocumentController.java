@@ -5,7 +5,15 @@
  */
 package franzoesisch;
 
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.html.simpleparser.HTMLWorker;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.StringReader;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,17 +34,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -54,7 +58,7 @@ public class FXMLDocumentController implements Initializable {
     String item;
     String payment;
 
-    private ObservableList<String> Zahlung = FXCollections.observableArrayList("Bank", "cheque Postal", "Bar");
+    private ObservableList<String> Zahlung = FXCollections.observableArrayList("virement bancaire", "cheque Postal", "paiement en espèces");
     @FXML
     private Button submit;
     @FXML
@@ -62,8 +66,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextArea letter;
     int resultat;
-
+    private String offertenTextPDF = "";
     private double xOffset = 0;
+    
+    
 
     private String offertenText = "";
 
@@ -82,8 +88,8 @@ public class FXMLDocumentController implements Initializable {
     private String Firmenname = "<Firmenname>",
             Vorname = "<Vorname>",
             Nachname = "<Nachname>", Adresszeile_1 = "<Adresse>", Ort = "<Stadt>", Anrede = "<Anrede>", automatischesDatum, Produktname, Termin1 = "<Termin1>";
-    
-     private double Einzelpreis, Totalpreis, Rabatt;
+
+    private double Einzelpreis, Totalpreis, Rabatt;
     private int Postleitzahl, Anzahl;
     @FXML
     private ComboBox<String> Cliente;
@@ -99,21 +105,32 @@ public class FXMLDocumentController implements Initializable {
     private ImageView menuOpen;
 
     boolean activate = false;
-    @FXML
     private Button english;
-    @FXML
     private Button french;
     @FXML
     private Label title;
 
-    private int plz;
+    private int plz, aaa;
     String street, ort;
-    
+
     private boolean one = false;
-    @FXML
-    private Pane menu2;
     public static FXMLDocumentController instance;
     LoginFXMLController Lcon;
+    @FXML
+    private DatePicker dateEmpfangsdatum;
+
+    String Aktionshinweis, Beraterhinweis, Verkäufer, Position, bbb;
+
+    int Zahlungsfrist = 30;
+    Double MWST = 7.7, Rabattmenge;
+    @FXML
+    private ImageView mitarbeiter;
+    @FXML
+    private ComboBox<String> arbeiter;
+    @FXML
+    private ImageView download;
+    @FXML
+    private Label mess;
 
     @FXML
     public void getInfo() throws SQLException {
@@ -127,56 +144,121 @@ public class FXMLDocumentController implements Initializable {
             Adresszeile_1 = kunde.getString("adresszeile");
             Ort = kunde.getString("ort");
             Postleitzahl = kunde.getInt("plz");
-            
-             Produktname = product.getSelectionModel().getSelectedItem();
-            
+
+            Produktname = product.getSelectionModel().getSelectedItem();
+            aaa = Integer.parseInt(amount.getText());
             ResultSet produkt = Database.getInstance().getProdukt(Produktname);
-//            Einzelpreis = produkt.getDouble("stückpreis");
-//
-//            Totalpreis = Einzelpreis * Anzahl;
+            Einzelpreis = produkt.getDouble("stückpreis");
+            Einzelpreis = produkt.getDouble("stückpreis");
 
-            LocalDate ld = dateEmpfangsdatum.getValue();
-            Calendar c = Calendar.getInstance();
-            c.set(ld.getYear(), ld.getMonthValue() - 1, ld.getDayOfMonth());
-            Date date = c.getTime();
-            DateFormat dateFormat = new SimpleDateFormat("dd.MM.YYYY");
+            Totalpreis = Einzelpreis * aaa;
 
-            Termin1 = dateFormat.format(date);
+            if (dateEmpfangsdatum.getValue() != null) {
+                LocalDate ld = dateEmpfangsdatum.getValue();
+                Calendar c = Calendar.getInstance();
+                c.set(ld.getYear(), ld.getMonthValue() - 1, ld.getDayOfMonth());
+                Date date = c.getTime();
+                DateFormat dateFormat = new SimpleDateFormat("dd.MM.YYYY");
+
+                Termin1 = dateFormat.format(date);
             }
+            Verkäufer = arbeiter.getSelectionModel().getSelectedItem();
+            
+        }
 
     }
 
     public void CreateOfferText() {
-        
-         DateFormat dateFormat = new SimpleDateFormat("dd.MM.YYYY");
+
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.YYYY");
         Date date = new Date();
         automatischesDatum = dateFormat.format(date);
-        
+
+        double bbb = 10;
+        double res = Totalpreis / bbb;
+        Rabattmenge = Totalpreis - res;
+
         item = product.getSelectionModel().getSelectedItem();
         payment = zahlung.getSelectionModel().getSelectedItem();
         offertenText = (" VIN de Lausanne SA \n" + " 3, Rue de la Piquette \n 2000 Lausanne\n\n"
                 + " " + Firmenname + "\n " + Nachname + " " + Vorname + "\n " + Adresszeile_1 + "\n " + Postleitzahl + " " + Ort + "\n\n\n\n"
-                + "Lausanne, "  + automatischesDatum + "\n\n\n"
-                + " Offre pour " + Produktname + "\n\n"             
+                + "Lausanne, " + automatischesDatum + "\n\n\n"
+                + "Offre pour " + Produktname + "\n"
+                + "\n\n"
                 + "\n"
-                + "\n"
-                
-                + " " + Anrede + " " + Nachname + ",\n\n"
-                + " Nous avons bien reçu votre demande du" + " " + Termin1 + "  " + "et nous vous en remercions vivement." + "\n"
+                + "" + Anrede + " " + Nachname + ",\n\n"
+                + "Nous avons bien reçu votre demande du" + " " + Termin1 + "  " + "et nous vous en remercions vivement." + "\n"
                 + "Nous avons le plaisir de soumettre l'offre suivante." + "\n\n"
+                + "  " + aaa + "      " + Produktname + "      " + Totalpreis + " CHF" + "      " + MWST + "\n\n"
+                + "Nous vous proposons le " + Produktname + " au prix de " + Einzelpreis + " CHF " + MWST + " par bouteille.\n"
+                + "En outre, vous pouvez profiter d’une remise spéciale de " + bbb + " % pour toute commande" + "  supérieure à " + Rabattmenge + " CHF.\n"
+                + "Nous promettons de vous livrer la commande sous 7 jours." + "\n" + "Le délai de paiement est de " + Zahlungsfrist + " jours" + " " + "après réception de la marchandise." + "\n"
+                + "Nous vous prions de payer " + payment + " Cette offre est valable" + " " + "jusqu'au " + Termin1 + "." + "\n\n  "
+                + Aktionshinweis
+                + Beraterhinweis
+                + "" + " Si vous avec encore des questions, n'hésitez pas de nous contacter.\n"
+                + "Dans l’attente de votre commande, nous vous prions d'agréer " + Anrede + " nos meilleures salutations. \n\n"
                 
-                + " Nous vous proposons " + amount.getText() + " " + item + " modèle 0815 au prix de " + resultat + " CHF par tablette.\n\n"
-                + " De plus, nous vous offre une remise spéciale de 5% pour toute commande supérieure à 5000 CHF.\n\n"
-                + " Nous vous demandons de faire le paiement dans les 30 jour sà notre compte de " + payment + " .\n\n"
-                + " Nous allons faire la livraison par camion après la réception de votre paiement.\n\n"
-                + " En vous remerciant d'avance de votre commande, nous vous prions d'agréer, Monsieur, nos distinguées.\n\n");
+                + Verkäufer);
         letter.setEditable(false);
 
     }
 
+    public String getHTMLText() {
+
+        String aaa = String.valueOf(Anzahl);
+        //aaa = "<Anzahl>";
+
+        String bbb = String.valueOf(Rabatt);
+        //bbb = "<Rabatt>";
+
+
+        offertenTextPDF += "   VIN de Lausanne SA <br>" + "   3, Rue de la Piquette <br>   2000 Lausanne<br><br>";
+        offertenTextPDF += "  " + Firmenname + "<br>  " + Nachname + " " + Vorname + "<br>  " + Adresszeile_1 + "<br>  " + Postleitzahl + " " + Ort + "<br><br><br><br>";
+        offertenTextPDF += "  Lausanne, " + automatischesDatum + "<br><br>";
+        offertenTextPDF += "  Offre pour " + Produktname + "<br><br>";
+        offertenTextPDF += "  " + Anrede + " " + Nachname + " <br><br>";
+
+        offertenTextPDF += "  Nous avons bien reçu votre demande du" + " " + Termin1 + "  " + "et nous vous en remercions vivement." + "<br>";
+        offertenTextPDF += "  Nous avons le plaisir de soumettre l'offre suivante." + "<br><br>";
+
+        offertenTextPDF += "  " + aaa + "      " + Produktname + "      " + Totalpreis + " CHF" + "      " + MWST + "<br><br>";
+
+        offertenTextPDF += "   Nous vous proposons le " + Produktname + " au prix de " + Einzelpreis + " CHF " + MWST + " par bouteille « »." + "<br>"
+                + "  En outre, vous pouvez profiter d’une remise spéciale de " + bbb + " % pour toute commande" + "<br>" + "  supérieure à " + Rabattmenge + " CHF." + "<br><br>";
+
+        offertenTextPDF += "  Nous promettons de vous livrer la commande sous 7 jours." + "\n" + "  Le délai de paiement est de " + Zahlungsfrist + " jours" + " " + "après réception de la marchandise." + "\n"
+                + "  Nous vous prions de payer " + payment + " Cette offre est valable" + " " + "jusqu'au " + Termin1 + "." + "\n\n  ";
+
+        offertenTextPDF += Aktionshinweis + "<br><br>  ";
+        offertenTextPDF += Beraterhinweis;
+
+        offertenTextPDF += "" + " Si vous avec encore des questions, n'hésitez pas de nous contacter." + "<br><br>  ";
+        offertenTextPDF += "  Dans l’attente de votre commande, nous vous prions d'agréer " + Anrede + " nos meilleures salutations." + "<br><br>  ";
+
+        offertenTextPDF += Verkäufer + ", " + Position;
+        return offertenTextPDF;
+    }
+
+    @FXML
+    private void generatePDF(MouseEvent event) throws IOException, DocumentException {
+
+        Document document = new Document(PageSize.A4);
+
+        PdfWriter.getInstance(document, new FileOutputStream("Texte d'offre.pdf"));
+
+        document.open();
+        
+        HTMLWorker hw = new HTMLWorker(document);
+        hw.parse(new StringReader("<html><p>" + this.getHTMLText().concat(offertenTextPDF) +"</p></html>"));
+        document.close();
+        
+        mess.setText("Le document a été créé et sauvegardé avec succès.");
+    }
+
     @FXML
     private void handleButtonAction(ActionEvent event) {
-
+        download.setOpacity(1);
         CreateOfferText();
         letter.setText(offertenText);
     }
@@ -184,7 +266,6 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         stage = Französisch.getStage();
-
         topbar.setOnMousePressed(new EventHandler<MouseEvent>() {
 
             @Override
@@ -206,7 +287,7 @@ public class FXMLDocumentController implements Initializable {
         Cliente.setItems(Database.getInstance().getKunden());
         product.setItems(Database.getInstance().getProdukte());
         zahlung.setItems(Zahlung);
-
+        arbeiter.setItems(Database.getInstance().getVendor());
         CreateOfferText();
 
     }
@@ -305,16 +386,14 @@ public class FXMLDocumentController implements Initializable {
             clientAdd.setOpacity(0);
             productAdd.setOpacity(0);
             logOut.setOpacity(0);
+            mitarbeiter.setOpacity(0);
             activated = false;
         } else {
-            menu2.setOpacity(0);
-            french.setOpacity(0);
-            english.setOpacity(0);
-            activate = false;
             menu.setOpacity(1);
             clientAdd.setOpacity(1);
             productAdd.setOpacity(1);
             logOut.setOpacity(1);
+            mitarbeiter.setOpacity(1);
             activated = true;
         }
     }
@@ -333,7 +412,6 @@ public class FXMLDocumentController implements Initializable {
 //        Lcon.changeLanguageEnglish();
     }
 
-    @FXML
     private void changeFrench(ActionEvent event) {
         System.out.println("muluk");
         submit.setText("confirmer");
@@ -347,49 +425,25 @@ public class FXMLDocumentController implements Initializable {
         one = false;
     }
 
-    @FXML
-    private void hide(MouseEvent event) {
-        if (activate == false) {
-            menu.setOpacity(0);
-            clientAdd.setOpacity(0);
-            productAdd.setOpacity(0);
-            logOut.setOpacity(0);
-            activated = false;
-            menu2.setOpacity(1);
-            french.setOpacity(1);
-            english.setOpacity(1);
-            activate = true;
-        } else {
-            menu2.setOpacity(0);
-            french.setOpacity(0);
-            english.setOpacity(0);
-            activate = false;
-        }
-
-    }
-
     public void setCon(LoginFXMLController Lcon) {
         this.Lcon = Lcon;
-    }
-
-    @FXML
-    private void changeEnglish(MouseEvent event) {
-        System.out.println("muluk45");
-        submit.setText("Submit");
-        title.setText("Create an Offer");
-        product.setPromptText("Product");
-        amount.setPromptText("Amount");
-        zahlung.setPromptText("Payment methode");
-        Cliente.setPromptText("Client");
-        french.setText("French");
-        english.setText("English");
-        one = true;
-        isOne(one);
     }
 
     public boolean isOne(boolean one) {
         return one;
     }
+
+    @FXML
+    private void addMitarbeiter(MouseEvent event) throws IOException {
+        Stage stage = Französisch.getStage();
+        Parent root = FXMLLoader.load(getClass().getResource("addMitarbeiter.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
     
-    
+
+
 }

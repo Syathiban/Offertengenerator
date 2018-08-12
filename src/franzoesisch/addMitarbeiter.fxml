@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="608.0" style="-fx-background-color: white; -fx-border-width: 1 1 1 1; -fx-border-color: #39414E;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.AddMitarbeiterController">
+   <children>
+      <TextField fx:id="lastname" layoutX="224.0" layoutY="162.0" prefHeight="20.0" prefWidth="160.0" promptText="nom de famille" />
+      <TextField fx:id="departement" layoutX="224.0" layoutY="207.0" prefHeight="20.0" prefWidth="160.0" promptText="département" />
+      <TextField fx:id="firstname" layoutX="224.0" layoutY="117.0" prefHeight="20.0" prefWidth="160.0" promptText="prénom" />
+      <Button layoutX="224.0" layoutY="252.0" mnemonicParsing="false" onAction="#adden" prefHeight="20.0" prefWidth="160.0" styleClass="button-login" stylesheets="@stylesheet.css" text="Ajouter" />
+      <Label alignment="CENTER" layoutX="229.0" layoutY="79.0" prefHeight="18.0" prefWidth="151.0" text="Ajouter employés">
+         <font>
+            <Font name="Agency FB" size="20.0" />
+         </font>
+      </Label>
+      <Pane fx:id="topbar" layoutY="-1.0" prefHeight="30.0" prefWidth="608.0" style="-fx-background-color: #39414E;">
+         <children>
+            <Button ellipsisString="" focusTraversable="false" layoutX="534.0" layoutY="6.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize" stylesheets="@stylesheet.css">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </Button>
+            <Button ellipsisString="" focusTraversable="false" layoutX="584.0" layoutY="6.0" mnemonicParsing="false" onAction="#close" prefHeight="17.0" prefWidth="17.0" styleClass="apple-close" stylesheets="@stylesheet.css">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </Button>
+            <Button ellipsisString="" focusTraversable="false" layoutX="559.0" layoutY="6.0" mnemonicParsing="false" onAction="#minimize" prefHeight="17.0" prefWidth="17.0" styleClass="apple-minimize" stylesheets="@stylesheet.css">
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="returnView" fitHeight="40.0" fitWidth="46.0" layoutY="-5.0" onMouseClicked="#rView" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/retrun.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="menuOpen" fitHeight="27.0" fitWidth="25.0" layoutX="59.0" layoutY="2.0" onMouseClicked="#openMenu" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/meun.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="menu" layoutY="23.0" opacity="0.0" prefHeight="419.0" prefWidth="151.0" style="-fx-background-color: #39414E;">
+         <children>
+            <ImageView fx:id="clientAdd" fitHeight="68.0" fitWidth="76.0" layoutX="42.0" layoutY="10.0" onMouseClicked="#cAdd" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/create_user_man_male-512.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="productAdd" fitHeight="68.0" fitWidth="76.0" layoutX="42.0" layoutY="130.0" onMouseClicked="#pAdd" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/add-product-512.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="logOut" fitHeight="68.0" fitWidth="76.0" layoutX="41.0" layoutY="350.0" onMouseClicked="#logOut" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/imageedit_3_3173642382.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="mitarbeiter" fitHeight="68.0" fitWidth="76.0" layoutX="42.0" layoutY="240.0" onMouseClicked="#addMitarbeiter" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/business-01-512.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Label fx:id="message" layoutX="224.0" layoutY="298.0" prefHeight="17.0" prefWidth="160.0" />
+   </children>
+</Pane>
