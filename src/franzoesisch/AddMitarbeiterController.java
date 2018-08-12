@@ -165,12 +165,14 @@ public class AddMitarbeiterController implements Initializable {
             clientAdd.setOpacity(0);
             productAdd.setOpacity(0);
             logOut.setOpacity(0);
+            mitarbeiter.setOpacity(0);
             activated = false;
         } else {
             menu.setOpacity(1);
             clientAdd.setOpacity(1);
             productAdd.setOpacity(1);
             logOut.setOpacity(1);
+            mitarbeiter.setOpacity(1);
             activated = true;
         }
     }

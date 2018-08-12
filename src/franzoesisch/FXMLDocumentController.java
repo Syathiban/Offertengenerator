@@ -189,8 +189,8 @@ public class FXMLDocumentController implements Initializable {
                 + "" + Anrede + " " + Nachname + ",\n\n"
                 + "Nous avons bien reçu votre demande du" + " " + Termin1 + "  " + "et nous vous en remercions vivement." + "\n"
                 + "Nous avons le plaisir de soumettre l'offre suivante." + "\n\n"
-                + "  " + aaa + "      " + Produktname + "      " + Totalpreis + " CHF" + "      " + MWST + "\n\n"
-                + "Nous vous proposons le " + Produktname + " au prix de " + Einzelpreis + " CHF " + MWST + " par bouteille.\n"
+                + "  " + aaa + "      " + Produktname + "      " + Totalpreis + " CHF" + "      " + MWST + "%\n\n"
+                + "Nous vous proposons le " + Produktname + " au prix de " + Einzelpreis + " CHF chacun, y compris " + MWST + "% de TVA .\n"
                 + "En outre, vous pouvez profiter d’une remise spéciale de " + bbb + " % pour toute commande" + "  supérieure à " + Rabattmenge + " CHF.\n"
                 + "Nous promettons de vous livrer la commande sous 7 jours." + "\n" + "Le délai de paiement est de " + Zahlungsfrist + " jours" + " " + "après réception de la marchandise." + "\n"
                 + "Nous vous prions de payer " + payment + " Cette offre est valable" + " " + "jusqu'au " + Termin1 + "." + "\n\n  "
@@ -224,7 +224,7 @@ public class FXMLDocumentController implements Initializable {
 
         offertenTextPDF += "  " + aaa + "      " + Produktname + "      " + Totalpreis + " CHF" + "      " + MWST + "<br><br>";
 
-        offertenTextPDF += "   Nous vous proposons le " + Produktname + " au prix de " + Einzelpreis + " CHF " + MWST + " par bouteille « »." + "<br>"
+        offertenTextPDF += "   Nous vous proposons le " + Produktname + " au prix de " + Einzelpreis + " CHF chacun, y compris " + MWST + "% de TVA « »." + "<br>"
                 + "  En outre, vous pouvez profiter d’une remise spéciale de " + bbb + " % pour toute commande" + "<br>" + "  supérieure à " + Rabattmenge + " CHF." + "<br><br>";
 
         offertenTextPDF += "  Nous promettons de vous livrer la commande sous 7 jours." + "\n" + "  Le délai de paiement est de " + Zahlungsfrist + " jours" + " " + "après réception de la marchandise." + "\n"
@@ -236,7 +236,7 @@ public class FXMLDocumentController implements Initializable {
         offertenTextPDF += "" + " Si vous avec encore des questions, n'hésitez pas de nous contacter." + "<br><br>  ";
         offertenTextPDF += "  Dans l’attente de votre commande, nous vous prions d'agréer " + Anrede + " nos meilleures salutations." + "<br><br>  ";
 
-        offertenTextPDF += Verkäufer + ", " + Position;
+        offertenTextPDF += Verkäufer;
         return offertenTextPDF;
     }
 

@@ -224,6 +224,7 @@ public class AddCientController implements Initializable {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+        
     }
 
 }
