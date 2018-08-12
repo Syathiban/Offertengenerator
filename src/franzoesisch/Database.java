@@ -155,6 +155,19 @@ public class Database {
         }
         return null;
     }
+         public ResultSet getUser(String vorname) {
+        try {
+            String sql = "select * from newuser where vorname = ?";
+            PreparedStatement prepstatement = getConnection().prepareStatement(sql);
+            prepstatement.setString(1, vorname);
+            ResultSet rs = prepstatement.executeQuery();
+            rs.next();
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
          
              public ObservableList<String> getKunden() {
         ObservableList<String> kunden = FXCollections.observableArrayList();
@@ -169,5 +182,19 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return kunden;
+    }
+             
+              public ResultSet getProdukt(String produktname) {
+        try {
+            String sql = "select * from produkte where produkt_name = ?";
+            PreparedStatement prepstatement = getConnection().prepareStatement(sql);
+            prepstatement.setString(1, produktname);
+            ResultSet rs = prepstatement.executeQuery();
+            rs.next();
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

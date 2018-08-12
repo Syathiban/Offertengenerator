@@ -9,6 +9,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -76,8 +81,10 @@ public class FXMLDocumentController implements Initializable {
 
     private String Firmenname = "<Firmenname>",
             Vorname = "<Vorname>",
-            Nachname = "<Nachname>", Adresszeile_1 = "<Adresse>", Ort = "<Stadt>", Anrede = "<Anrede>";
-    private int Postleitzahl;
+            Nachname = "<Nachname>", Adresszeile_1 = "<Adresse>", Ort = "<Stadt>", Anrede = "<Anrede>", automatischesDatum, Produktname, Termin1 = "<Termin1>";
+    
+     private double Einzelpreis, Totalpreis, Rabatt;
+    private int Postleitzahl, Anzahl;
     @FXML
     private ComboBox<String> Cliente;
     @FXML
@@ -99,6 +106,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label title;
 
+    private int plz;
+    String street, ort;
+    
     private boolean one = false;
     @FXML
     private Pane menu2;
@@ -110,7 +120,6 @@ public class FXMLDocumentController implements Initializable {
         if (!Cliente.getSelectionModel().isEmpty()) {
             Firmenname = Cliente.getSelectionModel().getSelectedItem();
             ResultSet kunde = Database.getInstance().getKunde(Firmenname);
-
             Anrede = kunde.getString("anrede");
 
             Vorname = kunde.getString("vorname");
@@ -118,21 +127,44 @@ public class FXMLDocumentController implements Initializable {
             Adresszeile_1 = kunde.getString("adresszeile");
             Ort = kunde.getString("ort");
             Postleitzahl = kunde.getInt("plz");
-        }
+            
+             Produktname = product.getSelectionModel().getSelectedItem();
+            
+            ResultSet produkt = Database.getInstance().getProdukt(Produktname);
+//            Einzelpreis = produkt.getDouble("stückpreis");
+//
+//            Totalpreis = Einzelpreis * Anzahl;
+
+            LocalDate ld = dateEmpfangsdatum.getValue();
+            Calendar c = Calendar.getInstance();
+            c.set(ld.getYear(), ld.getMonthValue() - 1, ld.getDayOfMonth());
+            Date date = c.getTime();
+            DateFormat dateFormat = new SimpleDateFormat("dd.MM.YYYY");
+
+            Termin1 = dateFormat.format(date);
+            }
 
     }
 
     public void CreateOfferText() {
+        
+         DateFormat dateFormat = new SimpleDateFormat("dd.MM.YYYY");
+        Date date = new Date();
+        automatischesDatum = dateFormat.format(date);
+        
         item = product.getSelectionModel().getSelectedItem();
         payment = zahlung.getSelectionModel().getSelectedItem();
         offertenText = (" VIN de Lausanne SA \n" + " 3, Rue de la Piquette \n 2000 Lausanne\n\n"
-                + " " + Vorname + " " + Nachname + "\n"
-                + " " + Adresszeile_1 + "\n"
-                + " " + Postleitzahl + " " + Ort + "\n"
+                + " " + Firmenname + "\n " + Nachname + " " + Vorname + "\n " + Adresszeile_1 + "\n " + Postleitzahl + " " + Ort + "\n\n\n\n"
+                + "Lausanne, "  + automatischesDatum + "\n\n\n"
+                + " Offre pour " + Produktname + "\n\n"             
                 + "\n"
                 + "\n"
+                
                 + " " + Anrede + " " + Nachname + ",\n\n"
-                + " Nous avons bien reçu votre commande du 30 mai et nous vous en remercions vivement.\n\n"
+                + " Nous avons bien reçu votre demande du" + " " + Termin1 + "  " + "et nous vous en remercions vivement." + "\n"
+                + "Nous avons le plaisir de soumettre l'offre suivante." + "\n\n"
+                
                 + " Nous vous proposons " + amount.getText() + " " + item + " modèle 0815 au prix de " + resultat + " CHF par tablette.\n\n"
                 + " De plus, nous vous offre une remise spéciale de 5% pour toute commande supérieure à 5000 CHF.\n\n"
                 + " Nous vous demandons de faire le paiement dans les 30 jour sà notre compte de " + payment + " .\n\n"
