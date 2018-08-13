@@ -46,6 +46,8 @@ public class LoginFXMLController implements Initializable {
     @FXML
     private Button confirm;
     private FXMLDocumentController con;
+    @FXML
+    private Label message;
 
     /**
      * Initializes the controller class.
@@ -114,11 +116,9 @@ public class LoginFXMLController implements Initializable {
             stage.show();
 
         } else if (mail.getText().trim().isEmpty() || password.getText().trim().isEmpty()) {
-
-            System.out.println("S'il vous plaît entrer votre nom d'utilisateur et mot de passe.");
-
+            message.setText("S'il vous plaît entrer votre nom d'utilisateur et mot de passe.");
         } else {
-            System.out.println("Veuillez entrer vos données correctes");
+            message.setText("Veuillez entrer vos données correctes");
         }
 
     }

@@ -11,14 +11,14 @@
 
 <AnchorPane id="AnchorPane" prefHeight="462.0" prefWidth="610.0" style="-fx-background-color: white; -fx-border-width: 1 1 1 1; -fx-border-color: #39414E;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.AddCientController">
    <children>
-      <TextField fx:id="txtFieldFirmenname" layoutX="230.0" layoutY="85.0" prefHeight="20.0" prefWidth="160.0" promptText="nom de l'entreprise" />
-      <TextField fx:id="txtFieldAnrede" layoutX="230.0" layoutY="130.0" prefHeight="20.0" prefWidth="160.0" promptText="titre" />
-      <TextField fx:id="txtFieldNachname" layoutX="230.0" layoutY="175.0" prefHeight="20.0" prefWidth="160.0" promptText="nom de famille" />
-      <TextField fx:id="txtFieldVorname" layoutX="230.0" layoutY="220.0" prefHeight="20.0" prefWidth="160.0" promptText="prénom" />
-      <TextField fx:id="txtFieldAdresse" layoutX="230.0" layoutY="265.0" prefHeight="20.0" prefWidth="160.0" promptText="adresse" />
-      <TextField fx:id="txtFieldPlz" layoutX="230.0" layoutY="310.0" prefHeight="20.0" prefWidth="160.0" promptText="code postal" />
-      <TextField fx:id="txtFieldOrt" layoutX="230.0" layoutY="355.0" prefHeight="20.0" prefWidth="160.0" promptText="localité" />
-      <Button fx:id="confirm" layoutX="230.0" layoutY="400.0" mnemonicParsing="false" onAction="#adden" prefHeight="20.0" prefWidth="160.0" styleClass="button-login" stylesheets="@stylesheet.css" text="Ajouter" />
+      <TextField fx:id="txtFieldFirmenname" layoutX="184.0" layoutY="86.0" prefHeight="27.0" prefWidth="252.0" promptText="nom de l'entreprise" styleClass="amount" />
+      <TextField fx:id="txtFieldAnrede" layoutX="184.0" layoutY="130.0" prefHeight="27.0" prefWidth="252.0" promptText="titre" styleClass="amount" />
+      <TextField fx:id="txtFieldNachname" layoutX="184.0" layoutY="175.0" prefHeight="27.0" prefWidth="252.0" promptText="nom de famille" styleClass="amount" />
+      <TextField fx:id="txtFieldVorname" layoutX="184.0" layoutY="220.0" prefHeight="27.0" prefWidth="252.0" promptText="prénom" styleClass="amount" />
+      <TextField fx:id="txtFieldAdresse" layoutX="184.0" layoutY="265.0" prefHeight="27.0" prefWidth="252.0" promptText="adresse" styleClass="amount" />
+      <TextField fx:id="txtFieldPlz" layoutX="184.0" layoutY="310.0" prefHeight="27.0" prefWidth="252.0" promptText="code postal" styleClass="amount" />
+      <TextField fx:id="txtFieldOrt" layoutX="184.0" layoutY="355.0" prefHeight="27.0" prefWidth="252.0" promptText="localité" styleClass="amount" />
+      <Button fx:id="confirm" layoutX="184.0" layoutY="400.0" mnemonicParsing="false" onAction="#adden" prefHeight="27.0" prefWidth="252.0" styleClass="button-submit" stylesheets="@stylesheet.css" text="Ajouter" />
       <Pane fx:id="topbar" prefHeight="30.0" prefWidth="608.0" style="-fx-background-color: #39414E;">
          <children>
             <Button ellipsisString="" focusTraversable="false" layoutX="519.0" layoutY="6.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize" stylesheets="@stylesheet.css">
@@ -50,22 +50,22 @@
       </Pane>
       <Pane fx:id="menu" layoutY="30.0" opacity="0.0" prefHeight="432.0" prefWidth="151.0" style="-fx-background-color: #39414E;">
          <children>
-            <ImageView fx:id="clientAdd" fitHeight="68.0" fitWidth="76.0" layoutX="42.0" layoutY="10.0" onMouseClicked="#cAdd" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="clientAdd" fitHeight="68.0" fitWidth="76.0" layoutX="42.0" layoutY="10.0" onMouseClicked="#cAdd" onMouseEntered="#addClientEnter" onMouseExited="#addClientExit" opacity="0.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/create_user_man_male-512.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="productAdd" fitHeight="68.0" fitWidth="76.0" layoutX="42.0" layoutY="130.0" onMouseClicked="#pAdd" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="productAdd" fitHeight="68.0" fitWidth="76.0" layoutX="42.0" layoutY="130.0" onMouseClicked="#pAdd" onMouseEntered="#addProduitEnter" onMouseExited="#addProduitExit" opacity="0.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/add-product-512.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="logOut" fitHeight="68.0" fitWidth="76.0" layoutX="41.0" layoutY="350.0" onMouseClicked="#logOut" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logOut" fitHeight="68.0" fitWidth="76.0" layoutX="41.0" layoutY="350.0" onMouseClicked="#logOut" onMouseEntered="#logOutEnter" onMouseExited="#logOutExit" opacity="0.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/imageedit_3_3173642382.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="mitarbeiter" fitHeight="68.0" fitWidth="76.0" layoutX="42.0" layoutY="240.0" onMouseClicked="#addMitarbeiter" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="mitarbeiter" fitHeight="68.0" fitWidth="76.0" layoutX="42.0" layoutY="240.0" onMouseClicked="#addMitarbeiter" onMouseEntered="#addArbeiterEnter" onMouseExited="#addArbeiterExit" opacity="0.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/business-01-512.png" />
                </image>
@@ -80,6 +80,46 @@
       <Label fx:id="message" layoutX="230.0" layoutY="433.0" prefHeight="18.0" prefWidth="160.0">
          <font>
             <Font name="Agency FB" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="clAddback" fitHeight="87.0" fitWidth="144.0" layoutX="103.0" layoutY="9.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/speech.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="clAdd" layoutX="135.0" layoutY="45.0" opacity="0.0" text="Ajouter un client">
+         <font>
+            <Font name="Agency FB" size="12.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="plAddBack" fitHeight="87.0" fitWidth="144.0" layoutX="103.0" layoutY="124.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/speech.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="plAdd" layoutX="132.0" layoutY="160.0" opacity="0.0" text="Ajouter un produit">
+         <font>
+            <Font name="Agency FB" size="12.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="arAddBack" fitHeight="87.0" fitWidth="144.0" layoutX="99.0" layoutY="239.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/speech.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="arAdd" layoutX="123.0" layoutY="275.0" opacity="0.0" text="Ajouter un employés">
+         <font>
+            <Font name="Agency FB" size="12.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="logOutBack" fitHeight="87.0" fitWidth="144.0" layoutX="98.0" layoutY="345.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/speech.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="logout" layoutX="137.0" layoutY="381.0" opacity="0.0" text="déconnecter">
+         <font>
+            <Font name="Agency FB" size="12.0" />
          </font>
       </Label>
    </children>

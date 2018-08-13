@@ -11,31 +11,31 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="896.0" style="-fx-background-color: white; -fx-border-width: 1 1 1 1; -fx-border-color: #39414E;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.FXMLDocumentController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="806.0" prefWidth="896.0" style="-fx-background-color: white; -fx-border-width: 1 1 1 1; -fx-border-color: #39414E;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.FXMLDocumentController">
    <children>
-      <TextArea fx:id="letter" layoutX="7.0" layoutY="371.0" prefHeight="422.0" prefWidth="869.0" styleClass="text-area" stylesheets="@stylesheet.css" />
+      <TextArea fx:id="letter" layoutX="7.0" layoutY="371.0" prefHeight="422.0" prefWidth="881.0" styleClass="text-area" stylesheets="@stylesheet.css" />
       <ComboBox fx:id="product" layoutX="341.0" layoutY="76.0" prefHeight="27.0" prefWidth="202.0" promptText="produit" styleClass="combobox" stylesheets="@stylesheet.css" />
       <TextField fx:id="amount" layoutX="341.0" layoutY="116.0" prefHeight="27.0" prefWidth="202.0" promptText="nombre de pièces" styleClass="amount" stylesheets="@stylesheet.css" />
-      <Button fx:id="submit" layoutX="341.0" layoutY="316.0" onAction="#handleButtonAction" prefHeight="27.0" prefWidth="202.0" styleClass="button-submit" stylesheets="@stylesheet.css" text="Confirmer" />
+      <Button fx:id="submit" layoutX="341.0" layoutY="316.0" onAction="#handleButtonAction" prefHeight="27.0" prefWidth="202.0" style="-fx-border-radius: 2 2 2 2;" styleClass="button-submit" stylesheets="@stylesheet.css" text="Confirmer" />
       <ComboBox fx:id="zahlung" layoutX="341.0" layoutY="156.0" prefHeight="27.0" prefWidth="202.0" promptText="mode de paiement" styleClass="combobox" stylesheets="@stylesheet.css" />
-      <Pane fx:id="menu" layoutX="-1.0" layoutY="26.0" opacity="0.0" prefHeight="775.0" prefWidth="165.0" style="-fx-background-color: #39414E;">
+      <Pane fx:id="menu" layoutX="-1.0" layoutY="26.0" opacity="0.0" prefHeight="782.0" prefWidth="165.0" style="-fx-background-color: #39414E;">
          <children>
-            <ImageView fx:id="clientAdd" fitHeight="86.0" fitWidth="83.0" layoutX="40.0" layoutY="25.0" onMouseClicked="#cAdd" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="clientAdd" fitHeight="86.0" fitWidth="83.0" layoutX="40.0" layoutY="25.0" onMouseClicked="#cAdd" onMouseEntered="#addClientEnter" onMouseExited="#addClientExit" opacity="0.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/create_user_man_male-512.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="productAdd" fitHeight="86.0" fitWidth="83.0" layoutX="40.0" layoutY="235.0" onMouseClicked="#pAdd" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="productAdd" fitHeight="86.0" fitWidth="83.0" layoutX="40.0" layoutY="235.0" onMouseClicked="#pAdd" onMouseEntered="#addProduitEnter" onMouseExited="#addProduitExit" opacity="0.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/add-product-512.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="logOut" fitHeight="86.0" fitWidth="83.0" layoutX="36.0" layoutY="675.0" onMouseClicked="#logOut" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logout" fitHeight="86.0" fitWidth="83.0" layoutX="36.0" layoutY="675.0" onMouseClicked="#logOut" onMouseEntered="#logOutEnter" onMouseExited="#logOutExit" opacity="0.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/imageedit_3_3173642382.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="mitarbeiter" fitHeight="86.0" fitWidth="83.0" layoutX="39.0" layoutY="455.0" onMouseClicked="#addMitarbeiter" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="mitarbeiter" fitHeight="86.0" fitWidth="83.0" layoutX="39.0" layoutY="455.0" onMouseClicked="#addMitarbeiter" onMouseEntered="#addArbeiterEnter" onMouseExited="#addArbeiterExit" opacity="0.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/business-01-512.png" />
                </image>
@@ -66,22 +66,62 @@
             </ImageView>
          </children>
       </Pane>
-      <Label fx:id="title" alignment="CENTER" layoutX="341.0" layoutY="36.0" prefHeight="27.0" prefWidth="202.0" text="Créer un offre">
+      <Label fx:id="title" alignment="CENTER" layoutX="341.0" layoutY="36.0" prefHeight="27.0" prefWidth="202.0" style="-fx-background-color: white;" text="Créer un offre">
          <font>
             <Font name="Agency FB" size="21.0" />
          </font>
       </Label>
       <ComboBox fx:id="Cliente" layoutX="341.0" layoutY="196.0" onAction="#getInfo" prefHeight="27.0" prefWidth="202.0" promptText="client" styleClass="combobox" stylesheets="@stylesheet.css" />
-      <DatePicker fx:id="dateEmpfangsdatum" layoutX="341.0" layoutY="276.0" onAction="#getInfo" prefHeight="27.0" prefWidth="202.0" promptText="rendez-vous" styleClass="button-login" stylesheets="@stylesheet.css" />
+      <DatePicker fx:id="dateEmpfangsdatum" layoutX="341.0" layoutY="276.0" onAction="#getInfo" prefHeight="27.0" prefWidth="202.0" promptText="rendez-vous" style="-fx-background-color: white;" styleClass="datepicker" stylesheets="@stylesheet.css" />
       <ComboBox fx:id="arbeiter" layoutX="341.0" layoutY="236.0" onAction="#getInfo" prefHeight="27.0" prefWidth="202.0" promptText="employés" styleClass="combobox" stylesheets="@stylesheet.css" />
       <ImageView fx:id="download" fitHeight="99.0" fitWidth="62.0" layoutX="787.0" layoutY="48.0" onMouseClicked="#generatePDF" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/download.png" />
          </image>
       </ImageView>
-      <Label fx:id="mess" layoutX="341.0" layoutY="351.0" prefHeight="27.0" prefWidth="202.0">
+      <Label fx:id="mess" layoutX="341.0" layoutY="351.0" prefHeight="20.0" prefWidth="202.0" styleClass="messageOutput">
          <font>
             <Font name="Agency FB" size="12.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="clAddback" fitHeight="119.0" fitWidth="193.0" layoutX="109.0" layoutY="-5.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/speech.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="clAdd" layoutX="151.0" layoutY="46.0" opacity="0.0" text="Ajouter un client">
+         <font>
+            <Font name="Agency FB" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="plAddBack" fitHeight="119.0" fitWidth="193.0" layoutX="107.0" layoutY="205.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/speech.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="plAdd" layoutX="148.0" layoutY="253.0" opacity="0.0" text="Ajouter un produit">
+         <font>
+            <Font name="Agency FB" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="arAddBack" fitHeight="119.0" fitWidth="193.0" layoutX="108.0" layoutY="422.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/speech.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="arAdd" layoutX="141.0" layoutY="471.0" opacity="0.0" text="Ajouter un employés">
+         <font>
+            <Font name="Agency FB" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="logOutBack" fitHeight="119.0" fitWidth="193.0" layoutX="109.0" layoutY="632.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/speech.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="logOut" layoutX="161.0" layoutY="681.0" opacity="0.0" text="déconnecter">
+         <font>
+            <Font name="Agency FB" size="17.0" />
          </font>
       </Label>
    </children>

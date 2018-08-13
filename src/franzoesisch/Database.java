@@ -221,7 +221,7 @@ public class Database {
             ResultSet rs = statement.executeQuery(sql);
 
             while (rs.next()) {
-                vendor.add(rs.getString("lastname") + " " + rs.getString("firstname") + " " + rs.getString("abteilung"));
+                vendor.add(rs.getString("lastname") + " " + rs.getString("firstname") + ", " + rs.getString("abteilung"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);

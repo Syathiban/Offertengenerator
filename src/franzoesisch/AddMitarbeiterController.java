@@ -63,6 +63,22 @@ public class AddMitarbeiterController implements Initializable {
     private Label message;
     @FXML
     private ImageView mitarbeiter;
+    @FXML
+    private ImageView clAddback;
+    @FXML
+    private Label clAdd;
+    @FXML
+    private ImageView plAddBack;
+    @FXML
+    private Label plAdd;
+    @FXML
+    private ImageView arAddBack;
+    @FXML
+    private Label arAdd;
+    @FXML
+    private ImageView logOutBack;
+    @FXML
+    private Label logout;
     /**
      * Initializes the controller class.
      */
@@ -186,5 +202,65 @@ public class AddMitarbeiterController implements Initializable {
         stage.setResizable(false);
         stage.show();
     }   
+
+   @FXML
+    private void addClientExit(MouseEvent event) {
+        clAdd.setOpacity(0);
+        clAddback.setOpacity(0);
+    }
+
+    @FXML
+    private void addClientEnter(MouseEvent event) {
+        if (activated == true) {
+            clAddback.setOpacity(1);
+            clAdd.setOpacity(1);
+            clAdd.setText("Ajouter un client"); 
+        }
+        
+    }
+
+    @FXML
+    private void addProduitExit(MouseEvent event) {
+        plAddBack.setOpacity(0);
+        plAdd.setOpacity(0);
+    }
+
+    @FXML
+    private void addProduitEnter(MouseEvent event) {
+        if (activated == true) {
+            plAddBack.setOpacity(1);
+            plAdd.setOpacity(1); 
+        }
+        
+    }
+
+    @FXML
+    private void logOutExit(MouseEvent event) {
+        logOutBack.setOpacity(0);
+        logout.setOpacity(0);
+    }
+
+    @FXML
+    private void logOutEnter(MouseEvent event) {
+        if (activated == true) {
+            logOutBack.setOpacity(1);
+            logout.setOpacity(1); 
+        }
+        
+    }
+
+    @FXML
+    private void addArbeiterExit(MouseEvent event) {
+        arAddBack.setOpacity(0);
+        arAdd.setOpacity(0);
+    }
+
+    @FXML
+    private void addArbeiterEnter(MouseEvent event) {
+        if (activated == true) {   
+            arAddBack.setOpacity(1);
+            arAdd.setOpacity(1);
+        }
+    }
     
 }

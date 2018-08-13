@@ -23,7 +23,6 @@ public class Französisch extends Application {
 
         this.stage = stage;
         Parent root = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
-        
         Scene scene = new Scene(root);
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();

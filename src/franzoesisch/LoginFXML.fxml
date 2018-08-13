@@ -16,8 +16,8 @@
             <Font name="Agency FB" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="mail" layoutX="102.0" layoutY="94.0" prefHeight="30.0" prefWidth="200.0" promptText="email:" stylesheets="@stylesheet.css" />
-      <Button fx:id="confirm" layoutX="102.0" layoutY="176.0" mnemonicParsing="false" onAction="#submit" prefHeight="30.0" prefWidth="200.0" styleClass="button-login" stylesheets="@stylesheet.css" text="Confirmer" />
+      <TextField fx:id="mail" layoutX="102.0" layoutY="94.0" prefHeight="30.0" prefWidth="200.0" promptText="email:" styleClass="amount" stylesheets="@stylesheet.css" />
+      <Button fx:id="confirm" layoutX="102.0" layoutY="176.0" mnemonicParsing="false" onAction="#submit" prefHeight="30.0" prefWidth="200.0" styleClass="button-submit" stylesheets="@stylesheet.css" text="Confirmer" />
       <Pane fx:id="topbar" prefHeight="30.0" prefWidth="400.0" style="-fx-background-color: #39414E;">
          <children>
             <ImageView fitHeight="38.0" fitWidth="39.0" layoutY="-4.0" onMouseClicked="#register" pickOnBounds="true">
@@ -42,6 +42,11 @@
             </Button>
          </children>
       </Pane>
-      <PasswordField fx:id="password" layoutX="102.0" layoutY="135.0" prefHeight="30.0" prefWidth="200.0" promptText="mot de passe:" styleClass="text-field" stylesheets="@stylesheet.css" />
+      <PasswordField fx:id="password" layoutX="102.0" layoutY="135.0" prefHeight="30.0" prefWidth="200.0" promptText="mot de passe:" styleClass="amount" stylesheets="@stylesheet.css" />
+      <Label fx:id="message" layoutX="102.0" layoutY="224.0" prefHeight="30.0" prefWidth="200.0" styleClass="messageOutput">
+         <font>
+            <Font name="Agency FB" size="14.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

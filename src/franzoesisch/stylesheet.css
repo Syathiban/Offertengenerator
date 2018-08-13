@@ -38,7 +38,8 @@ and open the template in the editor.
     -fx-text-fill: #ffffff;
     -fx-border-width: 0px;
     -fx-background-color: #39414E;
-    -fx-background-radius: 0px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
 }
 
 .button-submit:hover {
@@ -54,7 +55,18 @@ and open the template in the editor.
     -fx-border-width: 1px;
     -fx-background-color: #ffffff;
     -fx-text-fill: #000000;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
 
+}
+.datepicker{
+    -fx-border-color: #bbbbbb;
+    -fx-border-width: 1px;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    
 }
 
 .combobox {
@@ -62,6 +74,8 @@ and open the template in the editor.
     -fx-border-width: 1px;
     -fx-background-color: #ffffff;
     -fx-text-fill: #000000;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
 
 }
 
@@ -70,6 +84,8 @@ and open the template in the editor.
     -fx-border-width: 1px;
     -fx-background-color: #ffffff;
     -fx-text-fill: #000000;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
 }
 
 .apple-close {
@@ -100,9 +116,12 @@ and open the template in the editor.
 
 }
 
+.messageOutput{
+}
 .apple-maximize:pressed {
     -fx-background-color: #197E28;
 }
+
 
 .apple-minimize {
     -fx-border-width: 1px;

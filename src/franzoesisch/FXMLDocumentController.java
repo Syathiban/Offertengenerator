@@ -5,7 +5,6 @@
  */
 package franzoesisch;
 
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.PageSize;
@@ -58,7 +57,7 @@ public class FXMLDocumentController implements Initializable {
     String item;
     String payment;
 
-    private ObservableList<String> Zahlung = FXCollections.observableArrayList("virement bancaire", "cheque Postal", "paiement en espèces");
+    private ObservableList<String> Zahlung = FXCollections.observableArrayList("virement bancaire", "cheque postal", "cash");
     @FXML
     private Button submit;
     @FXML
@@ -68,8 +67,6 @@ public class FXMLDocumentController implements Initializable {
     int resultat;
     private String offertenTextPDF = "";
     private double xOffset = 0;
-    
-    
 
     private String offertenText = "";
 
@@ -100,7 +97,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ImageView productAdd;
     @FXML
-    private ImageView logOut;
+    private ImageView logout;
     @FXML
     private ImageView menuOpen;
 
@@ -119,10 +116,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private DatePicker dateEmpfangsdatum;
 
-    String Aktionshinweis, Beraterhinweis, Verkäufer, Position, bbb;
+    String Aktionshinweis, Beraterhinweis, Verkäufer, Position;
 
     int Zahlungsfrist = 30;
-    Double MWST = 7.7, Rabattmenge;
+    Double MWST = 7.7, Rabattmenge, bbs;
     @FXML
     private ImageView mitarbeiter;
     @FXML
@@ -131,6 +128,22 @@ public class FXMLDocumentController implements Initializable {
     private ImageView download;
     @FXML
     private Label mess;
+    @FXML
+    private Label clAdd;
+    @FXML
+    private ImageView clAddback;
+    @FXML
+    private ImageView plAddBack;
+    @FXML
+    private Label plAdd;
+    @FXML
+    private ImageView arAddBack;
+    @FXML
+    private Label arAdd;
+    @FXML
+    private ImageView logOutBack;
+    @FXML
+    private Label logOut;
 
     @FXML
     public void getInfo() throws SQLException {
@@ -163,7 +176,7 @@ public class FXMLDocumentController implements Initializable {
                 Termin1 = dateFormat.format(date);
             }
             Verkäufer = arbeiter.getSelectionModel().getSelectedItem();
-            
+
         }
 
     }
@@ -177,7 +190,9 @@ public class FXMLDocumentController implements Initializable {
         double bbb = 10;
         double res = Totalpreis / bbb;
         Rabattmenge = Totalpreis - res;
-
+        double mwst = Rabattmenge * 0.077;
+        bbs = Totalpreis - mwst;
+        
         item = product.getSelectionModel().getSelectedItem();
         payment = zahlung.getSelectionModel().getSelectedItem();
         offertenText = (" VIN de Lausanne SA \n" + " 3, Rue de la Piquette \n 2000 Lausanne\n\n"
@@ -193,12 +208,11 @@ public class FXMLDocumentController implements Initializable {
                 + "Nous vous proposons le " + Produktname + " au prix de " + Einzelpreis + " CHF chacun, y compris " + MWST + "% de TVA .\n"
                 + "En outre, vous pouvez profiter d’une remise spéciale de " + bbb + " % pour toute commande" + "  supérieure à " + Rabattmenge + " CHF.\n"
                 + "Nous promettons de vous livrer la commande sous 7 jours." + "\n" + "Le délai de paiement est de " + Zahlungsfrist + " jours" + " " + "après réception de la marchandise." + "\n"
-                + "Nous vous prions de payer " + payment + " Cette offre est valable" + " " + "jusqu'au " + Termin1 + "." + "\n\n  "
+                + "Nous vous prions de payer avec" + payment + " Cette offre est valable" + " " + "jusqu'au " + Termin1 + "." + "\n\n  "
                 + Aktionshinweis
                 + Beraterhinweis
                 + "" + " Si vous avec encore des questions, n'hésitez pas de nous contacter.\n"
                 + "Dans l’attente de votre commande, nous vous prions d'agréer " + Anrede + " nos meilleures salutations. \n\n"
-                
                 + Verkäufer);
         letter.setEditable(false);
 
@@ -211,7 +225,6 @@ public class FXMLDocumentController implements Initializable {
 
         String bbb = String.valueOf(Rabatt);
         //bbb = "<Rabatt>";
-
 
         offertenTextPDF += "   VIN de Lausanne SA <br>" + "   3, Rue de la Piquette <br>   2000 Lausanne<br><br>";
         offertenTextPDF += "  " + Firmenname + "<br>  " + Nachname + " " + Vorname + "<br>  " + Adresszeile_1 + "<br>  " + Postleitzahl + " " + Ort + "<br><br><br><br>";
@@ -248,11 +261,11 @@ public class FXMLDocumentController implements Initializable {
         PdfWriter.getInstance(document, new FileOutputStream("Texte d'offre.pdf"));
 
         document.open();
-        
+
         HTMLWorker hw = new HTMLWorker(document);
-        hw.parse(new StringReader("<html><p>" + this.getHTMLText().concat(offertenTextPDF) +"</p></html>"));
+        hw.parse(new StringReader("<html><p>" + this.getHTMLText().concat(offertenTextPDF) + "</p></html>"));
         document.close();
-        
+
         mess.setText("Le document a été créé et sauvegardé avec succès.");
     }
 
@@ -385,44 +398,17 @@ public class FXMLDocumentController implements Initializable {
             menu.setOpacity(0);
             clientAdd.setOpacity(0);
             productAdd.setOpacity(0);
-            logOut.setOpacity(0);
+            logout.setOpacity(0);
             mitarbeiter.setOpacity(0);
             activated = false;
         } else {
             menu.setOpacity(1);
             clientAdd.setOpacity(1);
             productAdd.setOpacity(1);
-            logOut.setOpacity(1);
+            logout.setOpacity(1);
             mitarbeiter.setOpacity(1);
             activated = true;
         }
-    }
-
-    private void changeEnglish(ActionEvent event) {
-        System.out.println("muluk");
-        submit.setText("Submit");
-        title.setText("Create an Offer");
-        product.setPromptText("Product");
-        amount.setPromptText("Amount");
-        zahlung.setPromptText("Payment methode");
-        Cliente.setPromptText("Client");
-        french.setText("French");
-        english.setText("English");
-
-//        Lcon.changeLanguageEnglish();
-    }
-
-    private void changeFrench(ActionEvent event) {
-        System.out.println("muluk");
-        submit.setText("confirmer");
-        title.setText("Créer un offre");
-        product.setPromptText("produit");
-        amount.setPromptText("nombre de pièces");
-        zahlung.setPromptText("mode de paiement");
-        Cliente.setPromptText("client");
-        french.setText("Français");
-        english.setText("Anglais");
-        one = false;
     }
 
     public void setCon(LoginFXMLController Lcon) {
@@ -443,7 +429,65 @@ public class FXMLDocumentController implements Initializable {
         stage.show();
     }
 
-    
+    @FXML
+    private void addClientExit(MouseEvent event) {
+        clAdd.setOpacity(0);
+        clAddback.setOpacity(0);
+    }
 
+    @FXML
+    private void addClientEnter(MouseEvent event) {
+        if (activated == true) {
+            clAddback.setOpacity(1);
+            clAdd.setOpacity(1);
+            clAdd.setText("Ajouter un client");
+        }
+
+    }
+
+    @FXML
+    private void addProduitExit(MouseEvent event) {
+        plAddBack.setOpacity(0);
+        plAdd.setOpacity(0);
+    }
+
+    @FXML
+    private void addProduitEnter(MouseEvent event) {
+        if (activated == true) {
+            plAddBack.setOpacity(1);
+            plAdd.setOpacity(1);
+        }
+
+    }
+
+    @FXML
+    private void logOutExit(MouseEvent event) {
+        logOutBack.setOpacity(0);
+        logOut.setOpacity(0);
+    }
+
+    @FXML
+    private void logOutEnter(MouseEvent event) {
+        if (activated == true) {
+            logOutBack.setOpacity(1);
+            logOut.setOpacity(1);
+        }
+
+    }
+
+    @FXML
+    private void addArbeiterExit(MouseEvent event) {
+        arAddBack.setOpacity(0);
+        arAdd.setOpacity(0);
+    }
+
+    @FXML
+    private void addArbeiterEnter(MouseEvent event) {
+        if (activated == true) {
+            arAddBack.setOpacity(1);
+            arAdd.setOpacity(1);
+        }
+
+    }
 
 }

@@ -10,11 +10,11 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="608.0" style="-fx-background-color: white; -fx-border-width: 1 1 1 1; -fx-border-color: #39414E;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.AddMitarbeiterController">
    <children>
-      <TextField fx:id="lastname" layoutX="224.0" layoutY="162.0" prefHeight="20.0" prefWidth="160.0" promptText="nom de famille" />
-      <TextField fx:id="departement" layoutX="224.0" layoutY="207.0" prefHeight="20.0" prefWidth="160.0" promptText="département" />
-      <TextField fx:id="firstname" layoutX="224.0" layoutY="117.0" prefHeight="20.0" prefWidth="160.0" promptText="prénom" />
-      <Button layoutX="224.0" layoutY="252.0" mnemonicParsing="false" onAction="#adden" prefHeight="20.0" prefWidth="160.0" styleClass="button-login" stylesheets="@stylesheet.css" text="Ajouter" />
-      <Label alignment="CENTER" layoutX="229.0" layoutY="79.0" prefHeight="18.0" prefWidth="151.0" text="Ajouter employés">
+      <TextField fx:id="lastname" layoutX="178.0" layoutY="162.0" prefHeight="27.0" prefWidth="252.0" promptText="nom de famille" styleClass="amount" />
+      <TextField fx:id="departement" layoutX="178.0" layoutY="207.0" prefHeight="27.0" prefWidth="252.0" promptText="département" styleClass="amount" />
+      <TextField fx:id="firstname" layoutX="178.0" layoutY="116.0" prefHeight="27.0" prefWidth="252.0" promptText="prénom" styleClass="amount" />
+      <Button layoutX="178.0" layoutY="252.0" mnemonicParsing="false" onAction="#adden" prefHeight="27.0" prefWidth="252.0" styleClass="button-submit" stylesheets="@stylesheet.css" text="Ajouter" />
+      <Label alignment="CENTER" layoutX="229.0" layoutY="77.0" prefHeight="18.0" prefWidth="151.0" text="Ajouter employés">
          <font>
             <Font name="Agency FB" size="20.0" />
          </font>
@@ -50,22 +50,22 @@
       </Pane>
       <Pane fx:id="menu" layoutY="23.0" opacity="0.0" prefHeight="419.0" prefWidth="151.0" style="-fx-background-color: #39414E;">
          <children>
-            <ImageView fx:id="clientAdd" fitHeight="68.0" fitWidth="76.0" layoutX="42.0" layoutY="10.0" onMouseClicked="#cAdd" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="clientAdd" fitHeight="68.0" fitWidth="76.0" layoutX="42.0" layoutY="10.0" onMouseClicked="#cAdd" onMouseEntered="#addClientEnter" onMouseExited="#addClientExit" opacity="0.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/create_user_man_male-512.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="productAdd" fitHeight="68.0" fitWidth="76.0" layoutX="42.0" layoutY="130.0" onMouseClicked="#pAdd" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="productAdd" fitHeight="68.0" fitWidth="76.0" layoutX="42.0" layoutY="130.0" onMouseClicked="#pAdd" onMouseEntered="#addProduitEnter" onMouseExited="#addProduitExit" opacity="0.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/add-product-512.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="logOut" fitHeight="68.0" fitWidth="76.0" layoutX="41.0" layoutY="350.0" onMouseClicked="#logOut" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logOut" fitHeight="68.0" fitWidth="76.0" layoutX="41.0" layoutY="350.0" onMouseClicked="#logOut" onMouseEntered="#logOutEnter" onMouseExited="#logOutExit" opacity="0.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/imageedit_3_3173642382.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="mitarbeiter" fitHeight="68.0" fitWidth="76.0" layoutX="42.0" layoutY="240.0" onMouseClicked="#addMitarbeiter" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="mitarbeiter" fitHeight="68.0" fitWidth="76.0" layoutX="42.0" layoutY="240.0" onMouseClicked="#addMitarbeiter" onMouseEntered="#addArbeiterEnter" onMouseExited="#addArbeiterExit" opacity="0.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/business-01-512.png" />
                </image>
@@ -73,5 +73,45 @@
          </children>
       </Pane>
       <Label fx:id="message" layoutX="224.0" layoutY="298.0" prefHeight="17.0" prefWidth="160.0" />
+      <ImageView fx:id="clAddback" fitHeight="87.0" fitWidth="144.0" layoutX="102.0" layoutY="9.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/speech.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="clAdd" layoutX="134.0" layoutY="45.0" opacity="0.0" text="Ajouter un client">
+         <font>
+            <Font name="Agency FB" size="12.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="plAddBack" fitHeight="87.0" fitWidth="144.0" layoutX="102.0" layoutY="124.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/speech.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="plAdd" layoutX="131.0" layoutY="160.0" opacity="0.0" text="Ajouter un produit">
+         <font>
+            <Font name="Agency FB" size="12.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="arAddBack" fitHeight="87.0" fitWidth="144.0" layoutX="98.0" layoutY="239.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/speech.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="arAdd" layoutX="122.0" layoutY="275.0" opacity="0.0" text="Ajouter un employés">
+         <font>
+            <Font name="Agency FB" size="12.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="logOutBack" fitHeight="87.0" fitWidth="144.0" layoutX="97.0" layoutY="345.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/speech.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="logout" layoutX="136.0" layoutY="381.0" opacity="0.0" text="déconnecter">
+         <font>
+            <Font name="Agency FB" size="12.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

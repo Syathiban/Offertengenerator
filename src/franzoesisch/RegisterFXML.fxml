@@ -38,14 +38,14 @@
       </Pane>
       <Button fx:id="confirm" layoutX="209.0" layoutY="431.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="250.0" styleClass="button-submit" text="Confirmer" />
       <ComboBox fx:id="sexuality" layoutX="209.0" layoutY="151.0" prefHeight="25.0" prefWidth="250.0" promptText="Sexe" styleClass="combobox" />
-      <TextField fx:id="name" layoutX="209.0" layoutY="112.0" prefHeight="25.0" prefWidth="250.0" promptText="nom de famille" />
-      <TextField fx:id="plz" layoutX="209.0" layoutY="192.0" prefHeight="25.0" prefWidth="250.0" promptText="code postal" />
-      <TextField fx:id="street" layoutX="209.0" layoutY="271.0" prefHeight="25.0" prefWidth="250.0" promptText="rue" />
+      <TextField fx:id="name" layoutX="209.0" layoutY="112.0" prefHeight="25.0" prefWidth="250.0" promptText="nom de famille" styleClass="amount" />
+      <TextField fx:id="plz" layoutX="209.0" layoutY="192.0" prefHeight="25.0" prefWidth="250.0" promptText="code postal" styleClass="amount" />
+      <TextField fx:id="street" layoutX="209.0" layoutY="271.0" prefHeight="25.0" prefWidth="250.0" promptText="rue" styleClass="amount" />
       <DatePicker fx:id="date" layoutX="209.0" layoutY="312.0" prefHeight="25.0" prefWidth="250.0" promptText="date" styleClass="datepicker" />
-      <TextField fx:id="surname" layoutX="209.0" layoutY="72.0" prefHeight="25.0" prefWidth="250.0" promptText="prénom" />
-      <TextField fx:id="ort" layoutX="209.0" layoutY="230.0" prefHeight="25.0" prefWidth="250.0" promptText="localité" />
-      <TextField fx:id="mail" layoutX="209.0" layoutY="350.0" prefHeight="25.0" prefWidth="250.0" promptText="email" />
-      <TextField fx:id="password" layoutX="209.0" layoutY="389.0" prefHeight="25.0" prefWidth="250.0" promptText="mot de passe" />
+      <TextField fx:id="surname" layoutX="209.0" layoutY="72.0" prefHeight="25.0" prefWidth="250.0" promptText="prénom" styleClass="amount" />
+      <TextField fx:id="ort" layoutX="209.0" layoutY="230.0" prefHeight="25.0" prefWidth="250.0" promptText="localité" styleClass="amount" />
+      <TextField fx:id="mail" layoutX="209.0" layoutY="350.0" prefHeight="25.0" prefWidth="250.0" promptText="email" styleClass="amount" />
+      <TextField fx:id="password" layoutX="209.0" layoutY="389.0" prefHeight="25.0" prefWidth="250.0" promptText="mot de passe" styleClass="amount" />
       <Label fx:id="title" alignment="CENTER" layoutX="209.0" layoutY="34.0" prefHeight="27.0" prefWidth="250.0" text="Enregistrer">
          <font>
             <Font name="Agency FB" size="20.0" />

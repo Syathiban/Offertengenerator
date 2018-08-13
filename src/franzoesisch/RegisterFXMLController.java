@@ -143,7 +143,7 @@ public class RegisterFXMLController implements Initializable {
         int p_l_z = Integer.parseInt(plz.getText());
         if (surname.getText().trim().isEmpty() || name.getText().trim().isEmpty() || sexuality.getSelectionModel().getSelectedItem().trim().isEmpty() || plz.getText().trim().isEmpty() || ort.getText().trim().isEmpty()
                 || street.getText().trim().isEmpty() || mail.getText().trim().isEmpty() || password.getText().trim().isEmpty()) {
-            System.out.println("Alle Felder müssen gefüllt sein.");
+            message.setText("Tous les champs sont obligatoires.");
         }
         Database dat = new Database();
         dat.Register(surname.getText(), name.getText(), sexuality.getSelectionModel().getSelectedItem(), p_l_z, ort.getText(), street.getText(), mail.getText(), password.getText());
