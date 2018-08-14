@@ -139,8 +139,34 @@ and open the template in the editor.
     -fx-background-color: #A17B1D;
 }
 
-.datepicker {
+.date-picker {
     -fx-background-color: #ffffff;
     -fx-text-fill: #000000;
 
+}
+
+.date-picker .arrow-button {
+    -fx-border-color: #bbbbbb;
+    -fx-border-width: 1px 1px 1px 0px;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+    -fx-background-radius: 0px 10px 10px 0px;
+    -fx-border-radius: 0px 10px 10px 0px;
+}
+.date-picker .text-field{
+    -fx-border-color: #bbbbbb;
+    -fx-border-width: 1px 0px 1px 1px;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+    -fx-background-radius: 10px 10px 10px 10px;
+    -fx-border-radius: 10px 0px 0px 10px;
+}
+
+.languagebutton{
+    -fx-text-fill: #ffffff;
+    -fx-border-width: 0px;
+    -fx-background-color: #FC5652;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #DF3E3A;
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="topbar" prefHeight="335.0" prefWidth="600.0" style="-fx-background-color: #39414E;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.ChangeLanguageController">
+   <children>
+      <Button fx:id="english" layoutX="174.0" layoutY="145.0" mnemonicParsing="false" onAction="#changeEnglish" prefHeight="27.0" prefWidth="252.0" styleClass="languagebutton" text="English" />
+      <Button fx:id="french" layoutX="174.0" layoutY="200.0" mnemonicParsing="false" onAction="#changeFrench" prefHeight="27.0" prefWidth="252.0" styleClass="languagebutton" text="French" />
+      <Label alignment="CENTER" layoutX="176.0" layoutY="92.0" prefHeight="27.0" prefWidth="252.0" text="Choose a language" textFill="#fafafa">
+         <font>
+            <Font name="Agency FB" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -8,6 +8,7 @@ package franzoesisch;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -41,6 +42,9 @@ public class LoginFXMLController implements Initializable {
     private Pane topbar;
     boolean one = false;
     private Stage stage;
+    String messa = "";
+    String messa2 = "";
+    String comparison = "english";
     @FXML
     private Label title;
     @FXML
@@ -54,6 +58,7 @@ public class LoginFXMLController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         // TODO
 
         stage = Französisch.getStage();
@@ -77,17 +82,20 @@ public class LoginFXMLController implements Initializable {
         });
         this.con = new FXMLDocumentController();
         this.con.setCon(this);
-//        if (con.isOne(one) == true) {
-//            title.setText("SIGN IN");
-//            mail.setPromptText("Email:");
-//            password.setPromptText("Password:");
-//            confirm.setText("Submit");
-//        } else {
-//            title.setText("S'identifier");
-//            mail.setPromptText("email:");
-//            password.setPromptText("mot de passe:");
-//            confirm.setText("confirmer");
-//        }
+        String language = Database.getInstance().getLanguages();
+        System.out.println(language + comparison);
+        if (language.equals(comparison)) {
+            System.out.println("hallo");
+            title.setText("SIGN IN");
+            mail.setPromptText("Email:");
+            password.setPromptText("Password:");
+            confirm.setText("Submit");
+            messa = "Please enter your email address and password.";
+            messa2 = "Please enter your correct email address and password.";
+        } else {
+            messa = "S'il vous plaît entrer votre nom d'utilisateur et mot de passe.";
+            messa2 = "Veuillez entrer vos données correctes.";
+        }
         
 
     }
@@ -116,15 +124,16 @@ public class LoginFXMLController implements Initializable {
             stage.show();
 
         } else if (mail.getText().trim().isEmpty() || password.getText().trim().isEmpty()) {
-            message.setText("S'il vous plaît entrer votre nom d'utilisateur et mot de passe.");
+            message.setText(messa);
         } else {
-            message.setText("Veuillez entrer vos données correctes");
+            message.setText(messa2);
         }
 
     }
 
     @FXML
     private void close(ActionEvent event) {
+        Database.getInstance().editLanguage();
         System.exit(0);
     }
 

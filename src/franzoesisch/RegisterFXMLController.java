@@ -62,6 +62,7 @@ public class RegisterFXMLController implements Initializable {
     @FXML
     private Pane topbar;
 
+    String comparison = "english";
     private Stage stage;
 
     String vorname;
@@ -71,6 +72,9 @@ public class RegisterFXMLController implements Initializable {
     String strasse;
     String email;
     String psw;
+    String male;
+    String female;
+    int p_l_z;
 
     String gender;
     @FXML
@@ -79,6 +83,7 @@ public class RegisterFXMLController implements Initializable {
     private Label title;
     @FXML
     private Label message;
+    String messa = "";
 
     /**
      * Initializes the controller class.
@@ -118,9 +123,30 @@ public class RegisterFXMLController implements Initializable {
         } catch (Exception e) {
 
         }
-
+        String language = Database.getInstance().getLanguages();
+        System.out.println(language + comparison);
+        if (language.equals(comparison)) {
+            title.setText("Register");
+            surname.setPromptText("Firstname:");
+            name.setPromptText("Lastname:");
+            sexuality.setPromptText("Salutation");
+            plz.setPromptText("Postal code:");
+            ort.setPromptText("City:");
+            street.setPromptText("Street:");
+            date.setPromptText("Date");
+            mail.setPromptText("Email:");
+            password.setPromptText("Password:");
+            confirm.setText("Submit");
+            messa = "All fields must be filled in.";
+            male = "Mister";
+            female = "Madame";
+        } else {
+            messa = "Tous les champs sont obligatoires.";
+            male = "Monsieur";
+            female = "Madame";
+        }
         ObservableList<String> comboBoxFiller = FXCollections.observableArrayList();
-        comboBoxFiller.addAll("Monsieur", "Madame");
+        comboBoxFiller.addAll(male, female);
 
         sexuality.setItems(comboBoxFiller);
     }
@@ -140,21 +166,28 @@ public class RegisterFXMLController implements Initializable {
 //
 //        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 //        geburtstagsdatum = localGeburtstagsdatum.format(formatter);
-        int p_l_z = Integer.parseInt(plz.getText());
-        if (surname.getText().trim().isEmpty() || name.getText().trim().isEmpty() || sexuality.getSelectionModel().getSelectedItem().trim().isEmpty() || plz.getText().trim().isEmpty() || ort.getText().trim().isEmpty()
-                || street.getText().trim().isEmpty() || mail.getText().trim().isEmpty() || password.getText().trim().isEmpty()) {
-            message.setText("Tous les champs sont obligatoires.");
+        try {
+            p_l_z = Integer.parseInt(plz.getText());
+        } catch (Exception e) {
+            p_l_z = 0;
         }
-        Database dat = new Database();
-        dat.Register(surname.getText(), name.getText(), sexuality.getSelectionModel().getSelectedItem(), p_l_z, ort.getText(), street.getText(), mail.getText(), password.getText());
+        
+        if (p_l_z == 0 || surname.getText().trim().isEmpty() || name.getText().trim().isEmpty() || sexuality.getSelectionModel().getSelectedItem().trim().isEmpty() || plz.getText().trim().isEmpty() || ort.getText().trim().isEmpty()
+                || street.getText().trim().isEmpty() || mail.getText().trim().isEmpty() || password.getText().trim().isEmpty()) {
+            message.setText(messa);
+        }else if(p_l_z != 0){
+            Database dat = new Database();
+            dat.Register(surname.getText(), name.getText(), sexuality.getSelectionModel().getSelectedItem(), p_l_z, ort.getText(), street.getText(), mail.getText(), password.getText());
 //        Database.getInstance().Register(surname.getText().trim(), name.getText().trim(), sexuality.getSelectionModel().getSelectedItem().trim(), p_l_z, ort.getText().trim(), 
 //                street.getText().trim(), mail.getText().trim(), password.getText().trim());
-        Stage stage = Französisch.getStage();
-        Parent root = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+            Stage stage = Französisch.getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();  
+        }
+        
     }
 
     @FXML
@@ -169,6 +202,7 @@ public class RegisterFXMLController implements Initializable {
 
     @FXML
     private void close(ActionEvent event) {
+        Database.getInstance().editLanguage();
         System.exit(0);
     }
 

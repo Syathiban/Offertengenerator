@@ -82,6 +82,8 @@ public class ProductViewController implements Initializable {
     private ImageView logOutBack;
     @FXML
     private Label logout;
+    String comparison = "english";
+    String messa = "";
 
     /**
      * Initializes the controller class.
@@ -108,17 +110,34 @@ public class ProductViewController implements Initializable {
                 stage.setY(event.getScreenY() - yOffset);
             }
         });
+        String language = Database.getInstance().getLanguages();
+        System.out.println(language + comparison);
+        if (language.equals(comparison)) {
+            title.setText("Add product");
+            txtFieldStückpreis.setPromptText("Price per unit");
+            txtFieldProduktName.setPromptText("Product name:");
+            txtFieldTyp.setPromptText("Type:");
+            confirm.setText("Add");
+            clAdd.setText("Add clients");
+            plAdd.setText("Add products");
+            logout.setText("Log out");
+            arAdd.setText("Add Employee");
+            messa = "Product has been added.";
+        } else {
+            messa = "Le produit a été ajouté.";
+        }
     }
 
     @FXML
     private void hinzufügen(ActionEvent event) {
 
         Database.getInstance().addProduct(txtFieldProduktName.getText(), Double.parseDouble(txtFieldStückpreis.getText()), txtFieldTyp.getText());
-        message.setText("Le produit a été ajouté.");
+        message.setText(messa);
     }
 
     @FXML
     private void close(ActionEvent event) {
+        Database.getInstance().editLanguage();
         System.exit(0);
     }
 
@@ -236,7 +255,6 @@ public class ProductViewController implements Initializable {
         if (activated == true) {
             clAddback.setOpacity(1);
             clAdd.setOpacity(1);
-            clAdd.setText("Ajouter un client"); 
         }
         
     }

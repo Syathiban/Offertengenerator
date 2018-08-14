@@ -65,7 +65,6 @@ public class AddMitarbeiterController implements Initializable {
     private ImageView mitarbeiter;
     @FXML
     private ImageView clAddback;
-    @FXML
     private Label clAdd;
     @FXML
     private ImageView plAddBack;
@@ -79,6 +78,16 @@ public class AddMitarbeiterController implements Initializable {
     private ImageView logOutBack;
     @FXML
     private Label logout;
+    private Button confirm;
+    @FXML
+    private Label title;
+    
+    String comparison = "english";
+    String messa = "";
+    @FXML
+    private Label clAdden;
+    @FXML
+    private Button submit;
     /**
      * Initializes the controller class.
      */
@@ -104,17 +113,34 @@ public class AddMitarbeiterController implements Initializable {
                 stage.setY(event.getScreenY() - yOffset);
             }
         });
+        String language = Database.getInstance().getLanguages();
+        System.out.println(language + comparison);
+        if (language.equals(comparison)) {
+            title.setText("Add Employee");
+            firstname.setPromptText("Firstname:");
+            lastname.setPromptText("Lastname:");
+            departement.setPromptText("Gender");
+            submit.setText("Submit");
+            clAdden.setText("Add clients");
+            plAdd.setText("Add products");
+            logout.setText("Log out");
+            arAdd.setText("Add Employee");
+            messa = "Employee has been added.";
+        } else {
+            messa = "Le employés a été ajouté.";
+        }
     }
 
     @FXML
     private void adden(ActionEvent event) {
 
         Database.getInstance().addMitarbeiter(firstname.getText(), lastname.getText(), departement.getText());
-        message.setText("Le employés a été ajouté.");
+        message.setText(messa);
     }
 
     @FXML
     private void close(ActionEvent event) {
+        Database.getInstance().editLanguage();
         System.exit(0);
     }
 
@@ -205,7 +231,7 @@ public class AddMitarbeiterController implements Initializable {
 
    @FXML
     private void addClientExit(MouseEvent event) {
-        clAdd.setOpacity(0);
+        clAdden.setOpacity(0);
         clAddback.setOpacity(0);
     }
 
@@ -213,8 +239,7 @@ public class AddMitarbeiterController implements Initializable {
     private void addClientEnter(MouseEvent event) {
         if (activated == true) {
             clAddback.setOpacity(1);
-            clAdd.setOpacity(1);
-            clAdd.setText("Ajouter un client"); 
+            clAdden.setOpacity(1);
         }
         
     }

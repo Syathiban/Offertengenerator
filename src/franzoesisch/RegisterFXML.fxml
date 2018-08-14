@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -7,51 +8,60 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="669.0" style="-fx-background-color: white; -fx-border-width: 1 1 1 1; -fx-border-color: #39414E #39414E;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.RegisterFXMLController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="669.0" style="-fx-background-color: white; -fx-border-width: 1 1 1 1; -fx-border-color: #39414E #39414E;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.RegisterFXMLController">
    <children>
-      <Pane fx:id="topbar" prefHeight="28.0" prefWidth="670.0" style="-fx-background-color: #39414E;">
+      <AnchorPane fx:id="topbar" layoutX="-6.0" prefHeight="35.0" prefWidth="676.0" style="-fx-background-color: #39414E;">
          <children>
-            <ImageView fitHeight="37.0" fitWidth="60.0" layoutX="6.0" layoutY="-4.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="33.0" fitWidth="37.0" layoutX="10.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/retrun.png" />
                </image>
             </ImageView>
-            <Button ellipsisString="" focusTraversable="false" layoutX="590.0" layoutY="5.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize">
-               <font>
-                  <Font size="1.0" />
-               </font>
-            </Button>
-            <Button ellipsisString="" focusTraversable="false" layoutX="640.0" layoutY="5.0" mnemonicParsing="false" onAction="#close" prefHeight="17.0" prefWidth="17.0" styleClass="apple-close">
-               <font>
-                  <Font size="1.0" />
-               </font>
-            </Button>
-            <Button ellipsisString="" focusTraversable="false" layoutX="615.0" layoutY="5.0" mnemonicParsing="false" onAction="#minimize" prefHeight="17.0" prefWidth="17.0" styleClass="apple-minimize">
-               <font>
-                  <Font size="1.0" />
-               </font>
-            </Button>
+            <HBox alignment="CENTER_RIGHT" layoutX="51.0" prefHeight="34.0" prefWidth="618.0" spacing="5.0">
+               <children>
+                  <Button ellipsisString="" focusTraversable="false" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize">
+                     <font>
+                        <Font size="1.0" />
+                     </font>
+                  </Button>
+                  <Button ellipsisString="" focusTraversable="false" mnemonicParsing="false" onAction="#minimize" prefHeight="17.0" prefWidth="17.0" styleClass="apple-minimize">
+                     <font>
+                        <Font size="1.0" />
+                     </font>
+                  </Button>
+                  <Button ellipsisString="" focusTraversable="false" mnemonicParsing="false" onAction="#close" prefHeight="17.0" prefWidth="17.0" styleClass="apple-close">
+                     <font>
+                        <Font size="1.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+            </HBox>
          </children>
-      </Pane>
-      <Button fx:id="confirm" layoutX="209.0" layoutY="431.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="250.0" styleClass="button-submit" text="Confirmer" />
-      <ComboBox fx:id="sexuality" layoutX="209.0" layoutY="151.0" prefHeight="25.0" prefWidth="250.0" promptText="Sexe" styleClass="combobox" />
-      <TextField fx:id="name" layoutX="209.0" layoutY="112.0" prefHeight="25.0" prefWidth="250.0" promptText="nom de famille" styleClass="amount" />
-      <TextField fx:id="plz" layoutX="209.0" layoutY="192.0" prefHeight="25.0" prefWidth="250.0" promptText="code postal" styleClass="amount" />
-      <TextField fx:id="street" layoutX="209.0" layoutY="271.0" prefHeight="25.0" prefWidth="250.0" promptText="rue" styleClass="amount" />
-      <DatePicker fx:id="date" layoutX="209.0" layoutY="312.0" prefHeight="25.0" prefWidth="250.0" promptText="date" styleClass="datepicker" />
-      <TextField fx:id="surname" layoutX="209.0" layoutY="72.0" prefHeight="25.0" prefWidth="250.0" promptText="prénom" styleClass="amount" />
-      <TextField fx:id="ort" layoutX="209.0" layoutY="230.0" prefHeight="25.0" prefWidth="250.0" promptText="localité" styleClass="amount" />
-      <TextField fx:id="mail" layoutX="209.0" layoutY="350.0" prefHeight="25.0" prefWidth="250.0" promptText="email" styleClass="amount" />
-      <TextField fx:id="password" layoutX="209.0" layoutY="389.0" prefHeight="25.0" prefWidth="250.0" promptText="mot de passe" styleClass="amount" />
-      <Label fx:id="title" alignment="CENTER" layoutX="209.0" layoutY="34.0" prefHeight="27.0" prefWidth="250.0" text="Enregistrer">
+      </AnchorPane>
+      <Button fx:id="confirm" layoutX="210.0" layoutY="444.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="250.0" styleClass="button-submit" text="Confirmer" />
+      <ComboBox fx:id="sexuality" layoutX="210.0" layoutY="164.0" prefHeight="25.0" prefWidth="250.0" promptText="Sexe" styleClass="combobox" />
+      <TextField fx:id="name" layoutX="210.0" layoutY="124.0" prefHeight="25.0" prefWidth="250.0" promptText="nom de famille" styleClass="amount" />
+      <TextField fx:id="plz" layoutX="210.0" layoutY="204.0" prefHeight="25.0" prefWidth="250.0" promptText="code postal" styleClass="amount" />
+      <TextField fx:id="street" layoutX="210.0" layoutY="284.0" prefHeight="25.0" prefWidth="250.0" promptText="rue" styleClass="amount" />
+      <DatePicker fx:id="date" layoutX="210.0" layoutY="324.0" prefHeight="25.0" prefWidth="250.0" promptText="date" />
+      <TextField fx:id="surname" layoutX="210.0" layoutY="84.0" prefHeight="25.0" prefWidth="250.0" promptText="prénom" styleClass="amount" />
+      <TextField fx:id="ort" layoutX="210.0" layoutY="244.0" prefHeight="25.0" prefWidth="250.0" promptText="localité" styleClass="amount" />
+      <TextField fx:id="mail" layoutX="210.0" layoutY="364.0" prefHeight="25.0" prefWidth="250.0" promptText="email" styleClass="amount" />
+      <TextField fx:id="password" layoutX="210.0" layoutY="404.0" prefHeight="25.0" prefWidth="250.0" promptText="mot de passe" styleClass="amount" />
+      <Label fx:id="title" alignment="CENTER" layoutX="210.0" layoutY="46.0" prefHeight="27.0" prefWidth="250.0" text="Enregistrer">
          <font>
             <Font name="Agency FB" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="message" layoutX="209.0" layoutY="464.0" prefHeight="25.0" prefWidth="250.0">
+      <Label fx:id="message" alignment="CENTER" layoutX="210.0" layoutY="476.0" prefHeight="25.0" prefWidth="250.0">
          <font>
             <Font name="Agency FB" size="12.0" />
          </font>

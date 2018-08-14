@@ -213,8 +213,8 @@ public class Database {
         }
 
     }
-    
-      public ObservableList<String> getVendor() {
+
+    public ObservableList<String> getVendor() {
         ObservableList<String> vendor = FXCollections.observableArrayList();
         try {
             String sql = "select * from mitarbeiter";
@@ -228,8 +228,8 @@ public class Database {
         }
         return vendor;
     }
-      
-      public ResultSet getMitarbeiter(String firstname) {
+
+    public ResultSet getMitarbeiter(String firstname) {
         try {
             String sql = "select * from mitarbeiter where firstname = ?";
             PreparedStatement prepstatement = getConnection().prepareStatement(sql);
@@ -241,5 +241,57 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public void changeLanguage(String language) {
+        try {
+            String sql = "INSERT INTO sprachen VALUES(null, ?)";
+            PreparedStatement prepstatement = getConnection().prepareStatement(sql);
+            prepstatement.setString(1, language);
+            prepstatement.executeUpdate();
+
+        } catch (SQLException ex) {
+
+        }
+
+    }
+//
+//    public ResultSet getLanguage(int id) {
+//        try {
+//            String sql = "select * from sprachen where s_id = ?";
+//            PreparedStatement prepstatement = getConnection().prepareStatement(sql);
+//            ResultSet rs = prepstatement.executeQuery();
+//            rs.next();
+//            return rs;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return null;
+//    }
+    
+    public String getLanguages() {
+        String lang = "";
+        try {
+            String sql = "select sprache from sprachen";
+            ResultSet rs = statement.executeQuery(sql);
+
+            while (rs.next()) {
+                lang = rs.getString("sprache");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lang;
+    }
+
+    public void editLanguage() {
+        try {
+            String sql = "TRUNCATE TABLE sprachen";
+            PreparedStatement prepstatement = getConnection().prepareStatement(sql);
+            prepstatement.executeUpdate();
+        } catch (SQLException ex) {
+
+        }
+
     }
 }

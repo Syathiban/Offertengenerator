@@ -22,7 +22,7 @@ public class Französisch extends Application {
     public void start(Stage stage) throws Exception {
 
         this.stage = stage;
-        Parent root = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("changeLanguage.fxml"));
         Scene scene = new Scene(root);
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();

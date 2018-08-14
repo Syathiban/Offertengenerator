@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
@@ -72,14 +73,14 @@
          </font>
       </Label>
       <ComboBox fx:id="Cliente" layoutX="341.0" layoutY="196.0" onAction="#getInfo" prefHeight="27.0" prefWidth="202.0" promptText="client" styleClass="combobox" stylesheets="@stylesheet.css" />
-      <DatePicker fx:id="dateEmpfangsdatum" layoutX="341.0" layoutY="276.0" onAction="#getInfo" prefHeight="27.0" prefWidth="202.0" promptText="rendez-vous" style="-fx-background-color: white;" styleClass="datepicker" stylesheets="@stylesheet.css" />
+      <DatePicker fx:id="dateEmpfangsdatum" layoutX="341.0" layoutY="276.0" onAction="#getInfo" prefHeight="27.0" prefWidth="202.0" promptText="rendez-vous" stylesheets="@stylesheet.css" />
       <ComboBox fx:id="arbeiter" layoutX="341.0" layoutY="236.0" onAction="#getInfo" prefHeight="27.0" prefWidth="202.0" promptText="employés" styleClass="combobox" stylesheets="@stylesheet.css" />
       <ImageView fx:id="download" fitHeight="99.0" fitWidth="62.0" layoutX="787.0" layoutY="48.0" onMouseClicked="#generatePDF" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/download.png" />
          </image>
       </ImageView>
-      <Label fx:id="mess" layoutX="341.0" layoutY="351.0" prefHeight="20.0" prefWidth="202.0" styleClass="messageOutput">
+      <Label fx:id="mess" alignment="CENTER" layoutX="341.0" layoutY="351.0" prefHeight="20.0" prefWidth="202.0" styleClass="messageOutput">
          <font>
             <Font name="Agency FB" size="12.0" />
          </font>
@@ -89,7 +90,7 @@
             <Image url="@../Images/speech.png" />
          </image>
       </ImageView>
-      <Label fx:id="clAdd" layoutX="151.0" layoutY="46.0" opacity="0.0" text="Ajouter un client">
+      <Label fx:id="clAdd" alignment="CENTER" layoutX="142.0" layoutY="46.0" opacity="0.0" prefHeight="18.0" prefWidth="105.0" text="Ajouter un client">
          <font>
             <Font name="Agency FB" size="15.0" />
          </font>
@@ -99,7 +100,7 @@
             <Image url="@../Images/speech.png" />
          </image>
       </ImageView>
-      <Label fx:id="plAdd" layoutX="148.0" layoutY="253.0" opacity="0.0" text="Ajouter un produit">
+      <Label fx:id="plAdd" alignment="CENTER" layoutX="138.0" layoutY="253.0" opacity="0.0" prefHeight="18.0" prefWidth="105.0" text="Ajouter un produit">
          <font>
             <Font name="Agency FB" size="15.0" />
          </font>
@@ -109,7 +110,7 @@
             <Image url="@../Images/speech.png" />
          </image>
       </ImageView>
-      <Label fx:id="arAdd" layoutX="141.0" layoutY="471.0" opacity="0.0" text="Ajouter un employés">
+      <Label fx:id="arAdd" alignment="CENTER" layoutX="141.0" layoutY="471.0" opacity="0.0" prefHeight="18.0" prefWidth="105.0" text="Ajouter un employés">
          <font>
             <Font name="Agency FB" size="15.0" />
          </font>
@@ -119,10 +120,11 @@
             <Image url="@../Images/speech.png" />
          </image>
       </ImageView>
-      <Label fx:id="logOut" layoutX="161.0" layoutY="681.0" opacity="0.0" text="déconnecter">
+      <Label fx:id="logOut" alignment="CENTER" layoutX="139.0" layoutY="681.0" opacity="0.0" prefHeight="21.0" prefWidth="105.0" text="déconnecter">
          <font>
             <Font name="Agency FB" size="17.0" />
          </font>
       </Label>
+      <HBox layoutX="604.0" layoutY="173.0" prefHeight="100.0" prefWidth="200.0" />
    </children>
 </Pane>

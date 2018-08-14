@@ -81,9 +81,9 @@
             <Image url="@../Images/speech.png" />
          </image>
       </ImageView>
-      <Label fx:id="clAdd" layoutX="112.0" layoutY="24.0" opacity="0.0" text="Ajouter un client">
+      <Label fx:id="clAdd" alignment="CENTER" layoutX="102.0" layoutY="24.0" opacity="0.0" prefHeight="15.0" prefWidth="79.0" text="Ajouter un client">
          <font>
-            <Font name="Agency FB" size="12.0" />
+            <Font name="Agency FB" size="11.5" />
          </font>
       </Label>
       <ImageView fx:id="plAddBack" fitHeight="87.0" fitWidth="144.0" layoutX="80.0" layoutY="103.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
@@ -91,9 +91,9 @@
             <Image url="@../Images/speech.png" />
          </image>
       </ImageView>
-      <Label fx:id="plAdd" layoutX="109.0" layoutY="139.0" opacity="0.0" text="Ajouter un produit">
+      <Label fx:id="plAdd" alignment="CENTER" layoutX="106.0" layoutY="139.0" opacity="0.0" prefHeight="15.0" prefWidth="72.0" text="Ajouter un produit">
          <font>
-            <Font name="Agency FB" size="12.0" />
+            <Font name="Agency FB" size="11.5" />
          </font>
       </Label>
       <ImageView fx:id="arAddBack" fitHeight="87.0" fitWidth="144.0" layoutX="76.0" layoutY="218.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
@@ -101,9 +101,9 @@
             <Image url="@../Images/speech.png" />
          </image>
       </ImageView>
-      <Label fx:id="arAdd" layoutX="100.0" layoutY="254.0" opacity="0.0" text="Ajouter un employés">
+      <Label fx:id="arAdd" alignment="CENTER" layoutX="102.0" layoutY="254.0" opacity="0.0" text="Ajouter un employés">
          <font>
-            <Font name="Agency FB" size="12.0" />
+            <Font name="Agency FB" size="11.5" />
          </font>
       </Label>
       <ImageView fx:id="logOutBack" fitHeight="87.0" fitWidth="144.0" layoutX="75.0" layoutY="324.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
@@ -111,9 +111,9 @@
             <Image url="@../Images/speech.png" />
          </image>
       </ImageView>
-      <Label fx:id="logout" layoutX="114.0" layoutY="360.0" opacity="0.0" text="déconnecter">
+      <Label fx:id="logout" alignment="CENTER" layoutX="102.0" layoutY="360.0" opacity="0.0" prefHeight="15.0" prefWidth="69.0" text="déconnecter">
          <font>
-            <Font name="Agency FB" size="12.0" />
+            <Font name="Agency FB" size="11.5" />
          </font>
       </Label>
    </children>

@@ -8,6 +8,8 @@ package franzoesisch;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -16,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -32,8 +35,6 @@ public class AddCientController implements Initializable {
 
     @FXML
     private TextField txtFieldFirmenname;
-    @FXML
-    private TextField txtFieldAnrede;
     @FXML
     private TextField txtFieldNachname;
     @FXML
@@ -92,6 +93,12 @@ public class AddCientController implements Initializable {
     private ImageView logOutBack;
     @FXML
     private Label logout;
+    @FXML
+    private ComboBox<String> anrede;
+    String comparison = "english";
+    String messa = "";
+    String messa2 = "";
+    private ObservableList<String> Anrede = FXCollections.observableArrayList("Monsieur", "Madame");
 
     /**
      * Initializes the controller class.
@@ -118,18 +125,47 @@ public class AddCientController implements Initializable {
                 stage.setY(event.getScreenY() - yOffset);
             }
         });
+        anrede.setItems(Anrede);
+        String language = Database.getInstance().getLanguages();
+        System.out.println(language + comparison);
+        if (language.equals(comparison)) {
+            System.out.println("hallo");
+            title.setText("Add Clent");
+            txtFieldFirmenname.setPromptText("Company name:");
+            anrede.setPromptText("Salutation:");
+            txtFieldNachname.setPromptText("Lastname:");
+            txtFieldVorname.setPromptText("Firstname:");
+            txtFieldAdresse.setPromptText("Addresse");
+            txtFieldPlz.setPromptText("Postal code");
+            txtFieldOrt.setPromptText("City");
+            confirm.setText("Submit");
+            messa = "All fields must be filled in.";
+            clAdd.setText("Add clients");
+            plAdd.setText("Add products");
+            logout.setText("Log out");
+            arAdd.setText("Add Employee");
+            messa2 = "The client has been added.";
+        } else {
+            messa = "Tous les champs doivent être remplis.";
+            messa2 = "Le client a été ajouté.";
+        }
     }
 
     @FXML
     private void adden(ActionEvent event) {
-
-        Database.getInstance().addKunde(txtFieldFirmenname.getText(), txtFieldAnrede.getText(), txtFieldNachname.getText(), txtFieldVorname.getText(),
-                 txtFieldAdresse.getText(), txtFieldOrt.getText(), Integer.parseInt(txtFieldPlz.getText()));
-        message.setText("Le client a été ajouté.");
+        if (txtFieldFirmenname.getText().trim().isEmpty() || anrede.getSelectionModel().getSelectedItem().trim().isEmpty() || txtFieldNachname.getText().trim().isEmpty() || txtFieldVorname.getText().trim().isEmpty() || txtFieldAdresse.getText().trim().isEmpty() || txtFieldPlz.getText().trim().isEmpty() || txtFieldOrt.getText().trim().isEmpty()) {
+            message.setText(messa);
+        }else{
+            Database.getInstance().addKunde(txtFieldFirmenname.getText(), anrede.getSelectionModel().getSelectedItem(), txtFieldNachname.getText(), txtFieldVorname.getText(),
+                    txtFieldAdresse.getText(), txtFieldOrt.getText(), Integer.parseInt(txtFieldPlz.getText()));
+            message.setText(messa2);  
+        }
+        
     }
 
     @FXML
     private void close(ActionEvent event) {
+        Database.getInstance().editLanguage();
         System.exit(0);
     }
 
@@ -207,31 +243,6 @@ public class AddCientController implements Initializable {
             activated = true;
         }
     }
-//    public void changeLanguageEnglish(){
-//        title.setText("Add Client");
-//        txtFieldNachname.setPromptText("Lastname:");
-//        txtFieldVorname.setPromptText("Firstname:");
-//        txtFieldFirmenname.setPromptText("Company name:");
-//        txtFieldAnrede.setPromptText("Salutation:");
-//        txtFieldAdresse.setPromptText("Addresse:");
-//        txtFieldPlz.setPromptText("Postal code:");
-//        txtFieldOrt.setPromptText("City:");
-//        confirm.setText("Add");
-//        Rcon.changeLanguageEnglish();
-//    }
-//    
-//    public void changeLanguageFrench(){
-//        title.setText("Ajouter un client");
-//        txtFieldNachname.setPromptText("nom de famille:");
-//        txtFieldVorname.setPromptText("prénom:");
-//        txtFieldFirmenname.setPromptText("nom de l'enterprise:");
-//        txtFieldAnrede.setPromptText("titre:");
-//        txtFieldAdresse.setPromptText("adresse:");
-//        txtFieldPlz.setPromptText("code postal:");
-//        txtFieldOrt.setPromptText("localité:");
-//        confirm.setText("Ajouter");
-//        Rcon.changeLanguageFrench();
-//    }
     @FXML
     private void addMitarbeiter(MouseEvent event) throws IOException {
         Stage stage = Französisch.getStage();
@@ -254,7 +265,6 @@ public class AddCientController implements Initializable {
         if (activated == true) {
             clAddback.setOpacity(1);
             clAdd.setOpacity(1);
-            clAdd.setText("Ajouter un client");
         }
         
     }
