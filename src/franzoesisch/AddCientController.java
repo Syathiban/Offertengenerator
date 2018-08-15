@@ -59,7 +59,7 @@ public class AddCientController implements Initializable {
     private ImageView productAdd;
     @FXML
     private ImageView logOut;
-
+    String male, female;
     private boolean activated = false;
     @FXML
     private Label message;
@@ -145,10 +145,18 @@ public class AddCientController implements Initializable {
             logout.setText("Log out");
             arAdd.setText("Add Employee");
             messa2 = "The client has been added.";
+            male = "Mister";
+            female = "Madame";
         } else {
-            messa = "Tous les champs doivent être remplis.";
+            messa = "Tous les champs sont obligatoires.";
             messa2 = "Le client a été ajouté.";
+            male = "Monsieur";
+            female = "Madame";
         }
+        ObservableList<String> comboBoxFiller = FXCollections.observableArrayList();
+        comboBoxFiller.addAll(male, female);
+
+        anrede.setItems(comboBoxFiller);
     }
 
     @FXML

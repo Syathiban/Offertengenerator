@@ -119,7 +119,7 @@ public class AddMitarbeiterController implements Initializable {
             title.setText("Add Employee");
             firstname.setPromptText("Firstname:");
             lastname.setPromptText("Lastname:");
-            departement.setPromptText("Gender");
+            departement.setPromptText("departement");
             submit.setText("Submit");
             clAdden.setText("Add clients");
             plAdd.setText("Add products");
