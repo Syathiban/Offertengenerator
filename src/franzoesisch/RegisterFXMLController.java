@@ -110,7 +110,7 @@ public class RegisterFXMLController implements Initializable {
                 stage.setY(event.getScreenY() - yOffset);
             }
         });
-        sexuality.setItems(Geschlecht);
+//        sexuality.setItems(Geschlecht);
         try {
             sexuality.getSelectionModel().getSelectedItem();
             name.getText();

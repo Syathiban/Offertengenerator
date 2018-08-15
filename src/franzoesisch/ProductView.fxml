@@ -1,120 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="425.0" prefWidth="600.0" style="-fx-background-color: white; -fx-border-width: 1 1 1 1; -fx-border-color: #39414E;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.ProductViewController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="600.0" style="-fx-background-color: white; -fx-border-color: #39414E; fx-border-width: 1 1 1 1;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.ProductViewController">
    <children>
-      <TextField fx:id="txtFieldProduktName" layoutX="174.0" layoutY="130.0" prefHeight="27.0" prefWidth="252.0" promptText="prénom" styleClass="amount" />
-      <TextField fx:id="txtFieldStückpreis" layoutX="174.0" layoutY="186.0" prefHeight="27.0" prefWidth="252.0" promptText="prix à l'unité" styleClass="amount" />
-      <TextField fx:id="txtFieldTyp" layoutX="174.0" layoutY="245.0" prefHeight="27.0" prefWidth="252.0" promptText="modèle" styleClass="amount" />
-      <Button fx:id="confirm" layoutX="174.0" layoutY="300.0" mnemonicParsing="false" onAction="#hinzufügen" prefHeight="27.0" prefWidth="252.0" styleClass="button-submit" stylesheets="@stylesheet.css" text="Ajouter" />
-      <Pane fx:id="menu" layoutX="-1.0" layoutY="28.0" opacity="0.0" prefHeight="419.0" prefWidth="126.0" style="-fx-background-color: #39414E;">
+      <TextField fx:id="txtFieldProduktName" layoutX="174.0" layoutY="139.0" prefHeight="27.0" prefWidth="252.0" promptText="prénom" styleClass="amount" />
+      <TextField fx:id="txtFieldStückpreis" layoutX="174.0" layoutY="195.0" prefHeight="27.0" prefWidth="252.0" promptText="prix à l'unité" styleClass="amount" />
+      <TextField fx:id="txtFieldTyp" layoutX="174.0" layoutY="254.0" prefHeight="27.0" prefWidth="252.0" promptText="modèle" styleClass="amount" />
+      <Button fx:id="confirm" layoutX="174.0" layoutY="309.0" mnemonicParsing="false" onAction="#hinzufügen" prefHeight="27.0" prefWidth="252.0" styleClass="button-submit" stylesheets="@../../../../../Desktop/Franzoesisch%20(2)/Franzoesisch/src/franzoesisch/stylesheet.css" text="Ajouter" />
+      <Label fx:id="title" alignment="CENTER" layoutX="174.0" layoutY="80.0" prefHeight="24.0" prefWidth="252.0" text="Ajouter un produit">
+         <font>
+            <Font name="Agency FB" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="message" layoutX="174.0" layoutY="353.0" prefHeight="18.0" prefWidth="252.0">
+         <font>
+            <Font name="Agency FB" size="16.0" />
+         </font>
+      </Label>
+      <Pane fx:id="topbar" layoutX="-2.0" layoutY="-3.0" prefHeight="35.0" prefWidth="604.0" style="-fx-background-color: #39414E;">
          <children>
-            <ImageView fx:id="clientAdd" fitHeight="68.0" fitWidth="76.0" layoutX="29.0" onMouseClicked="#cAdd" onMouseEntered="#addClientEnter" onMouseExited="#addClientExit" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="returnView" fitHeight="40.0" fitWidth="48.0" layoutY="-2.0" onMouseClicked="#rView" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/retrun.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="menuOpen" fitHeight="27.0" fitWidth="25.0" layoutX="61.0" layoutY="5.0" onMouseClicked="#openMenu" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/meun.png" />
+               </image>
+            </ImageView>
+            <HBox alignment="CENTER_RIGHT" layoutX="294.0" layoutY="4.0" prefHeight="27.0" prefWidth="307.0" spacing="5.0">
+               <children>
+                  <Button ellipsisString="" focusTraversable="false" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize" stylesheets="@stylesheet.css">
+                     <font>
+                        <Font size="1.0" />
+                     </font>
+                  </Button>
+                  <Button ellipsisString="" focusTraversable="false" mnemonicParsing="false" onAction="#minimize" prefHeight="17.0" prefWidth="17.0" styleClass="apple-minimize" stylesheets="@stylesheet.css">
+                     <font>
+                        <Font size="1.0" />
+                     </font>
+                  </Button>
+                  <Button ellipsisString="" focusTraversable="false" mnemonicParsing="false" onAction="#close" prefHeight="17.0" prefWidth="17.0" styleClass="apple-close" stylesheets="@stylesheet.css">
+                     <font>
+                        <Font size="1.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </Pane>
+      <Pane fx:id="menu" layoutY="32.0" opacity="0.0" prefHeight="432.0" prefWidth="133.0" style="-fx-background-color: #39414E;">
+         <children>
+            <ImageView fx:id="clientAdd" fitHeight="68.0" fitWidth="76.0" layoutX="30.0" layoutY="12.0" onMouseClicked="#cAdd" onMouseEntered="#addClientEnter" onMouseExited="#addClientExit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/create_user_man_male-512.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="productAdd" fitHeight="68.0" fitWidth="76.0" layoutX="29.0" layoutY="110.0" onMouseClicked="#pAdd" onMouseEntered="#addProduitEnter" onMouseExited="#addProduitExit" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="productAdd" fitHeight="68.0" fitWidth="76.0" layoutX="30.0" layoutY="132.0" onMouseClicked="#pAdd" onMouseEntered="#addProduitEnter" onMouseExited="#addProduitExit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/add-product-512.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="logOut" fitHeight="68.0" fitWidth="76.0" layoutX="29.0" layoutY="330.0" onMouseClicked="#logOut" onMouseEntered="#logOutEnter" onMouseExited="#logOutExit" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logOut" fitHeight="68.0" fitWidth="76.0" layoutX="29.0" layoutY="352.0" onMouseClicked="#logOut" onMouseEntered="#logOutEnter" onMouseExited="#logOutExit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/imageedit_3_3173642382.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="mitarbeiter" fitHeight="68.0" fitWidth="76.0" layoutX="29.0" layoutY="220.0" onMouseClicked="#addMitarbeiter" onMouseEntered="#addArbeiterEnter" onMouseExited="#addArbeiterExit" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="mitarbeiter" fitHeight="68.0" fitWidth="76.0" layoutX="30.0" layoutY="242.0" onMouseClicked="#addMitarbeiter" onMouseEntered="#addArbeiterEnter" onMouseExited="#addArbeiterExit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/business-01-512.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="topbar" layoutY="-1.0" prefHeight="30.0" prefWidth="597.0" style="-fx-background-color: #39414E;">
-         <children>
-            <Button ellipsisString="" focusTraversable="false" layoutX="519.0" layoutY="6.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize" stylesheets="@stylesheet.css">
-               <font>
-                  <Font size="1.0" />
-               </font>
-            </Button>
-            <Button ellipsisString="" focusTraversable="false" layoutX="569.0" layoutY="6.0" mnemonicParsing="false" onAction="#close" prefHeight="17.0" prefWidth="17.0" styleClass="apple-close" stylesheets="@stylesheet.css">
-               <font>
-                  <Font size="1.0" />
-               </font>
-            </Button>
-            <Button ellipsisString="" focusTraversable="false" layoutX="544.0" layoutY="6.0" mnemonicParsing="false" onAction="#minimize" prefHeight="17.0" prefWidth="17.0" styleClass="apple-minimize" stylesheets="@stylesheet.css">
-               <font>
-                  <Font size="1.0" />
-               </font>
-            </Button>
-            <ImageView fx:id="returnView" fitHeight="40.0" fitWidth="48.0" layoutY="-5.0" onMouseClicked="#rView" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/retrun.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="menuOpen" fitHeight="27.0" fitWidth="25.0" layoutX="59.0" layoutY="2.0" onMouseClicked="#openMenu" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/meun.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-      <Label fx:id="title" alignment="CENTER" layoutX="174.0" layoutY="71.0" prefHeight="24.0" prefWidth="252.0" text="Ajouter un produit">
-         <font>
-            <Font name="Agency FB" size="20.0" />
-         </font></Label>
-      <Label fx:id="message" layoutX="174.0" layoutY="344.0" prefHeight="18.0" prefWidth="252.0">
-         <font>
-            <Font name="Agency FB" size="16.0" />
-         </font></Label>
-      <ImageView fx:id="clAddback" fitHeight="87.0" fitWidth="144.0" layoutX="80.0" layoutY="-12.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="clAddback" fitHeight="87.0" fitWidth="144.0" layoutX="94.0" layoutY="24.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/speech.png" />
          </image>
       </ImageView>
-      <Label fx:id="clAdd" alignment="CENTER" layoutX="102.0" layoutY="24.0" opacity="0.0" prefHeight="15.0" prefWidth="79.0" text="Ajouter un client">
+      <Label fx:id="clAdd" alignment="CENTER" layoutX="117.0" layoutY="60.0" opacity="0.0" prefHeight="15.0" prefWidth="78.0" text="Ajouter un client">
          <font>
             <Font name="Agency FB" size="11.5" />
          </font>
       </Label>
-      <ImageView fx:id="plAddBack" fitHeight="87.0" fitWidth="144.0" layoutX="80.0" layoutY="103.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="plAddBack" fitHeight="87.0" fitWidth="144.0" layoutX="94.0" layoutY="139.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/speech.png" />
          </image>
       </ImageView>
-      <Label fx:id="plAdd" alignment="CENTER" layoutX="106.0" layoutY="139.0" opacity="0.0" prefHeight="15.0" prefWidth="72.0" text="Ajouter un produit">
+      <Label fx:id="plAdd" alignment="CENTER" layoutX="126.0" layoutY="175.0" opacity="0.0" text="Ajouter un produit">
          <font>
             <Font name="Agency FB" size="11.5" />
          </font>
       </Label>
-      <ImageView fx:id="arAddBack" fitHeight="87.0" fitWidth="144.0" layoutX="76.0" layoutY="218.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="arAddBack" fitHeight="87.0" fitWidth="144.0" layoutX="94.0" layoutY="254.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/speech.png" />
          </image>
       </ImageView>
-      <Label fx:id="arAdd" alignment="CENTER" layoutX="102.0" layoutY="254.0" opacity="0.0" text="Ajouter un employés">
+      <Label fx:id="arAdd" alignment="CENTER" layoutX="118.0" layoutY="290.0" opacity="0.0" prefHeight="15.0" prefWidth="78.0" text="Ajouter un employés">
          <font>
             <Font name="Agency FB" size="11.5" />
          </font>
       </Label>
-      <ImageView fx:id="logOutBack" fitHeight="87.0" fitWidth="144.0" layoutX="75.0" layoutY="324.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logOutBack" fitHeight="87.0" fitWidth="144.0" layoutX="89.0" layoutY="360.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/speech.png" />
          </image>
       </ImageView>
-      <Label fx:id="logout" alignment="CENTER" layoutX="102.0" layoutY="360.0" opacity="0.0" prefHeight="15.0" prefWidth="69.0" text="déconnecter">
+      <Label fx:id="logout" alignment="CENTER" layoutX="115.0" layoutY="396.0" opacity="0.0" prefHeight="15.0" prefWidth="72.0" text="déconnecter">
          <font>
             <Font name="Agency FB" size="11.5" />
          </font>
       </Label>
    </children>
-</AnchorPane>
+</Pane>
