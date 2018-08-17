@@ -5,6 +5,7 @@
  */
 package franzoesisch;
 
+import java.util.Calendar;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.PageSize;
@@ -59,7 +60,7 @@ public class FXMLDocumentController implements Initializable {
     String payment1, payment2, payment3;
 
     private ObservableList<String> Zahlung = FXCollections.observableArrayList("PayPal.", "bank transfer.", "credit card.");
-    private ObservableList<String> Zahlungen = FXCollections.observableArrayList("par PayPal.", "par virement bancaire.", "par carte de crédit." );
+    private ObservableList<String> Zahlungen = FXCollections.observableArrayList("par PayPal.", "par virement bancaire.", "par carte de crédit.");
 
     @FXML
     private Button submit;
@@ -88,7 +89,7 @@ public class FXMLDocumentController implements Initializable {
 
     private String Firmenname = "<Firmenname>",
             Vorname = "<Vorname>",
-            Nachname = "<Nachname>", Adresszeile_1 = "<Adresse>", Ort = "<Stadt>", Anrede = "<Anrede>", automatischesDatum, Produktname, Termin1 = "<Termin1>";
+            Nachname = "<Nachname>", Adresszeile_1 = "<Adresse>", Ort = "<Stadt>", Anrede = "<Anrede>", automatischesDatum, Produktname, Termin1 = "<Termin1>", Ablaufdatum;
 
     private double Einzelpreis, Totalpreis, Rabatt;
     private int Postleitzahl, Anzahl;
@@ -134,7 +135,7 @@ public class FXMLDocumentController implements Initializable {
     private Label mess;
     @FXML
     private Label clAdd;
-
+    String warn;
     @FXML
     private ImageView clAddback;
     @FXML
@@ -149,6 +150,7 @@ public class FXMLDocumentController implements Initializable {
     private ImageView logOutBack;
     @FXML
     private Label logOut;
+    private DatePicker ablaufdatum;
 
     @FXML
     public void getInfo() throws SQLException {
@@ -164,12 +166,13 @@ public class FXMLDocumentController implements Initializable {
             Postleitzahl = kunde.getInt("plz");
 
             Produktname = product.getSelectionModel().getSelectedItem();
-            aaa = Integer.parseInt(amount.getText());
-            ResultSet produkt = Database.getInstance().getProdukt(Produktname);
-            Einzelpreis = produkt.getDouble("stückpreis");
-            Einzelpreis = produkt.getDouble("stückpreis");
+            Einzelpreis = Database.getInstance().getProdukt(Produktname).getDouble("stückpreis");
+            
+            if (!amount.getText().trim().isEmpty()) {
+                aaa = Integer.parseInt(amount.getText());
+            }
 
-            Totalpreis = Einzelpreis * aaa;
+            
 
             if (dateEmpfangsdatum.getValue() != null) {
                 LocalDate ld = dateEmpfangsdatum.getValue();
@@ -179,6 +182,10 @@ public class FXMLDocumentController implements Initializable {
                 DateFormat dateFormat = new SimpleDateFormat("dd.MM.YYYY");
 
                 Termin1 = dateFormat.format(date);
+
+                c.add(Calendar.DAY_OF_MONTH, 30);
+                Date date2 = c.getTime();
+                Ablaufdatum = dateFormat.format(date2);
             }
             Verkäufer = arbeiter.getSelectionModel().getSelectedItem();
 
@@ -191,8 +198,8 @@ public class FXMLDocumentController implements Initializable {
         DateFormat dateFormat = new SimpleDateFormat("dd.MM.YYYY");
         Date date = new Date();
         automatischesDatum = dateFormat.format(date);
-
         bbb = 10;
+        Totalpreis = Einzelpreis * aaa;
         res = Totalpreis / bbb;
         Rabattmenge = 4000.00;
 
@@ -211,7 +218,7 @@ public class FXMLDocumentController implements Initializable {
                 + "Nous vous proposons le " + Produktname + " au prix de " + Einzelpreis + " CHF chacun, y compris " + MWST + "% de TVA .\n"
                 + "En outre, vous pouvez profiter d’une remise spéciale de " + bbb + " % pour toute commande" + "  supérieure à " + Rabattmenge + " CHF.\n"
                 + "Nous promettons de vous livrer la commande sous 7 jours." + "\n" + "Le délai de paiement est de " + Zahlungsfrist + " jours" + " " + "après réception de la marchandise." + "\n"
-                + "Nous vous prions de payer avec" + payment + " Cette offre est valable" + " " + "jusqu'au " + Termin1 + "." + "\n\n"
+                + "Nous vous prions de payer avec" + payment + " Cette offre est valable" + " " + "jusqu'au " + Ablaufdatum + "." + "\n\n"
                 + "Actuellement, nous avons notre mois de promotion pour nos produits.\nAvec nos produits, ils réalisent ce qu'ils ont manqué. C'est l'occasion idéale de trouver de nouveaux produits pour un public jeune et urbain.\n"
                 + "Notre gamme de produits est en constante évolution.\nAppelez-nous si vous souhaitez qu'un membre de notre personnel vous présente nos nouveaux produits à la maison. \nOu visitez notre boutique à Lausanne pour découvrir nos derniers produits et services. \n"
                 + "" + "Si vous avec encore des questions, n'hésitez pas de nous contacter.\n"
@@ -240,7 +247,7 @@ public class FXMLDocumentController implements Initializable {
                 + "En outre, vous pouvez profiter d’une remise spéciale de " + bbb + " % pour toute commande" + "<br>" + "supérieure à " + Rabattmenge + " CHF." + "<br><br>";
 
         offertenTextPDF += "Nous promettons de vous livrer la commande sous 7 jours." + "\n" + "  Le délai de paiement est de " + Zahlungsfrist + " jours" + " " + "après réception de la marchandise." + "\n"
-                + "  Nous vous prions de payer " + payment + " Cette offre est valable" + " " + "jusqu'au " + Termin1 + "." + "\n\n  ";
+                + "  Nous vous prions de payer " + payment + " Cette offre est valable" + " " + "jusqu'au " + Ablaufdatum + "." + "\n\n  ";
 
         offertenTextPDF += "Actuellement, nous avons notre mois de promotion pour nos produits." + "\n" + "Avec nos produits, ils réalisent ce qu'ils ont manqué. C'est l'occasion idéale de trouver de nouveaux produits pour un public jeune et urbain." + "<br><br>";
         offertenTextPDF += "\n" + "Notre gamme de produits est en constante évolution." + "\n" + " Appelez-nous si vous souhaitez qu'un membre de notre personnel vous présente nos nouveaux produits à la maison." + "\n" + " Ou visitez notre boutique à Lausanne pour découvrir nos derniers produits et services. \n";
@@ -251,7 +258,7 @@ public class FXMLDocumentController implements Initializable {
         offertenTextPDF += Verkäufer;
         return offertenTextPDF;
     }
-    
+
     public String getHTMLTextEnglish() {
 
         String offertenTextPDF = "";
@@ -266,9 +273,9 @@ public class FXMLDocumentController implements Initializable {
         offertenTextPDF += "" + aaa + "   " + Produktname + "   " + Totalpreis + " CHF" + "  " + MWST + "%" + "<br><br>";
         offertenTextPDF += "We offer you the " + Produktname + " at the price of " + Einzelpreis + " CHF each, including " + MWST + "% VAT" + "<br><br>";
         offertenTextPDF += "In addition, you can benefit from a special discount of " + bbb + " % for any order that is" + "<br>" + "higher than " + Rabattmenge + " CHF." + "<br><br>";
-        offertenTextPDF += "We promise to deliver the order within 7 days." + "\n" + " The payment period is " + Zahlungsfrist + " days" + " " + "after receipt of goods." + "\n" 
-               +  "  Please pay with" + payment + "This offer is valid until" + Termin1 + "." + "\n\n  ";
-        offertenTextPDF += "Right now, we have our product promotion month. With our products, you will realize what you missed." + "\n" + "It's the perfect opportunity to find new products for a young, urban audience." +"<br><br>";
+        offertenTextPDF += "We promise to deliver the order within 7 days." + "\n" + " The payment period is " + Zahlungsfrist + " days" + " " + "after receipt of goods." + "\n"
+                + "  Please pay with" + payment + "This offer is valid until " + Ablaufdatum + "." + "\n\n  ";
+        offertenTextPDF += "Right now, we have our product promotion month. With our products, you will realize what you missed." + "\n" + "It's the perfect opportunity to find new products for a young, urban audience." + "<br><br>";
         offertenTextPDF += "\n" + "Our product range is constantly evolving. Call us if you want a member of our staff to introduce you to our new products at home." + "\n" + "Or visit our shop in Lausanne to discover our latest products and services. \n";
         offertenTextPDF += "" + " If you still have questions, don't hesitate to contact us." + "<br><br>";
         offertenTextPDF += "While waiting for your order, we ask you to accept our best regards." + "<br><br>";
@@ -294,14 +301,19 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        download.setOpacity(1);
-        String nuts = Database.getInstance().getLanguages();
-        if (nuts.equals(comparison)) {
-            CreateOfferEnglish();
-            letter.setText(offertenText);
+        if (product.getSelectionModel().isEmpty() || amount.getText().isEmpty() || zahlung.getSelectionModel().isEmpty() || Cliente.getSelectionModel().isEmpty()
+                || arbeiter.getSelectionModel().isEmpty() || dateEmpfangsdatum.getValue() == null) {
+            mess.setText(warn);
         } else {
-            CreateOfferText();
-            letter.setText(offertenText);
+            download.setOpacity(1);
+            String nuts = Database.getInstance().getLanguages();
+            if (nuts.equals(comparison)) {
+                CreateOfferEnglish();
+                letter.setText(offertenText);
+            } else {
+                CreateOfferText();
+                letter.setText(offertenText);
+            }
         }
 
     }
@@ -334,7 +346,7 @@ public class FXMLDocumentController implements Initializable {
         System.out.println(language + comparison);
         if (language.equals(comparison)) {
             System.out.println("hallo");
-            title.setText("SIGN IN");
+            title.setText("Create Offer");
             product.setPromptText("Product:");
             amount.setPromptText("Amount:");
             zahlung.setPromptText("Payment method");
@@ -348,7 +360,9 @@ public class FXMLDocumentController implements Initializable {
             logOut.setText("Log out");
             arAdd.setText("Add Employee");
             zahlung.setItems(Zahlung);
+            warn = "All fields must be filled in.";
         } else {
+            warn = "Tous les champs doivent être remplis.";
             messa = "Le document a été créé et sauvegardé avec succès.";
             zahlung.setItems(Zahlungen);
         }
@@ -360,7 +374,7 @@ public class FXMLDocumentController implements Initializable {
         DateFormat dateFormat = new SimpleDateFormat("dd.MM.YYYY");
         Date date = new Date();
         automatischesDatum = dateFormat.format(date);
-
+        Totalpreis = Einzelpreis * aaa;
         bbb = 10;
         res = Totalpreis / bbb;
         Rabattmenge = 4000.00;
@@ -368,19 +382,19 @@ public class FXMLDocumentController implements Initializable {
         item = product.getSelectionModel().getSelectedItem();
         payment = zahlung.getSelectionModel().getSelectedItem();
         offertenText = ("VIN de Lausanne SA \n" + "3, Rue de la Piquette \n 2000 Lausanne\n\n"
-                + Firmenname + "\n" +  Nachname + " " + Vorname + "\n " + Adresszeile_1 + "\n " + Postleitzahl + " " + Ort + "\n\n\n\n"
+                + Firmenname + "\n" + Nachname + " " + Vorname + "\n" + Adresszeile_1 + "\n" + Postleitzahl + " " + Ort + "\n\n\n\n"
                 + "Lausanne, " + automatischesDatum + "\n\n\n"
                 + "Offer for " + Produktname + "\n"
                 + "\n\n"
                 + "\n"
-                + "" + Anrede + "" + Nachname + ",\n\n"
+                + "" + Anrede + " " + Nachname + ",\n\n"
                 + "We have received your request from" + "" + Termin1 + "" + "and we thank you very much." + "\n"
                 + "We are pleased to submit the following offer." + "\n\n"
                 + "" + aaa + "  " + Produktname + "  " + Totalpreis + " CHF " + " " + MWST + "%\n\n"
                 + "We offer you the " + Produktname + " at the price of " + Einzelpreis + " CHF each, including " + MWST + "% VAT .\n"
                 + "In addition, you can benefit from a special discount of " + bbb + " % for any order that is higher than " + Rabattmenge + " CHF.\n"
                 + "We promise to deliver the order within 7 days." + " The payment period is " + Zahlungsfrist + "days" + "" + "after receipt of goods." + "\n"
-                + "Please pay with" + payment + "This offer is valid until" + Termin1 + "." + "\n\n"
+                + "Please pay with" + payment + "This offer is valid until " + Ablaufdatum + "." + "\n\n"
                 + "Right now, we have our product promotion month. With our products, you will realize what you missed." + "\n" + "It's the perfect opportunity to find new products for a young, urban audience."
                 + "Our product range is constantly evolving. Call us if you want a member of our staff to introduce you to our new products at home." + "\n" + "Or visit our shop in Lausanne to discover our latest products and services. \n"
                 + "If you still have questions, don't hesitate to contact us."

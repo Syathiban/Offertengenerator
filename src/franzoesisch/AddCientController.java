@@ -130,7 +130,7 @@ public class AddCientController implements Initializable {
         System.out.println(language + comparison);
         if (language.equals(comparison)) {
             System.out.println("hallo");
-            title.setText("Add Clent");
+            title.setText("Add Client");
             txtFieldFirmenname.setPromptText("Company name:");
             anrede.setPromptText("Salutation:");
             txtFieldNachname.setPromptText("Lastname:");

@@ -29,7 +29,7 @@ public class Database {
     public Database() {
         try {
             //Verbindung zum Server herstellen
-            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/athiban_offerte", "root", "");
+            this.connection = DriverManager.getConnection("jdbc:mysql://home.rain2.tk:3306/athiogg", "athiban", "Kinderbueno2");
             this.statement = connection.createStatement();
         } catch (SQLException ex) {
             System.err.println(ex);

@@ -11,18 +11,18 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="274.0" prefWidth="400.0" style="-fx-background-color: white; -fx-border-width: 1 1 1 1; -fx-border-color: #39414E;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.LoginFXMLController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="530.0" style="-fx-background-color: white; -fx-border-width: 1 1 1 1; -fx-border-color: #39414E;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="franzoesisch.LoginFXMLController">
    <children>
-      <Label fx:id="title" alignment="CENTER" layoutX="76.0" layoutY="45.0" prefHeight="30.0" prefWidth="248.0" text="S'identifier">
+      <Label fx:id="title" alignment="CENTER" layoutX="141.0" layoutY="92.0" prefHeight="30.0" prefWidth="248.0" text="S'identifier">
          <font>
             <Font name="Agency FB" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="mail" layoutX="102.0" layoutY="94.0" prefHeight="30.0" prefWidth="200.0" promptText="email:" styleClass="amount" stylesheets="@stylesheet.css" />
-      <Button fx:id="confirm" layoutX="102.0" layoutY="176.0" mnemonicParsing="false" onAction="#submit" prefHeight="30.0" prefWidth="200.0" styleClass="button-submit" stylesheets="@stylesheet.css" text="Se connecter" />
-      <Pane fx:id="topbar" prefHeight="30.0" prefWidth="400.0" style="-fx-background-color: #39414E;">
+      <TextField fx:id="mail" layoutX="165.0" layoutY="140.0" prefHeight="30.0" prefWidth="200.0" promptText="email:" styleClass="amount" stylesheets="@stylesheet.css" />
+      <Button fx:id="confirm" layoutX="165.0" layoutY="225.0" mnemonicParsing="false" onAction="#submit" prefHeight="30.0" prefWidth="200.0" styleClass="button-submit" stylesheets="@stylesheet.css" text="Se connecter" />
+      <Pane fx:id="topbar" prefHeight="30.0" prefWidth="530.0" style="-fx-background-color: #39414E;">
          <children>
-            <HBox alignment="CENTER_RIGHT" layoutX="38.0" prefHeight="30.0" prefWidth="362.0" spacing="5.0">
+            <HBox alignment="CENTER_RIGHT" layoutX="38.0" prefHeight="30.0" prefWidth="492.0" spacing="5.0">
                <children>
                   <Button ellipsisString="" focusTraversable="false" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize" stylesheets="@stylesheet.css">
                      <font>
@@ -51,8 +51,8 @@
             </ImageView>
          </children>
       </Pane>
-      <PasswordField fx:id="password" layoutX="102.0" layoutY="135.0" prefHeight="30.0" prefWidth="200.0" promptText="mot de passe:" styleClass="amount" stylesheets="@stylesheet.css" />
-      <Label fx:id="message" alignment="CENTER" layoutX="102.0" layoutY="224.0" prefHeight="30.0" prefWidth="200.0" styleClass="messageOutput">
+      <PasswordField fx:id="password" layoutX="165.0" layoutY="180.0" prefHeight="30.0" prefWidth="200.0" promptText="mot de passe:" styleClass="amount" stylesheets="@stylesheet.css" />
+      <Label fx:id="message" alignment="CENTER" layoutX="165.0" layoutY="268.0" prefHeight="30.0" prefWidth="200.0" styleClass="messageOutput">
          <font>
             <Font name="Agency FB" size="13.0" />
          </font>
