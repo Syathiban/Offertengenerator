@@ -23,6 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -152,6 +153,16 @@ public class LoginFXMLController implements Initializable {
     public void changeLanguageFrench(boolean one) {
         one = false;
 //        Pcon.changeLanguageFrench();
+    }
+
+    @FXML
+    private void changeLanguage(MouseEvent event) throws IOException {
+        Stage stage = Französisch.getStage();
+        Parent root = FXMLLoader.load(getClass().getResource("changeLanguage.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
     }
 
 }

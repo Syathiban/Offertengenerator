@@ -22,7 +22,7 @@
       <Button fx:id="confirm" layoutX="165.0" layoutY="225.0" mnemonicParsing="false" onAction="#submit" prefHeight="30.0" prefWidth="200.0" styleClass="button-submit" stylesheets="@stylesheet.css" text="Se connecter" />
       <Pane fx:id="topbar" prefHeight="30.0" prefWidth="530.0" style="-fx-background-color: #39414E;">
          <children>
-            <HBox alignment="CENTER_RIGHT" layoutX="38.0" prefHeight="30.0" prefWidth="492.0" spacing="5.0">
+            <HBox alignment="CENTER_RIGHT" layoutX="453.0" prefHeight="30.0" prefWidth="77.0" spacing="5.0">
                <children>
                   <Button ellipsisString="" focusTraversable="false" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" styleClass="apple-maximize" stylesheets="@stylesheet.css">
                      <font>
@@ -47,6 +47,11 @@
             <ImageView fitHeight="38.0" fitWidth="39.0" layoutY="-4.0" onMouseClicked="#register" pickOnBounds="true">
                <image>
                   <Image url="@../Images/register.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="45.0" fitWidth="39.0" layoutX="31.0" layoutY="-4.0" onMouseClicked="#changeLanguage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/language.png" />
                </image>
             </ImageView>
          </children>
