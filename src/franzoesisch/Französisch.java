@@ -20,7 +20,6 @@ public class Französisch extends Application {
     private static Stage stage;
     @Override
     public void start(Stage stage) throws Exception {
-
         this.stage = stage;
         Parent root = FXMLLoader.load(getClass().getResource("changeLanguage.fxml"));
         Scene scene = new Scene(root);

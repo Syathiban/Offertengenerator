@@ -37,7 +37,6 @@ public class LoginFXMLController implements Initializable {
     @FXML
     private PasswordField password;
     private double xOffset = 0;
-
     private double yOffset = 0;
     @FXML
     private Pane topbar;
@@ -71,7 +70,6 @@ public class LoginFXMLController implements Initializable {
                 xOffset = event.getSceneX();
                 yOffset = event.getSceneY();
             }
-
         });
 
         topbar.setOnMouseDragged(new EventHandler<MouseEvent>() {
@@ -86,7 +84,6 @@ public class LoginFXMLController implements Initializable {
         String language = Database.getInstance().getLanguages();
         System.out.println(language + comparison);
         if (language.equals(comparison)) {
-            System.out.println("hallo");
             title.setText("SIGN IN");
             mail.setPromptText("Email:");
             password.setPromptText("Password:");
@@ -97,8 +94,6 @@ public class LoginFXMLController implements Initializable {
             messa = "S'il vous plaît entrer votre nom d'utilisateur et mot de passe.";
             messa2 = "Veuillez entrer vos données correctes.";
         }
-        
-
     }
 
     @FXML
@@ -123,7 +118,7 @@ public class LoginFXMLController implements Initializable {
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();
-
+            
         } else if (mail.getText().trim().isEmpty() || password.getText().trim().isEmpty()) {
             message.setText(messa);
         } else {
